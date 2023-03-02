@@ -1,4 +1,31 @@
-# S6-08 | 🏆 Projeto Front-end: M3 T15
+<h1 align="center"> S6-08 | 🏆 Projeto Front-end: M3 T15 </h1>
+
+## 📊 Status do projeto
+
+🚧 Em Contrução 🚧
+
+## 🚀 Sobre o Projeto
+
+- Nessa Pokédex foi feita em Vite + ReactJS + TypeScript. Utilizamos styled-components, Axios, SweetAlert2, yup para validar formulários.
+
+## 💻 Features do projeto
+
+- Opção de pesquisar pokémon
+- Filtrar pokémons pelo tipo
+- Responsividade
+- Validação de formulário
+- Validação de dados da API
+
+## 🚀 Tecnologias e Ferramentas utilizadas
+
+- ReactJS
+- TypeScript
+- Vite
+- Styled-components
+- AXIOS
+- API: PokéApi
+
+## 📌 Links
 
 - [URL VERCEL](https://m3-t15-front-2023.vercel.app/)
 
@@ -8,9 +35,7 @@
 
 - [URL FIGMA](URL)
 
-#
-
-## Available Scripts
+## 🚀 Como rodar este projeto
 
 Instal dependencies with:
 
