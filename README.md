@@ -1,8 +1,12 @@
 <h1 align="center"> S6-08 | 🏆 Projeto Front-end: M3 T15 </h1>
 
-## 📊 Status do projeto
+<p align="center">
+  <img  alt="Pokedex Logo" title="Pokedex" src="src\assets\pokemon-logo.svg" />
+</p>
 
-🚧 Em Contrução 🚧
+<h1 align="center">
+🚧 Em Construção 🚧
+</h1>
 
 ## 🚀 Sobre o Projeto
 
@@ -18,12 +22,18 @@
 
 ## 🚀 Tecnologias e Ferramentas utilizadas
 
-- ReactJS
-- TypeScript
-- Vite
-- Styled-components
-- Axios
-- API: PokéApi
+- **[TypeScript](https://www.typescriptlang.org/)**
+- **[React](https://pt-br.reactjs.org/)**
+- **[Vite](https://vitejs.dev/)**
+- **[Axios](https://github.com/typicode/husky)**
+- **[Styled Components](https://styled-components.com/)**
+- **[SweetAlert2](https://sweetalert2.github.io/#configuration/)**
+- **[Eslint](https://eslint.org/)**
+- **[Prettier](https://prettier.io/)**
+
+## 📌 API
+
+- **[API: PokéApi](https://pokeapi.co/)**
 
 ## 📌 Links
 
