@@ -10,7 +10,7 @@
 
 ## 🚀 Sobre o Projeto
 
-- Nessa Pokédex foi feita em Vite + ReactJS + TypeScript. Utilizamos styled-components, Axios, SweetAlert2, yup para validar formulários.
+- A Pokédex foi desenvolvida usando Vite + ReactJS + TypeScript. Utilizamos styled-components, Axios, SweetAlert2, yup para validar formulários.
 
 ## 💻 Features do projeto
 
@@ -26,6 +26,8 @@
 - **[React](https://pt-br.reactjs.org/)**
 - **[Vite](https://vitejs.dev/)**
 - **[Axios](https://github.com/typicode/husky)**
+- **[React-hook-form](https://www.npmjs.com/package/react-hook-form)**
+- **[Yup](https://www.npmjs.com/package/yup)**
 - **[Styled Components](https://styled-components.com/)**
 - **[SweetAlert2](https://sweetalert2.github.io/#configuration/)**
 - **[Eslint](https://eslint.org/)**
