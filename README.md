@@ -20,7 +20,7 @@
 - Validação de formulário
 - Validação de dados da API
 
-## 🚀 Tecnologias e Ferramentas utilizadas
+## 🚀 Tecnologias
 
 - **[TypeScript](https://www.typescriptlang.org/)**
 - **[React](https://pt-br.reactjs.org/)**
@@ -33,7 +33,7 @@
 - **[Eslint](https://eslint.org/)**
 - **[Prettier](https://prettier.io/)**
 
-## 📌 API
+## 🔨 API
 
 - **[API: PokéApi](https://pokeapi.co/)**
 
@@ -47,7 +47,7 @@
 
 - [URL FIGMA](URL)
 
-## 🚀 Como rodar este projeto
+## 🖥️ Como rodar este projeto
 
 Instal dependencies with:
 
