@@ -47,7 +47,7 @@
 
 - [URL FIGMA](URL)
 
-## 🖥️ Como rodar este projeto
+## 🍼 Como rodar este projeto
 
 Instal dependencies with:
 
