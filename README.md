@@ -22,7 +22,7 @@
 - TypeScript
 - Vite
 - Styled-components
-- AXIOS
+- Axios
 - API: PokéApi
 
 ## 📌 Links
