@@ -1,7 +1,7 @@
 <h1 align="center"> S6-08 | 🏆 Projeto Front-end: M3 T15 </h1>
 
 <p align="center">
-  <img  alt="Pokedex Logo" title="Pokedex" src="src\assets\pokemon-logo.svg" />
+  <img  alt="Pokedex Logo" title="Pokedex" src="src\assets\kenzieDex2.png" />
 </p>
 
 <h1 align="center">
