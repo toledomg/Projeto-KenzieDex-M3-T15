@@ -55,19 +55,15 @@ export interface IShopProduct {
   product: IProductCart;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUserContext {
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   user: IUser | null;
   userLogin: (formData: ILoginFormValues) => Promise<void>;
   userRegister: (formData: IRegisterFormValues) => Promise<void>;
-  getAllProduct: () => Promise<void>;
   userLogout: () => void;
   navigate: (to: string) => void;
-  productsList: IProduct[];
-  setProductsList: React.Dispatch<React.SetStateAction<IProduct[]>>;
-  filteredProducts: IProduct[];
-  setFilteredProducts: React.Dispatch<React.SetStateAction<IProduct[]>>;
 }
 
 export interface ICartContext {

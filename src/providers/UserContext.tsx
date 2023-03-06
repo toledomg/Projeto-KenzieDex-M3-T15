@@ -89,25 +89,25 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     }
   };
 
-  const getAllPokemon = async () => {
-    try {
-      const token = localStorage.getItem('@token');
-      const response = await apiList.get('/pokemon', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+  // const getAllPokemon = async () => {
+  //   try {
+  //     const token = localStorage.getItem('@token');
+  //     const response = await apiList.get('/pokemon', {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
 
-      if (filteredPokemon.length === 0) {
-        setPokemonList(response.data);
-      } else {
-        setPokemonList(filteredPokemon);
-      }
-    } catch (error) {
-      console.log(error);
-      navigate('/');
-    }
-  };
+  //     if (filteredPokemon.length === 0) {
+  //       setPokemonList(response.data);
+  //     } else {
+  //       setPokemonList(filteredPokemon);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     navigate('/');
+  //   }
+  // };
 
   const userLogout = () => {
     setUser(null);
@@ -127,13 +127,8 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         user,
         userLogin,
         userRegister,
-        getAllProduct,
         userLogout,
         navigate,
-        pokemonList,
-        setPokemonList,
-        filteredPokemon,
-        setFilteredPokemon,
       }}
     >
       {children}
