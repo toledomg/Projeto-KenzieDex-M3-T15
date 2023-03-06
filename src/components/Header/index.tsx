@@ -1,4 +1,4 @@
-import { HeaderContainer, Logo } from './style'
+import { HeaderContainer, Logo, YellowLine } from './style'
 import logo from '../../assets/kenzieDex2.png'
 import logout from '../../assets/logout icon.png'
 import profile from '../../assets/profile icon.png'
@@ -15,7 +15,7 @@ const Header = () => (
    </div>
 
  </HeaderContainer>
-   <img src={yellowLine} alt='yellow line'/>
+   <YellowLine src={yellowLine} alt='yellow line'/>
    </>
 )
 
