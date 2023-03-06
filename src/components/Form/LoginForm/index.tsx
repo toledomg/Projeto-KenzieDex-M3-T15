@@ -1,7 +1,9 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import { loginSchema } from './loginSchema';
+import { StyledShowPassSpan } from './style';
 import { ILoginFormValues } from '../../../providers/@types';
 import { UserContext } from '../../../providers/UserContext';
 import { StyledButton, StyledButtonLink } from '../../../styles/button';
@@ -10,6 +12,8 @@ import Input from '../Input';
 import { StyledParagraph } from '../../../styles/typography';
 
 const LoginForm = () => {
+  const [isHidden, setIsHidden] = useState(true);
+
   const {
     register,
     handleSubmit,
@@ -31,10 +35,16 @@ const LoginForm = () => {
       />
       <Input
         label='Digite sua Senha'
-        type='password'
+        type={isHidden ? 'password' : 'text'}
         register={register('password')}
         error={errors.password}
       />
+      <StyledShowPassSpan
+        id='visibility'
+        onClick={() => setIsHidden(!isHidden)}
+      >
+        {isHidden ? <MdVisibility /> : <MdVisibilityOff />}
+      </StyledShowPassSpan>
 
       <StyledButton type='submit' $buttonSize='default' $buttonStyle='yellow'>
         Entrar
