@@ -5,6 +5,8 @@ export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  position: relative;
 `;
 
 export const StyledTextField = styled(TextField)`
@@ -14,6 +16,7 @@ export const StyledTextField = styled(TextField)`
     font-family: ${({ theme }) => theme.fonts.primary};
     background-color: #dedede10;
     border-radius: 8px;
+    color: ${({ theme }) => theme.colors.gray0};
   }
 
   label {
