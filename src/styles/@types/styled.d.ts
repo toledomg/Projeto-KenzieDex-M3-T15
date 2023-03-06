@@ -11,7 +11,10 @@ declare module 'styled-components' {
         focus: string;
         negative: string;
       };
-      secondary: string;
+      secondary: {
+        default: string;
+        hover: string;
+      };
       gray6: string;
       gray5: string;
       gray4: string;

@@ -9,6 +9,8 @@ export const StyledLoginPage = styled.main`
 
   background-color: ${({ theme }) => theme.colors.gray3};
 
+  position: relative;
+
   .flexGrid {
     display: flex;
     align-items: center;

@@ -3,7 +3,9 @@ import { StyledContainer, StyledGridBox } from '../../styles/grid';
 import { StyledTitle } from '../../styles/typography';
 import Header from '../../components/HeaderLogin';
 import LoginForm from '../../components/Form/LoginForm';
+import PokeballImg from '../../components/HeaderLogin/PokeballImg';
 
+<PokeballImg />;
 const LoginPage = () => (
   <StyledLoginPage>
     <Header />
@@ -15,6 +17,7 @@ const LoginPage = () => (
         <LoginForm />
       </StyledGridBox>
     </StyledContainer>
+    <PokeballImg />
   </StyledLoginPage>
 );
 

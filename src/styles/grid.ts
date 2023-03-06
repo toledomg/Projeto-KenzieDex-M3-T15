@@ -11,6 +11,7 @@ export const StyledContainer = styled.div<IStyledContainerProps>`
   min-width: 320px;
   margin: 0 auto;
   padding: 10px;
+  z-index: 9999;
 `;
 
 export const StyledGridBox = styled.div`

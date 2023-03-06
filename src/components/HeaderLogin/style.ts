@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
-  background: ${({ theme }) => theme.colors.gray3};
+  z-index: 999;
   .flexGrid {
     display: flex;
     align-items: center;
