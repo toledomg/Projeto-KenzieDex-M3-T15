@@ -18,4 +18,6 @@ export const GlobalStyles = createGlobalStyle`
     display: unset;
     position: unset;
   }
+  
+  
 `;
