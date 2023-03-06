@@ -1,17 +1,17 @@
 import { StyledLoginPage } from './style';
 import { StyledContainer, StyledGridBox } from '../../styles/grid';
 import { StyledTitle } from '../../styles/typography';
-import Header from '../../components/Header';
+import Header from '../../components/HeaderLogin';
 import LoginForm from '../../components/Form/LoginForm';
 
 const LoginPage = () => (
   <StyledLoginPage>
     <Header />
     <StyledContainer>
-      <StyledTitle tag='h2' $fontSize='three'>
-        Login
-      </StyledTitle>
       <StyledGridBox>
+        <StyledTitle tag='h2' $fontSize='three'>
+          Login
+        </StyledTitle>
         <LoginForm />
       </StyledGridBox>
     </StyledContainer>

@@ -1,9 +1,10 @@
 import { StyledIllustrationLogo } from './style';
+import LogoKenzieDex from '../../assets/LogoKenzieDex.png';
 
 function IlustrationLogo() {
   return (
     <StyledIllustrationLogo>
-      <h1>teste</h1>
+      <img src={LogoKenzieDex} alt='logo-kenziedex' className='logo' />
     </StyledIllustrationLogo>
   );
 }

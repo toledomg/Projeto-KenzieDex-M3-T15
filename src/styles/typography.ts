@@ -63,7 +63,7 @@ export const StyledParagraph = styled.p<IStyledParagraphProps>`
     switch (fontColor) {
       case 'white':
         return css`
-          color: ${theme.colors.gray0};
+          color: ${theme.colors.gray1};
         `;
       case 'red':
         return css`

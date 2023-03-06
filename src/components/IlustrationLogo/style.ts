@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
 export const StyledIllustrationLogo = styled.div`
+  width: 350px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
+
+  margin-bottom: 20px;
   gap: 30px;
 
   .styledBoxLogo {
@@ -13,5 +16,9 @@ export const StyledIllustrationLogo = styled.div`
     padding: 20px;
     background: ${({ theme }) => theme.colors.gray6};
     border: 1px solid #e0e0e0;
+  }
+
+  img {
+    width: 300px;
   }
 `;
