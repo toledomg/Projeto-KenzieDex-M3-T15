@@ -39,12 +39,12 @@ const LoginForm = () => {
         register={register('password')}
         error={errors.password}
       />
-      <StyledShowPassSpan
+      {/* <StyledShowPassSpan
         id='visibility'
         onClick={() => setIsHidden(!isHidden)}
       >
         {isHidden ? <MdVisibility /> : <MdVisibilityOff />}
-      </StyledShowPassSpan>
+      </StyledShowPassSpan> */}
 
       <StyledButton type='submit' $buttonSize='default' $buttonStyle='yellow'>
         Entrar
