@@ -47,7 +47,7 @@
 
 - [URL Repo GIT](https://github.com/M3-T15-Projeto-Front-2023/KenzieDex-M3-T15-Front-2023)
 
-- [URL FIGMA](URL)
+- [URL FIGMA](https://www.figma.com/file/ZzPF6iwsmz8AS0YloZbqyq/KenzieDex)
 
 ## 🍼 Como rodar este projeto
 
