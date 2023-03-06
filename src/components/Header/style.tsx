@@ -21,3 +21,6 @@ export const Logo = styled.img`
   width: 161px;
 `
 
+export const YellowLine = styled.img`
+  width: 100%;
+`
