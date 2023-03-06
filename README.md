@@ -35,15 +35,17 @@
 
 ## 🔨 API
 
-- **[API: PokéApi](https://pokeapi.co/)**
+- [API: PokéApi](https://pokeapi.co/)
 
 ## 📌 Links
 
 - [URL VERCEL](https://m3-t15-front-2023.vercel.app/)
 
-- [URL API](URL)
+- [URL Repo Fake API](https://github.com/M3-T15-Projeto-Front-2023/KenzieDex-Json-server.git)
 
-- [URL Repo GIT](https://github.com/M3-T15-Projeto-Front-2023/M3-T15-Front-2023)
+- [URL Fake API](#)
+
+- [URL Repo GIT](https://github.com/M3-T15-Projeto-Front-2023/KenzieDex-M3-T15-Front-2023)
 
 - [URL FIGMA](URL)
 
