@@ -8,15 +8,17 @@ interface IStyledTitleProps {
 }
 
 interface IStyledParagraphProps {
-  fontColor?: 'gray' | 'red';
+  fontColor?: 'white' | 'red';
   textAlign?: 'center' | 'left' | 'right';
 }
 
 export const StyledTitle = styled(BaseTitle)<IStyledTitleProps>`
   width: 100%;
+  color: ${({ theme }) => theme.colors.primary.default};
 
   font-family: ${({ theme }) => theme.fonts.primary};
   line-height: 1.6;
+  margin-bottom: 20px;
 
   text-align: ${({ textAlign }) => textAlign};
 
@@ -26,18 +28,18 @@ export const StyledTitle = styled(BaseTitle)<IStyledTitleProps>`
       case 'one':
         return css`
           font-size: 1.55rem;
-          font-weight: 700;
+          font-weight: 600;
         `;
       case 'two':
         return css`
           font-size: 1.35rem;
-          font-weight: 700;
+          font-weight: 600;
         `;
 
       case 'three':
         return css`
           font-size: 1.15rem;
-          font-weight: 700;
+          font-weight: 600;
         `;
 
       case 'four':
@@ -59,9 +61,9 @@ export const StyledParagraph = styled.p<IStyledParagraphProps>`
 
   ${({ fontColor, theme }) => {
     switch (fontColor) {
-      case 'gray':
+      case 'white':
         return css`
-          color: ${theme.colors.gray300};
+          color: ${theme.colors.gray0};
         `;
       case 'red':
         return css`
@@ -69,7 +71,7 @@ export const StyledParagraph = styled.p<IStyledParagraphProps>`
         `;
       default:
         return css`
-          color: ${theme.colors.gray600};
+          color: ${theme.colors.gray4};
         `;
     }
   }}
