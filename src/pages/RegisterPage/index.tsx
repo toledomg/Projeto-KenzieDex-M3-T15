@@ -1,24 +1,31 @@
-import { StyledLoginPage } from './style';
+import { Link } from 'react-router-dom';
+import { StyledRegisterPage } from './style';
 import { StyledContainer, StyledGridBox } from '../../styles/grid';
 import { StyledTitle } from '../../styles/typography';
 import Header from '../../components/HeaderLogin';
-import LoginForm from '../../components/Form/LoginForm';
 import PokeballImg from '../../components/HeaderLogin/PokeballImg';
+import RegisterForm from '../../components/Form/RegisterForm';
+import { LinkDirect, StyledButtonLink } from '../../styles/button';
 
 <PokeballImg />;
-const LoginPage = () => (
-  <StyledLoginPage>
+const RegisterPage = () => (
+  <StyledRegisterPage>
     <Header />
     <StyledContainer>
       <StyledGridBox>
-        <StyledTitle tag='h2' $fontSize='three'>
-          Login
-        </StyledTitle>
-        <LoginForm />
+        <div className='divTitle'>
+          <StyledTitle tag='h2' $fontSize='three'>
+            Cadastro
+          </StyledTitle>
+          <Link className='redirect' to='/'>
+            Voltar para login
+          </Link>
+        </div>
+        <RegisterForm />
       </StyledGridBox>
     </StyledContainer>
     <PokeballImg />
-  </StyledLoginPage>
+  </StyledRegisterPage>
 );
 
-export default LoginPage;
+export default RegisterPage;

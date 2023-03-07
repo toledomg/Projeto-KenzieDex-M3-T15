@@ -11,6 +11,18 @@ export const StyledLoginPage = styled.main`
 
   position: relative;
 
+  .loginEyePosition {
+    position: relative;
+    .eye {
+      position: absolute;
+      top: 15px;
+      right: 10px;
+
+      font-size: 20px;
+      color: #f8f9fa50;
+    }
+  }
+
   .flexGrid {
     display: flex;
     align-items: center;

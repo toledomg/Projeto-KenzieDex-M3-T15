@@ -32,7 +32,7 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
       try {
         const response = await api.get('/pokemon');
         setPokemonList(response.data.results);
-        console.log(response.data.results);
+        // console.log(response.data.results);
       } catch (error) {
         console.log(error);
       }
