@@ -6,3 +6,12 @@ export const StyledFieldset = styled.fieldset`
   flex-direction: column;
   gap: 8px;
 `;
+
+export const StyledShowPassSpan = styled.span`
+  position: fixed;
+  top: 492px;
+  right: 475px;
+
+  font-size: 20px;
+  color: #f8f9fa50;
+`;
