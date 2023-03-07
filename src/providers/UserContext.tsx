@@ -4,23 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import {
   IDefaultProviderProps,
   IUser,
-  IProduct,
   ILoginFormValues,
   IRegisterFormValues,
   IUserContext,
-  IProductCart,
 } from './@types';
 
 import { toasts, toastError, toastWarning, toastAlert } from '../styles/toast';
-import { api, apiList } from '../services/api';
+import { api, apiFake } from '../services/api';
 
 export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const [loading, setLoading] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
   const [user, setUser] = useState<IUser | null>(null);
-  const [pokemonList, setPokemonList] = useState([] as IProduct[]);
-  const [filteredPokemon, setFilteredPokemon] = useState([] as IProduct[]);
 
   const navigate = useNavigate();
 
@@ -31,14 +28,14 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     if (token) {
       const userAutoLogin = async () => {
         try {
-          const response = await api.get(`/users/${idUser}`, {
+          const response = await apiFake.get(`/users/${idUser}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           });
 
           setUser(response.data.user);
-          navigate('/shop');
+          navigate('/home');
         } catch (error) {
           console.log(error);
           navigate('/');
@@ -53,12 +50,12 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     try {
       setLoading(true);
 
-      const response = await api.post('/login', formData);
+      const response = await apiFake.post('/login', formData);
 
       localStorage.setItem('@token', response.data.accessToken);
       localStorage.setItem('@useID', response.data.user.id);
       setUser(response.data.user);
-      navigate('/shop');
+      navigate('/home');
       toastAlert('success', 'Conectado com Sucesso');
     } catch (error) {
       console.log(error);
@@ -74,11 +71,11 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     try {
       setLoading(true);
 
-      const response = await api.post('/users', formData);
+      const response = await apiFake.post('/users', formData);
 
       localStorage.setItem('@token', response.data.accessToken);
 
-      navigate('/shop');
+      navigate('/home');
       toasts('success', 'Cadastro Realizado com Sucesso');
     } catch (error) {
       setLoading(true);
@@ -89,32 +86,12 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     }
   };
 
-  // const getAllPokemon = async () => {
-  //   try {
-  //     const token = localStorage.getItem('@token');
-  //     const response = await apiList.get('/pokemon', {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-
-  //     if (filteredPokemon.length === 0) {
-  //       setPokemonList(response.data);
-  //     } else {
-  //       setPokemonList(filteredPokemon);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //     navigate('/');
-  //   }
-  // };
-
   const userLogout = () => {
     setUser(null);
     toastAlert('success', 'Deslogado');
     localStorage.removeItem('@token');
     localStorage.removeItem('@useID');
-    localStorage.removeItem('@Pokedex');
+    // localStorage.removeItem('@Pokedex');
 
     navigate('/');
   };
@@ -124,6 +101,8 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       value={{
         loading,
         setLoading,
+        isHidden,
+        setIsHidden,
         user,
         userLogin,
         userRegister,

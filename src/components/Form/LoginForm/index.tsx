@@ -12,7 +12,7 @@ import Input from '../Input';
 import { StyledParagraph } from '../../../styles/typography';
 
 const LoginForm = () => {
-  const [isHidden, setIsHidden] = useState(true);
+  const { isHidden, setIsHidden } = useContext(UserContext);
 
   const {
     register,
