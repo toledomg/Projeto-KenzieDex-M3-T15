@@ -1,4 +1,5 @@
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
+import { StyledFieldset } from './style';
 import { StyledTextField } from '../../../styles/form';
 import { StyledParagraph } from '../../../styles/typography';
 
@@ -10,12 +11,12 @@ interface IInputProps {
 }
 
 const Input = ({ label, type, register, error }: IInputProps) => (
-  <fieldset>
+  <StyledFieldset>
     <StyledTextField label={label} type={type} {...register} />
     {error ? (
       <StyledParagraph fontColor='red'>{error.message}</StyledParagraph>
     ) : null}
-  </fieldset>
+  </StyledFieldset>
 );
 
 export default Input;

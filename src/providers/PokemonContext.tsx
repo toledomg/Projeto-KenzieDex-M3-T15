@@ -45,6 +45,10 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [pokeId, setPokeId] = useState('1')
   const [pokeModal, setPokeModal] = useState<null | iPokemon>(null)
 
+  const [pokemonTypes, setPokemonTypes] = useState<iType[]>([]);
+
+ 
+
   return (
     <PokemonContext.Provider
       value={{ pokemonList, setPokemonList, pokemonData, setPokemonData, pokeId, setPokeId, pokeModal, setPokeModal }}

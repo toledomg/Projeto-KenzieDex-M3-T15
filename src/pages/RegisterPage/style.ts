@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledLoginPage = styled.main`
+export const StyledRegisterPage = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,7 +11,29 @@ export const StyledLoginPage = styled.main`
 
   position: relative;
 
-  .loginEyePosition {
+  .divTitle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px;
+    gap: 10px;
+
+    /* a {
+      width: 70%;
+    } */
+  }
+
+  .redirect {
+    color: ${({ theme }) => theme.colors.primary.default};
+
+    font-family: ${({ theme }) => theme.fonts.primary};
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .registerEyePosition {
     position: relative;
     .eye {
       position: absolute;
