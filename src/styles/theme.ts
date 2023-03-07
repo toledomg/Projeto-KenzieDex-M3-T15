@@ -18,7 +18,7 @@ export const mainTheme = {
     gray5: '#828282',
     gray4: '#121214',
     gray3: '#212529',
-    gray2: '#343b41',
+    gray2: '#343B41',
     gray1: '#868e96',
     gray0: '#F8f9fa',
     white: '#FFFFFF',
@@ -48,5 +48,5 @@ export const mainTheme = {
     backgroundTypeRock: '#D4C294',
     backgroundTypeSteel: '#4C91B2',
     backgroundTypeWater: '#58ABF6',
-  }
+  },
 };

@@ -6,16 +6,17 @@ import yellowLine from '../../assets/yellowLine.png'
 
 const Header = () => (
  <>
- <HeaderContainer>
-   <Logo src={logo} alt='Logo' />
+    <HeaderContainer>
+      <Logo src={logo} alt='Logo' />
 
-   <div>
-   <img src={profile} alt='profile icon' />
-   <img src={logout} alt='logout icon' />
-   </div>
+      <div>
+      <img src={profile} alt='profile icon' />
+      <img src={logout} alt='logout icon' />
+      </div>
 
- </HeaderContainer>
-   <YellowLine src={yellowLine} alt='yellow line'/>
+    </HeaderContainer>
+
+    <YellowLine src={yellowLine} alt='yellow line'/>
    </>
 )
 
