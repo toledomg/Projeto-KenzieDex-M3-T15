@@ -18,7 +18,12 @@ const Header = () => {
 
         <div>
           <img src={profile} alt='profile icon' />
-          <img src={logout} alt='logout icon' onClick={() => userLogout()} />
+          <img
+            className='cursor'
+            src={logout}
+            alt='logout icon'
+            onClick={() => userLogout()}
+          />
         </div>
       </HeaderContainer>
       <YellowLine src={yellowLine} alt='yellow line' />

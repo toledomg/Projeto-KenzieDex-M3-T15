@@ -1,14 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const GlobalContainer = styled.div`
   width: 100%;
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.gray3};
-`
+`;
 
 export const HeaderContainer = styled.div`
-  
-  
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,12 +21,16 @@ export const HeaderContainer = styled.div`
 
     gap: 1rem;
   }
-`
+
+  .cursor {
+    cursor: pointer;
+  }
+`;
 
 export const Logo = styled.img`
   width: 161px;
-`
+`;
 
 export const YellowLine = styled.img`
   width: 100%;
-`
+`;

@@ -5,7 +5,6 @@ import { StyledTitle } from '../../styles/typography';
 import Header from '../../components/HeaderLogin';
 import PokeballImg from '../../components/HeaderLogin/PokeballImg';
 import RegisterForm from '../../components/Form/RegisterForm';
-import { LinkDirect, StyledButtonLink } from '../../styles/button';
 
 <PokeballImg />;
 const RegisterPage = () => (

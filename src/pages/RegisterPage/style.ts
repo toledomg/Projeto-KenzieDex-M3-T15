@@ -17,9 +17,12 @@ export const StyledRegisterPage = styled.main`
     justify-content: space-between;
     align-items: center;
 
-    a {
-      width: 50%;
-    }
+    padding: 10px;
+    gap: 10px;
+
+    /* a {
+      width: 70%;
+    } */
   }
 
   .redirect {
