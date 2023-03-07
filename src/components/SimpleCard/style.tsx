@@ -15,13 +15,18 @@ export const CardContainer = styled.div`
 
   position: relative;
 
-  border-radius: 4px;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-left: 4px solid ${({theme}) => theme.colors.secondary.default};
+  border-right: 4px solid ${({theme}) => theme.colors.primary.default};
 
   padding: 1rem;
 
   gap: 0.5rem;
 
-  background-color: ${({theme}) => theme.backgroundColors.backgroundTypeFire};
+  background-color: ${({theme}) => theme.colors.gray4};
+
+  box-shadow: 8px 8px rgb(0, 0, 0, 0.2);  
 
   > section {
     display: flex;
@@ -38,22 +43,21 @@ export const PokemonImage = styled.img`
   position: absolute;
 
   bottom: 12px;
-  right: 18px;
+  right: -2px;
 `
 
 export const PokemonName = styled.span`
   font-size: 20px;
   font-weight: bold;
   
-  color: ${({theme}) => theme.colors.gray2}
+  color: ${({theme}) => theme.colors.gray0}
 `
 
-export const PokemonType = styled.span`
+export const PokemonId = styled.span`
   font-size: 10px;
   font-weight: bold;
 
-  color: ${({theme}) => theme.colors.gray2}
-
+  color: ${({theme}) => theme.colors.gray0};
 `
 
 export const InfoButton = styled.button`
