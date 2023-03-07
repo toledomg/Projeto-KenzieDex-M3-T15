@@ -31,6 +31,8 @@ interface iPokemonContext {
   setPokeId: React.Dispatch<React.SetStateAction<string>>;
   pokeModal: null | iPokemon;
   setPokeModal: React.Dispatch<React.SetStateAction<null | iPokemon>>;
+  pokemonTeam: iInfos[];
+  setPokemonTeam: React.Dispatch<React.SetStateAction<iInfos[]>>;
 }
 
 interface iPokemonContextProps {
@@ -44,12 +46,11 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [pokemonData, setPokemonData] = useState<iData[] | string | iPokemon>([{name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/'}]);
   const [pokeId, setPokeId] = useState('1')
   const [pokeModal, setPokeModal] = useState<null | iPokemon>(null)
-
- 
+  const [pokemonTeam, setPokemonTeam ] = useState<iInfos[]>([])
 
   return (
     <PokemonContext.Provider
-      value={{ pokemonList, setPokemonList, pokemonData, setPokemonData, pokeId, setPokeId, pokeModal, setPokeModal }}
+      value={{ pokemonList, setPokemonList, pokemonData, setPokemonData, pokeId, setPokeId, pokeModal, setPokeModal, pokemonTeam, setPokemonTeam }}
     >
       {children}
     </PokemonContext.Provider>

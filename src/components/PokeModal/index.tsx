@@ -1,11 +1,11 @@
 /* eslint-disable no-unsafe-optional-chaining */
 import {useContext, useEffect, useState} from 'react'
-import { ModalContainer, Modal, ModalClose, PokemonName, PokemonType, ModalHeader, ModalMain, PokeTypes, PokemonModalImage } from "./style"
+import { ModalContainer, Modal, ModalClose, PokemonName, AddButton, PokemonType, ModalHeader, ModalMain, PokeTypes, PokemonModalImage } from "./style"
 import { iInfos, PokemonContext } from "../../providers/PokemonContext"
 import { api } from '../../services/api'
 
 const PokeModal = () => { 
-  const { pokeId, setPokeModal, pokeModal} = useContext(PokemonContext)
+  const { setPokeModal, pokeModal, pokemonTeam, setPokemonTeam} = useContext(PokemonContext)
   const [pokemon, setPokemon] = useState<null | iInfos>(null)
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const PokeModal = () => {
       }
     }
     loadSingleData()
-  }, [pokeId])
+  }, [])
   
   if (!pokemon){
     return <h1>loadindg..</h1>
@@ -42,6 +42,15 @@ const PokeModal = () => {
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
         alt={pokemon.name}
         />
+
+        <AddButton onClick={() => {
+          if (pokemonTeam.includes(pokemon)){
+            console.log('Este pokemon já está na equipe')
+          } else {
+            pokemonTeam.push(pokemon)
+            setPokemonTeam(pokemonTeam)
+          }
+        }}>Add to team</AddButton>
      </ModalHeader>
 
      <ModalMain>

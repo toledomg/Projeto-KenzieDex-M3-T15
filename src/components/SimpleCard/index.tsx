@@ -25,7 +25,7 @@ const SimpleCard = ({ name, url, pokemon, id}: iSimpleCardProps) => {
   const { setPokeModal } = useContext(PokemonContext)
   
   return (
-    <CardContainer id={id}>
+    <CardContainer>
       
       <section>
         <PokemonName>{name[0].toUpperCase() + name.slice(1)}</PokemonName>
