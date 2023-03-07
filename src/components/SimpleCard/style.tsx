@@ -55,7 +55,7 @@ export const PokemonName = styled.span`
 
 export const PokemonId = styled.span`
   font-size: 10px;
-  font-weight: bold;
+  font-weight: normal;
 
   color: ${({theme}) => theme.colors.gray0};
 `
