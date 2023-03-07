@@ -10,6 +10,11 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
+  body {
+    background: ${({ theme }) => theme.colors.gray3};
+    font-family: ${({ theme }) => theme.fonts.primary};
+  }
+
   button{
     cursor: pointer;
   }
