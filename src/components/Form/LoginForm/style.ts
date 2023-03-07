@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledShowPassSpan = styled.span`
   position: absolute;
-  top: 94px;
+  top: 92px;
   right: 10px;
 
   font-size: 20px;

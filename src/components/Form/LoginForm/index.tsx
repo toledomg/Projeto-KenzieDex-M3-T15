@@ -12,7 +12,7 @@ import Input from '../Input';
 import { StyledParagraph } from '../../../styles/typography';
 
 const LoginForm = () => {
-  const [isHidden, setIsHidden] = useState(true);
+  const { isHidden, setIsHidden } = useContext(UserContext);
 
   const {
     register,
@@ -39,12 +39,12 @@ const LoginForm = () => {
         register={register('password')}
         error={errors.password}
       />
-      <StyledShowPassSpan
+      {/* <StyledShowPassSpan
         id='visibility'
         onClick={() => setIsHidden(!isHidden)}
       >
         {isHidden ? <MdVisibility /> : <MdVisibilityOff />}
-      </StyledShowPassSpan>
+      </StyledShowPassSpan> */}
 
       <StyledButton type='submit' $buttonSize='default' $buttonStyle='yellow'>
         Entrar

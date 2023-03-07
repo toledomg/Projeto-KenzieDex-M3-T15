@@ -59,6 +59,8 @@ export interface IShopProduct {
 export interface IUserContext {
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  isHidden: boolean;
+  setIsHidden: React.Dispatch<React.SetStateAction<boolean>>;
   user: IUser | null;
   userLogin: (formData: ILoginFormValues) => Promise<void>;
   userRegister: (formData: IRegisterFormValues) => Promise<void>;
