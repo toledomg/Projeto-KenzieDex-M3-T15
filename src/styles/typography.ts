@@ -13,7 +13,7 @@ interface IStyledParagraphProps {
 }
 
 export const StyledTitle = styled(BaseTitle)<IStyledTitleProps>`
-  width: 100%;
+  /* width: 100%; */
   color: ${({ theme }) => theme.colors.primary.default};
 
   font-family: ${({ theme }) => theme.fonts.primary};
