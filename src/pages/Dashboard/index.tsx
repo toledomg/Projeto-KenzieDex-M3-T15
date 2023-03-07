@@ -1,32 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { apiList } from '../../services/api';
-import Header from '../../components/Header';
+import {  useContext } from 'react';
 
-interface iPokemon {
-  name: string;
-  url: string;
-}
+
+import { PokemonContainer } from './style';
+import SimpleCard from '../../components/SimpleCard';
+import Header from '../../components/Header';
+import { GlobalContainer } from '../../components/Header/style';
+import { PokemonContext } from '../../providers/PokemonContext';
 
 const Dashboard = () => {
-  const [pokemonList, setPokemonList ] = useState<iPokemon[]>([])
-
-  useEffect(() => {
-    const loadPokemons = async () => {
-      try {
-        const response = await apiList.get('/pokemon')
-        setPokemonList(response.data.results)
-        console.log(response.data.results)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    loadPokemons()
-  }, [])
+  const { pokemonList } = useContext(PokemonContext)
 
   return (
-    <Header/>
-  )
-}
+    <GlobalContainer>
+      <Header/>
+      <PokemonContainer>
+      {pokemonList.map((pokemon) =>  (
+          <SimpleCard key={pokemon.name} url={pokemon.url} name={pokemon.name}/>
+        )
+      )}
+      </PokemonContainer>
 
+    </GlobalContainer>
+  )
+  }
 
 export default Dashboard;

@@ -1,6 +1,14 @@
 import styled from "styled-components";
 
+export const GlobalContainer = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: ${({ theme }) => theme.colors.gray3};
+`
+
 export const HeaderContainer = styled.div`
+  
+  
   display: flex;
   align-items: center;
   justify-content: space-between;
