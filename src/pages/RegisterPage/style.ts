@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledLoginPage = styled.main`
+export const StyledRegisterPage = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +10,37 @@ export const StyledLoginPage = styled.main`
   background-color: ${({ theme }) => theme.colors.gray3};
 
   position: relative;
+
+  .divTitle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      width: 50%;
+    }
+  }
+
+  .redirect {
+    color: ${({ theme }) => theme.colors.primary.default};
+
+    font-family: ${({ theme }) => theme.fonts.primary};
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .registerEyePosition {
+    position: relative;
+    .eye {
+      position: absolute;
+      top: 15px;
+      right: 10px;
+
+      font-size: 20px;
+      color: #f8f9fa50;
+    }
+  }
 
   .flexGrid {
     display: flex;

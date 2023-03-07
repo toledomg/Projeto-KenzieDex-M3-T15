@@ -91,7 +91,6 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     toastAlert('success', 'Deslogado');
     localStorage.removeItem('@token');
     localStorage.removeItem('@useID');
-    // localStorage.removeItem('@Pokedex');
 
     navigate('/');
   };

@@ -69,3 +69,5 @@ export const StyledButton = styled.button<IStyledButtonProps>`
 export const StyledButtonLink = styled(Link)`
   ${StyledButtonCSS}
 `;
+
+export const LinkDirect = styled(Link)``;
