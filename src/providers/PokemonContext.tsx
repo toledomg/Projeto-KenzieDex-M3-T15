@@ -1,20 +1,36 @@
-import { createContext, useEffect, useState } from 'react';
-import { api } from '../services/api';
+import { createContext, useState } from 'react';
 
 export interface iPokemon {
   name: string;
   url: string;
+  id: number;
+  pokemon: iPokemon;
 }
 
-export interface iType {
+export interface iData {
   name: string;
+  url: string;
+}
+
+export interface iInfos{
+  types: { slot: number; type: { name: string; url: string } }[];
+  name: string;
+  id: number;
+  order: number;
+  height: number;
+  weight: string;
+  abilities:  { slot: number; ability: { name: string; url: string } }[];
 }
 
 interface iPokemonContext {
   pokemonList: iPokemon[];
   setPokemonList: React.Dispatch<React.SetStateAction<iPokemon[]>>;
-  pokemonTypes: iType[];
-  setPokemonTypes: React.Dispatch<React.SetStateAction<iType[]>>;
+  pokemonData: iData[] | string | iPokemon;
+  setPokemonData: React.Dispatch<React.SetStateAction<iData[] | string | iPokemon>>;
+  pokeId: string;
+  setPokeId: React.Dispatch<React.SetStateAction<string>>;
+  pokeModal: null | iPokemon;
+  setPokeModal: React.Dispatch<React.SetStateAction<null | iPokemon>>;
 }
 
 interface iPokemonContextProps {
@@ -25,24 +41,15 @@ export const PokemonContext = createContext({} as iPokemonContext);
 
 export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [pokemonList, setPokemonList] = useState<iPokemon[]>([]);
-  const [pokemonTypes, setPokemonTypes] = useState<iType[]>([]);
+  const [pokemonData, setPokemonData] = useState<iData[] | string | iPokemon>([{name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/'}]);
+  const [pokeId, setPokeId] = useState('1')
+  const [pokeModal, setPokeModal] = useState<null | iPokemon>(null)
 
-  useEffect(() => {
-    const loadPokemons = async () => {
-      try {
-        const response = await api.get('/pokemon');
-        setPokemonList(response.data.results);
-        // console.log(response.data.results);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    loadPokemons();
-  }, []);
+ 
 
   return (
     <PokemonContext.Provider
-      value={{ pokemonList, setPokemonList, pokemonTypes, setPokemonTypes }}
+      value={{ pokemonList, setPokemonList, pokemonData, setPokemonData, pokeId, setPokeId, pokeModal, setPokeModal }}
     >
       {children}
     </PokemonContext.Provider>

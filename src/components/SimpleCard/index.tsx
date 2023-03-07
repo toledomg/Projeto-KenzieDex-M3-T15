@@ -1,26 +1,48 @@
-import { CardContainer, PokemonImage, PokemonName, PokemonType, InfoButton } from "./style"
+import {useContext} from 'react'
+import {
+  CardContainer,
+  PokemonImage,
+  PokemonName,
+  PokemonId,
+  InfoButton,
+} from './style';
+
+import { iPokemon, PokemonContext } from '../../providers/PokemonContext';
 
 
-
-interface iSimpleCardProps{
+interface iSimpleCardProps {
   name: string;
   url: string;
+  pokemon: iPokemon;
+  id: string;
 }
 
-const SimpleCard = ({name, url}: iSimpleCardProps) => {
-  const pokedexNumber:string = url.slice(34, -1)
-  
-  return(
-  <CardContainer>
-    <section>
-      <PokemonName>{name[0].toUpperCase() + name.slice(1)}</PokemonName>
-      <PokemonType>Type</PokemonType>
-    </section>
-    
-    <InfoButton>+infos</InfoButton>
 
-    <PokemonImage src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokedexNumber}.png`} alt={name} />
-  </CardContainer>
- )}
- 
- export default SimpleCard
+
+const SimpleCard = ({ name, url, pokemon, id}: iSimpleCardProps) => {
+  const pokedexNumber: string = url.slice(34, -1);
+
+  const { setPokeModal } = useContext(PokemonContext)
+  
+  return (
+    <CardContainer id={id}>
+      
+      <section>
+        <PokemonName>{name[0].toUpperCase() + name.slice(1)}</PokemonName>
+        
+        <PokemonId>#{pokedexNumber}</PokemonId>
+      </section>
+
+      <InfoButton onClick={() => {
+        setPokeModal(pokemon)
+      }}>+infos</InfoButton>
+
+      <PokemonImage
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokedexNumber}.png`}
+        alt={name}
+        />
+    </CardContainer>
+  );
+};
+
+export default SimpleCard;
