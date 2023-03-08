@@ -2,12 +2,17 @@
 import {useContext, useEffect, useState} from 'react'
 import { ModalContainer, Modal, ModalClose, PokemonName, AddButton, PokemonType, ModalHeader, ModalMain, PokeTypes, PokemonModalImage } from "./style"
 import { iInfos, PokemonContext } from "../../providers/PokemonContext"
-import { api } from '../../services/api'
+import { api, apiFake } from '../../services/api'
+
+
+const userId = localStorage.getItem('@useID')
+
+const token = localStorage.getItem('@token')
 
 const PokeModal = () => { 
   const { setPokeModal, pokeModal, pokemonTeam, setPokemonTeam} = useContext(PokemonContext)
   const [pokemon, setPokemon] = useState<null | iInfos>(null)
-
+  
   useEffect(() => {
     const loadSingleData = async () => {
       try {
@@ -20,9 +25,44 @@ const PokeModal = () => {
     loadSingleData()
   }, [])
   
+  const data = {
+    "userId": userId,
+    "pokemonTeam": pokemonTeam
+  }
+
+
+    const loadTeam = async () => {
+    console.log(data)
+      try {
+        if (pokemonTeam !== null){
+          const response = await apiFake.post('teams', data, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            },
+          }, )
+          console.log(response.data)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    // GET DO POKETEAM 
+    useEffect(() => {
+      const renderPokemonTeam = async () => {
+        await apiFake.get('teams', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+      }
+      renderPokemonTeam()
+    }, [])
+
   if (!pokemon){
     return <h1>loadindg..</h1>
   }
+
 
   return (
   <ModalContainer>
@@ -44,11 +84,15 @@ const PokeModal = () => {
         />
 
         <AddButton onClick={() => {
-          if (pokemonTeam.includes(pokemon)){
-            console.log('Este pokemon já está na equipe')
-          } else {
+          if (!pokemonTeam.includes(pokemon) && pokemonTeam.length < 6){
             pokemonTeam.push(pokemon)
             setPokemonTeam(pokemonTeam)
+            loadTeam()
+          } else if (pokemonTeam.length >= 6){
+            console.log("Seu poketeam está cheio...")
+          }
+          else {
+            console.log("Esse pokemon ja esta no time")
           }
         }}>Add to team</AddButton>
      </ModalHeader>
