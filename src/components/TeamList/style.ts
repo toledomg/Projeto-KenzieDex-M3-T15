@@ -10,6 +10,7 @@ export const StyledTeamUl = styled.ul`
   gap: 25px;
   align-items: center;
   overflow-y: auto;
+  
 
   @media(min-width: 1200px) {
     display: flex;

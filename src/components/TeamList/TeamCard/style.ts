@@ -35,10 +35,11 @@ export const StyledDivTeam = styled.div`
 `;
 
 export const StyledSectionTeam = styled.section`
-  display: flex;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    gap: 5px;
 `;
 
 export const StyledPokemonName = styled.h1`
@@ -51,8 +52,8 @@ export const StyledPokemonName = styled.h1`
 `;
 
 export const StyledPokemonId = styled.span`
-  font-size: 10px;
-  font-weight: normal;
+  font-size: 13px;
+  font-weight: 600;
 
   color: ${({ theme }) => theme.colors.gray0};
 `;

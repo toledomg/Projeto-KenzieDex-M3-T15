@@ -47,18 +47,6 @@ const PokeModal = () => {
       }
     }
 
-    // GET DO POKETEAM 
-    useEffect(() => {
-      const renderPokemonTeam = async () => {
-        await apiFake.get('teams', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        })
-      }
-      renderPokemonTeam()
-    }, [])
-
   if (!pokemon){
     return <h1>loadindg..</h1>
   }

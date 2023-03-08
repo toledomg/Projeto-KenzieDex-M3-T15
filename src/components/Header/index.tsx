@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { HeaderContainer, Logo, YellowLine } from './style';
 import logo from '../../assets/kenzieDex2.png';
 import logout from '../../assets/logout icon.png';
@@ -10,6 +11,7 @@ import { UserContext } from '../../providers/UserContext';
 
 const Header = () => {
   const { userLogout } = useContext(UserContext);
+  const navigate = useNavigate()
 
   return (
     <>
@@ -17,7 +19,7 @@ const Header = () => {
         <Logo src={logo} alt='Logo' />
 
         <div>
-          <img src={profile} alt='profile icon' />
+          <img src={profile} alt='profile icon' onClick={() => navigate('/team')}/>
           <img
             className='cursor'
             src={logout}

@@ -55,6 +55,17 @@ export interface IShopProduct {
   product: IProductCart;
 }
 
+export interface ITeamCardProps {
+  url: string;
+  name: string;
+  id: number ;
+  order: number;
+  height: number;
+  weight: number;
+  abilities:  { slot: number; ability: { name: string; url: string } }[];
+  types: { slot: number; type: { name: string; url: string } }[];
+}
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUserContext {
   loading: boolean;
