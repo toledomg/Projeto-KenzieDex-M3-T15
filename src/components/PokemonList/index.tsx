@@ -7,7 +7,7 @@ import SimpleCard from '../SimpleCard';
 
 const PokemonList = () => {
   
-  const {setPokemonList, pokemonList, pokeModal, pokemonTeam  } = useContext(PokemonContext)
+  const {setPokemonList, pokemonList, pokeModal } = useContext(PokemonContext)
 
   useEffect(() => {
     const loadPokemons = async () => {

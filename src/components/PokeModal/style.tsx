@@ -7,7 +7,7 @@ export const ModalContainer = styled.div`
   background-color: rgb(0, 0, 0, 0.75);
 
   width: 100%;
-  height: 100vh;
+  height: 110vh;
 
   top: 0;
 
@@ -66,6 +66,7 @@ justify-content: center;
 
 margin-top: -8px;
 
+
 `
 export const PokemonModalImage = styled.img`
   width: 143px;
@@ -90,6 +91,7 @@ export const ModalMain = styled.main`
   margin-left: 14px;
 
   gap: 0.8rem;
+
 
   > h1 {
     font-size: 16px;
@@ -126,12 +128,17 @@ export const ModalClose = styled.button`
 
   position: absolute;
   
-  top: 284px;
-  left: 20px;
+  top: -110px;
+  left: 0px;
 
   font-weight: bold;
 
   cursor: pointer;
+
+  @media(min-width: 768px){
+    left: 0;
+    top: -110px;
+  }
 `
 
 export const AddButton = styled.button`

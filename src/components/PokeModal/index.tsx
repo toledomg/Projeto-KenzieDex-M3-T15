@@ -13,7 +13,7 @@ import {
   PokemonModalImage,
 } from './style';
 import { iInfos, PokemonContext } from '../../providers/PokemonContext';
-import { api, apiFake } from '../../services/api';
+import { api, apiFake, apiFakeLocal } from '../../services/api';
 
 const userId = localStorage.getItem('@userID');
 
@@ -40,6 +40,7 @@ const PokeModal = () => {
     userId,
     pokemonTeam,
   };
+  console.log(data.pokemonTeam)
 
   const loadTeam = async () => {
     console.log(data);
@@ -60,24 +61,25 @@ const PokeModal = () => {
   // GET DO POKETEAM
   useEffect(() => {
     const renderPokemonTeam = async () => {
-      await apiFake.get('teams', {
+      const response = await apiFake.get('teams', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(response.data);
     };
     renderPokemonTeam();
   }, []);
 
   if (!pokemon) {
-    return <h1>loadindg..</h1>;
+    return pokemon;
   }
 
   return (
     <ModalContainer>
-      <ModalClose onClick={() => setPokeModal(null)}>X</ModalClose>
 
       <Modal>
+        <ModalClose onClick={() => setPokeModal(null)}>X</ModalClose>
         <div>
           <ModalHeader>
             <PokeTypes>
