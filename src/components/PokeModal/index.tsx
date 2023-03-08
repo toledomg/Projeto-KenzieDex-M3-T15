@@ -46,7 +46,7 @@ const PokeModal = () => {
     console.log(data);
     try {
       if (pokemonTeam !== null) {
-        const response = await apiFake.post('teams', data, {
+        const response = await apiFakeLocal.post('teams', data, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -58,18 +58,18 @@ const PokeModal = () => {
     }
   };
 
-  // GET DO POKETEAM
-  useEffect(() => {
-    const renderPokemonTeam = async () => {
-      const response = await apiFake.get('teams', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log(response.data);
-    };
-    renderPokemonTeam();
-  }, []);
+  // // GET DO POKETEAM
+  // useEffect(() => {
+  //   const renderPokemonTeam = async () => {
+  //     const response = await apiFakeLocal.get('teams', {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     console.log(response.data);
+  //   };
+  //   renderPokemonTeam();
+  // }, []);
 
   if (!pokemon) {
     return pokemon;
