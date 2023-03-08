@@ -23,10 +23,7 @@ export const ModalContainer = styled.div`
 
   background-color: ${({theme}) => theme.colors.gray2};
 
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
+  border-radius: 8px;
 
   border-top: 78px solid ${({theme}) => theme.colors.gray3};
 
@@ -67,7 +64,8 @@ flex-direction: column;
 align-items: flex-start;
 justify-content: center;
 
-gap: 0.2rem;
+margin-top: -8px;
+
 `
 export const PokemonModalImage = styled.img`
   width: 143px;
@@ -132,6 +130,22 @@ export const ModalClose = styled.button`
   left: 20px;
 
   font-weight: bold;
+
+  cursor: pointer;
+`
+
+export const AddButton = styled.button`
+  width: 71px;
+  height: 18px;
+
+  font-size: 10px;
+  font-weight: normal;
+
+  color: ${({theme}) => theme.colors.gray0};
+
+  background-color: ${({theme}) => theme.colors.gray2};
+
+  border-radius: 4px;
 
   cursor: pointer;
 `
