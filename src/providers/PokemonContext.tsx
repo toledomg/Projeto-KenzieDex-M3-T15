@@ -15,7 +15,7 @@ export interface iData {
 export interface iInfos{
   types: { slot: number; type: { name: string; url: string } }[];
   name: string;
-  id: number;
+  id: number ;
   order: number;
   height: number;
   weight: string;

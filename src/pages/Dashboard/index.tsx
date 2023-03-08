@@ -1,3 +1,4 @@
+
 import { PokemonContainer } from './style';
 import Header from '../../components/Header';
 import { GlobalContainer } from '../../components/Header/style';
@@ -15,5 +16,4 @@ const Dashboard = () => (
   
     </GlobalContainer>
   )
-
 export default Dashboard;
