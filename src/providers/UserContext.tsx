@@ -23,7 +23,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
 
   useEffect(() => {
     const token = localStorage.getItem('@token');
-    const idUser = localStorage.getItem('@useID');
+    const idUser = localStorage.getItem('@userID');
 
     if (token) {
       const userAutoLogin = async () => {
@@ -53,7 +53,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       const response = await apiFake.post('/login', formData);
 
       localStorage.setItem('@token', response.data.accessToken);
-      localStorage.setItem('@useID', response.data.user.id);
+      localStorage.setItem('@userID', response.data.user.id);
       setUser(response.data.user);
       navigate('/home');
       toastAlert('success', 'Conectado com Sucesso');
@@ -90,7 +90,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     setUser(null);
     toastAlert('success', 'Deslogado');
     localStorage.removeItem('@token');
-    localStorage.removeItem('@useID');
+    localStorage.removeItem('@userID');
 
     navigate('/');
   };

@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { HeaderContainer, Logo, YellowLine } from './style';
 import logo from '../../assets/kenzieDex2.png';
 import logout from '../../assets/logout icon.png';
@@ -14,10 +15,14 @@ const Header = () => {
   return (
     <>
       <HeaderContainer>
-        <Logo src={logo} alt='Logo' />
+        <Link className='redirect' to='/home'>
+          <Logo src={logo} alt='Logo' />
+        </Link>
 
         <div>
-          <img src={profile} alt='profile icon' />
+          <Link className='redirect' to='/team'>
+            <img src={profile} alt='profile icon' />
+          </Link>
           <img
             className='cursor'
             src={logout}
