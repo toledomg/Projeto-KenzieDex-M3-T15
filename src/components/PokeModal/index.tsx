@@ -13,17 +13,40 @@ import {
   PokemonModalImage,
 } from './style';
 import { iInfos, PokemonContext } from '../../providers/PokemonContext';
-import { api, apiFake, apiFakeLocal } from '../../services/api';
+import { api, apiFakeLocal } from '../../services/api';
 
 const userId = localStorage.getItem('@userID');
 
 const token = localStorage.getItem('@token');
 
+
 const PokeModal = () => {
   const { setPokeModal, pokeModal, pokemonTeam, setPokemonTeam } =
-    useContext(PokemonContext);
-  const [pokemon, setPokemon] = useState<null | iInfos>(null);
+  useContext(PokemonContext);
 
+  const [pokemon, setPokemon] = useState<null | iInfos>(null);
+  
+  const data = {
+    userId,
+    pokemonTeam,
+  };
+
+  useEffect(() => {
+    const getTeam = async () => {
+      try {
+        const response = await apiFakeLocal.get('teams', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setPokemonTeam(response.data[response.data.length - 1].pokemonTeam)
+      } catch (error) {
+        console.log(error)
+      }
+    } 
+    getTeam()
+  }, [])
+  
   useEffect(() => {
     const loadSingleData = async () => {
       try {
@@ -35,33 +58,25 @@ const PokeModal = () => {
     };
     loadSingleData();
   }, []);
-
-  const data = {
-    userId,
-    pokemonTeam,
-  };
-  console.log(data.pokemonTeam)
-
-
-    const loadTeam = async () => {
-    console.log(data)
-      try {
-        if (pokemonTeam !== null){
-          const response = await apiFake.post('teams', data, {
-            headers: {
-              Authorization: `Bearer ${token}`
-            },
-          }, )
-          console.log(response.data)
-        }
-      } catch (error) {
-        console.log(error)
+  
+  const loadTeam = async () => {
+    try {
+      if (pokemonTeam !== null) {
+        await apiFakeLocal.post('teams', data, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
       }
     }
+  };
+  
 
-  if (!pokemon){
-    return <h1>loadindg..</h1>
+  if (!pokemon) {
+    return pokemon;
   }
+  
+ 
 
   return (
     <ModalContainer>
@@ -84,21 +99,22 @@ const PokeModal = () => {
             <PokemonModalImage
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
               alt={pokemon.name}
-            />
+              />
 
             <AddButton
               onClick={() => {
-                if (!pokemonTeam.includes(pokemon) && pokemonTeam.length < 6) {
+                if (pokemonTeam!.length < 6) {
                   pokemonTeam.push(pokemon);
                   setPokemonTeam(pokemonTeam);
                   loadTeam();
+                  localStorage.setItem('@poketeam:', JSON.stringify(pokemonTeam))
                 } else if (pokemonTeam.length >= 6) {
                   console.log('Seu poketeam está cheio...');
                 } else {
                   console.log('Esse pokemon ja esta no time');
                 }
               }}
-            >
+              >
               Add to team
             </AddButton>
           </ModalHeader>
