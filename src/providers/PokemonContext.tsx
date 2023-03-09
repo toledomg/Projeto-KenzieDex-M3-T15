@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { apiFake } from '../services/api';
 
 export interface iPokemon {
   name: string;
@@ -45,6 +46,8 @@ interface iPokemonContextProps {
 }
 
 export const PokemonContext = createContext({} as iPokemonContext);
+const token = localStorage.getItem('@token');
+const userId = localStorage.getItem('@userID');
 
 export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [pokemonList, setPokemonList] = useState<iPokemon[]>([]);
@@ -55,7 +58,20 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [pokeModal, setPokeModal] = useState<null | iPokemon>(null);
   const [pokemonTeam, setPokemonTeam] = useState<iInfos[]>([]);
 
-  const removePokemon = (current: number) => {
+  const data = {
+    "id": userId,
+  };
+
+  const removePokemon = async (current: number) => {
+    try {
+      const response = await apiFake.delete(`teams/${current}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
     const newItens = pokemonTeam.filter((item) => item.id !== current);
     setPokemonTeam(newItens);
   };
@@ -73,7 +89,7 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
         setPokeModal,
         pokemonTeam,
         setPokemonTeam,
-        removePokemon
+        removePokemon,
       }}
     >
       {children}

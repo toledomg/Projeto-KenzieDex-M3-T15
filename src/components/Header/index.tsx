@@ -16,17 +16,19 @@ const Header = () => {
   return (
     <>
       <HeaderContainer>
-        <Logo src={logo} alt='Logo' />
+        <section>
+          <Logo src={logo} alt='Logo' />
 
-        <div>
-          <img src={profile} alt='profile icon' onClick={() => navigate('/team')}/>
-          <img
-            className='cursor'
-            src={logout}
-            alt='logout icon'
-            onClick={() => userLogout()}
-          />
-        </div>
+          <nav>
+            <img src={profile} alt='profile icon' onClick={() => navigate('/team')}/>
+            <img
+              className='cursor'
+              src={logout}
+              alt='logout icon'
+              onClick={() => userLogout()}
+            />
+          </nav>
+        </section>
       </HeaderContainer>
       <YellowLine src={yellowLine} alt='yellow line' />
     </>

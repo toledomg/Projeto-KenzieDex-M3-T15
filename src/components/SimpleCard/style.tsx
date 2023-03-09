@@ -34,6 +34,11 @@ export const CardContainer = styled.div`
     align-items: flex-start;
     justify-content: center; 
   }
+
+  @media(min-width: 768px){
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+  }
 `
 
 export const PokemonImage = styled.img`

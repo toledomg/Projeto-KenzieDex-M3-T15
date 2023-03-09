@@ -1,25 +1,32 @@
 import styled from 'styled-components';
 
-export const GlobalContainer = styled.div`
+export const GlobalContainer = styled.main`
   width: 100%;
   height: 100vh;
-  background-color: ${({ theme }) => theme.colors.gray3};
 `;
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.header`
+  max-width: 1000px;
+  min-width: 320px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  width: auto;
+  margin: 0 auto;
+
   padding: 1rem 1rem 0 1rem;
 
-  > div {
+  section {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+  }
 
-    gap: 1rem;
+  nav {
+    display: flex;
+    gap: 10px;
   }
 
   .cursor {
@@ -28,9 +35,11 @@ export const HeaderContainer = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 161px;
+  width: 200px;
+  height: auto;
 `;
 
 export const YellowLine = styled.img`
   width: 100%;
+  height: 1px;
 `;
