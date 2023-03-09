@@ -17,8 +17,6 @@ interface iSimpleCardProps {
   id: string;
 }
 
-
-
 const SimpleCard = ({ name, url, pokemon, id}: iSimpleCardProps) => {
   const pokedexNumber: string = url.slice(34, -1);
 

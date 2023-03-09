@@ -55,6 +55,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       localStorage.setItem('@token', response.data.accessToken);
       localStorage.setItem('@userID', response.data.user.id);
       setUser(response.data.user);
+      console.log(response.data.user);
       navigate('/home');
     } catch (error) {
       console.log(error);
