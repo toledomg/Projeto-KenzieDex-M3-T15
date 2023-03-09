@@ -39,7 +39,7 @@
 
 ## 📌 Links
 
-- [Deploy](https://m3-t15-front-2023.vercel.app/)
+- [Deploy](https://kenziedex.vercel.app/)
 
 - [URL Repo Fake API](https://github.com/M3-T15-Projeto-Front-2023/KenzieDex-Json-server.git)
 
