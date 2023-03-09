@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 /* eslint-disable no-unsafe-optional-chaining */
 import { useContext, useEffect, useState } from 'react';
 import {
@@ -25,8 +24,6 @@ const PokeModal = () => {
   const { setPokeModal, pokeModal, pokemonTeam, setPokemonTeam } =
     useContext(PokemonContext);
 
-  useContext(PokemonContext);
-
   const [pokemon, setPokemon] = useState<null | iInfos>(null);
 
   const data = {
@@ -52,10 +49,17 @@ const PokeModal = () => {
     }
   }, []);
 
-  const data = {
-    userId,
-    pokemonTeam: pokemon /* ver depois */,
-  };
+  useEffect(() => {
+    const loadSingleData = async () => {
+      try {
+        const response = await api.get(pokeModal!.url);
+        setPokemon(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    loadSingleData();
+  }, []);
 
   useEffect(() => {
     if (userId) {
