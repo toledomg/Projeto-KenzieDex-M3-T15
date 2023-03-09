@@ -48,7 +48,7 @@ const PokeModal = () => {
         }
       } 
       getTeam()
-      }
+    }
   }, [])
   
 
@@ -83,6 +83,7 @@ const PokeModal = () => {
     return pokemon;
   }
   
+  console.log(pokemonTeam)
  
   return (
     <ModalContainer>
