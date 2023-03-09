@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { TeamDivStyled } from './style';
 import Header from '../../components/Header';
 import { GlobalContainer } from '../../components/Header/style';
@@ -36,10 +37,14 @@ const TeamPage = () => {
       <Header />
 
       <TeamDivStyled>
+        <div>
         <StyledTitle tag='h2' $fontSize='one'>
           Your Team
         </StyledTitle>
-
+        <Link className='redirect' to='/home'>
+            Voltar para Home
+          </Link>
+          </div>
         <TeamList />
       </TeamDivStyled>
     </GlobalContainer>

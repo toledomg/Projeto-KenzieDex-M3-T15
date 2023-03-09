@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { StyledTeamUl } from './style';
 import { TeamCard } from './TeamCard';
 import { apiFake } from '../../services/api';
@@ -15,9 +16,8 @@ export const TeamList = () => {
       {pokemonTeam.length > 0 && pokemonTeam.map((teamPokemon) => (
         
         <TeamCard
-          key={teamPokemon.pokemonTeam.id}
           name={teamPokemon.pokemonTeam.name}
-          id={teamPokemon.pokemonTeam.id}
+          id={uuidv4()}
           url={teamPokemon.pokemonTeam.location_area_encounters}
           order={teamPokemon.pokemonTeam.order}
           height={teamPokemon.pokemonTeam.height}
