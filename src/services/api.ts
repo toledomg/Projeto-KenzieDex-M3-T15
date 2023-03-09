@@ -6,7 +6,7 @@ export const apiFake = axios.create({
   timeout: 5000,
 });
 
-export const apiFakeLocal = axios.create({
+export const apiFakeOnline = axios.create({
   baseURL: 'https://kenziedex.onrender.com/',
   responseType: 'json',
   timeout: 5000,
