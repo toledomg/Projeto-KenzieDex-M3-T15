@@ -56,7 +56,6 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       localStorage.setItem('@userID', response.data.user.id);
       setUser(response.data.user);
       navigate('/home');
-      toastAlert('success', 'Conectado com Sucesso');
     } catch (error) {
       console.log(error);
 
@@ -88,7 +87,6 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
 
   const userLogout = () => {
     setUser(null);
-    toastAlert('success', 'Deslogado');
     localStorage.removeItem('@token');
     localStorage.removeItem('@userID');
 
