@@ -28,7 +28,7 @@ const PokeModal = () => {
 
   const data = {
     userId,
-    pokemonTeam,
+    pokemonTeam: pokemon /* ver depois */,
   };
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const PokeModal = () => {
               Authorization: `Bearer ${token}`,
             },
           });
-          setPokemonTeam(response.data[response.data.length - 1].pokemonTeam);
+          setPokemonTeam(response.data);
         } catch (error) {
           console.log(error);
         }
@@ -61,7 +61,7 @@ const PokeModal = () => {
     loadSingleData();
   }, []);
 
-  const loadTeam = async () => {
+  const addTeam = async () => {
     try {
       if (pokemonTeam !== null) {
         await apiFake.post('teams', data, {
@@ -104,9 +104,7 @@ const PokeModal = () => {
             <AddButton
               onClick={() => {
                 if (pokemonTeam!.length < 6) {
-                  pokemonTeam.push(pokemon);
-                  setPokemonTeam(pokemonTeam);
-                  loadTeam();
+                  addTeam();
                   toastAlert('success', 'Pokemon adicionado ao time!');
                   setPokeModal(null);
                 } else if (pokemonTeam.length >= 6) {

@@ -5,7 +5,7 @@ declare type ToastType = 'warning' | 'error' | 'success' | 'info' | 'question';
 export function toastAlert(title: ToastType, text: string) {
   const Toast = Swal.mixin({
     toast: true,
-    position: 'top-end',
+    position: 'bottom-end',
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,

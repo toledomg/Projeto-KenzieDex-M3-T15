@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const StyledCardTeam = styled.li`
   font-family: 'Inter', sans-serif;
 
@@ -35,10 +36,11 @@ export const StyledDivTeam = styled.div`
 `;
 
 export const StyledSectionTeam = styled.section`
-  display: flex;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    gap: 5px;
 `;
 
 export const StyledPokemonName = styled.h1`
@@ -51,8 +53,8 @@ export const StyledPokemonName = styled.h1`
 `;
 
 export const StyledPokemonId = styled.span`
-  font-size: 10px;
-  font-weight: normal;
+  font-size: 13px;
+  font-weight: 600;
 
   color: ${({ theme }) => theme.colors.gray0};
 `;
@@ -82,7 +84,7 @@ export const StyledPokemonImageTeam = styled.img`
 
   position: absolute;
 
-  bottom: 170px;
+  bottom: 5px;
   right: -6px;
   
   @media(min-width: 1200px){
