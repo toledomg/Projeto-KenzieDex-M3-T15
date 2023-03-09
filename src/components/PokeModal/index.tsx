@@ -19,9 +19,11 @@ const userId = localStorage.getItem('@userID');
 
 const token = localStorage.getItem('@token');
 
+
 const PokeModal = () => {
   const { setPokeModal, pokeModal, pokemonTeam, setPokemonTeam } =
   useContext(PokemonContext);
+
   const [pokemon, setPokemon] = useState<null | iInfos>(null);
   
   const data = {
@@ -29,15 +31,21 @@ const PokeModal = () => {
     pokemonTeam,
   };
 
-  // SALVA NO LOCALSTORAGE E MANTEM OS DADOS
   useEffect(() => {
-    const renderPokemonTeam = async () => {
-      if (localStorage.getItem('@poketeam:') !== null){
-        setPokemonTeam(JSON.parse(localStorage.getItem!('@poketeam:')!))
+    const getTeam = async () => {
+      try {
+        const response = await apiFakeLocal.get('teams', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setPokemonTeam(response.data[response.data.length - 1].pokemonTeam)
+      } catch (error) {
+        console.log(error)
       }
-    };
-    renderPokemonTeam();
-  }, []);
+    } 
+    getTeam()
+  }, [])
   
   useEffect(() => {
     const loadSingleData = async () => {
@@ -52,7 +60,6 @@ const PokeModal = () => {
   }, []);
   
   const loadTeam = async () => {
-    console.log(data.pokemonTeam);
     try {
       if (pokemonTeam !== null) {
         await apiFakeLocal.post('teams', data, {
@@ -71,7 +78,7 @@ const PokeModal = () => {
     return pokemon;
   }
   
-  console.log("Your team:", pokemonTeam)
+ 
 
   return (
     <ModalContainer>
