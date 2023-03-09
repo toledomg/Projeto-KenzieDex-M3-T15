@@ -25,25 +25,25 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     const token = localStorage.getItem('@token');
     const idUser = localStorage.getItem('@userID');
 
-    if (token) {
-      const userAutoLogin = async () => {
-        try {
-          const response = await apiFake.get(`/users/${idUser}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
+    // if (token) {
+    //   const userAutoLogin = async () => {
+    //     try {
+    //       const response = await apiFake.get(`/users/${idUser}`, {
+    //         headers: {
+    //           Authorization: `Bearer ${token}`,
+    //         },
+    //       });
 
-          setUser(response.data.user);
-          navigate('/home');
-        } catch (error) {
-          console.log(error);
-          navigate('/');
-        }
-      };
+    //       setUser(response.data.user);
+    //       navigate('/home');
+    //     } catch (error) {
+    //       console.log(error);
+    //       navigate('/');
+    //     }
+    //   };
 
-      userAutoLogin();
-    }
+    //   userAutoLogin();
+    // }
   }, []);
 
   const userLogin = async (formData: ILoginFormValues) => {
@@ -57,7 +57,6 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       setUser(response.data.user);
       console.log(response.data.user);
       navigate('/home');
-      toastAlert('success', 'Conectado com Sucesso');
     } catch (error) {
       console.log(error);
 
@@ -89,7 +88,6 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
 
   const userLogout = () => {
     setUser(null);
-    toastAlert('success', 'Deslogado');
     localStorage.removeItem('@token');
     localStorage.removeItem('@userID');
 
