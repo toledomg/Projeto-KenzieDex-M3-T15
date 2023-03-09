@@ -33,8 +33,8 @@ const PokeModal = () => {
   };
 
   useEffect(() => {
-    const getTeam = async () => {
-      if (userId){
+    if (userId){
+        const getTeam = async () => {
         try {
           const response = await apiFakeLocal.get('teams', {
             headers: {
@@ -45,11 +45,11 @@ const PokeModal = () => {
         } catch (error) {
           console.log(error)
         }
-      }
+      } 
       getTeam()
-    } 
+      }
   }, [])
-  
+
   useEffect(() => {
     const loadSingleData = async () => {
       try {
