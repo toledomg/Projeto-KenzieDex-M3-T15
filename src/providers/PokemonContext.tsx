@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { object } from 'yup';
 
 export interface iPokemon {
   name: string;
@@ -15,7 +16,7 @@ export interface iData {
 export interface iInfos{
   types: { slot: number; type: { name: string; url: string } }[];
   name: string;
-  id: number ;
+  id: number;
   order: number;
   height: number;
   weight: string;

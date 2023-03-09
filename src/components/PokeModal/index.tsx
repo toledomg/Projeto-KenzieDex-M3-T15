@@ -47,7 +47,7 @@ const PokeModal = () => {
         }
       } 
       getTeam()
-      }
+    }
   }, [])
 
   useEffect(() => {
@@ -81,8 +81,8 @@ const PokeModal = () => {
     return pokemon;
   }
   
+  console.log(pokemonTeam)
  
-
   return (
     <ModalContainer>
 
@@ -114,7 +114,6 @@ const PokeModal = () => {
                   loadTeam();
                   toastAlert('success', 'Pokemon adicionado ao time!')
                   setPokeModal(null)
-                  localStorage.setItem('@poketeam:', JSON.stringify(pokemonTeam))
                 } else if (pokemonTeam.length >= 6) {
                   toastAlert('warning', 'Seu poketeam está cheio...');
                 } 
