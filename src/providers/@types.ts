@@ -64,6 +64,7 @@ export interface ITeamCardProps {
   weight: number;
   abilities:  { slot: number; ability: { name: string; url: string } }[];
   types: { slot: number; type: { name: string; url: string } }[];
+  pokemonId: number;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

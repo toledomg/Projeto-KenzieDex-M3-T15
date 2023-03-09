@@ -13,15 +13,18 @@ import {
 import { ITeamCardProps } from '../../../providers/@types';
 import { iInfos, PokemonContext } from '../../../providers/PokemonContext';
 
+function getRandomInt(max: number) {
+  return Math.floor(Math.random() * max);
+}
 
-
-export const TeamCard = ({ name, id, url, order, height, weight, abilities, types }: ITeamCardProps) => {
+export const TeamCard = ({ name, id, url, order, height, weight, abilities, types, pokemonId }: ITeamCardProps) => {
   const pokedexNumber: string = url.slice(34, -11);
 
   const { removePokemon } = useContext(PokemonContext)
+  const key = getRandomInt(6)
   
   return (
-    <StyledCardTeam key={id}>
+    <StyledCardTeam key={key}>
 
       <StyledDivTeam>
 
@@ -34,7 +37,7 @@ export const TeamCard = ({ name, id, url, order, height, weight, abilities, type
           <StyledPokemonId>{types[0].type.name[0].toUpperCase() + types[0]!.type.name.slice(1)}</StyledPokemonId>
         </StyledSectionTeam>
 
-        <StyledRemovePokemon onClick={() => removePokemon(id)}>Remove from team</StyledRemovePokemon>
+        <StyledRemovePokemon onClick={() => removePokemon(pokemonId)}>Remove from team</StyledRemovePokemon>
 
         <StyledPokemonImageTeam
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokedexNumber}.png`}

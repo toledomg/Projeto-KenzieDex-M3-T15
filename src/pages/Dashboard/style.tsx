@@ -1,30 +1,26 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const PokemonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: flex-start;
-
-
- overflow-y: scroll;
-
- height: 736px;
-
- margin-top: 1rem;
-
- @media(min-width: 768px){
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  justify-content: center;
-  align-items: center;
-  
-  width: 1000px;
-  height: 950px;
-
+export const PokemonContainer = styled.main`
+  max-width: 1200px;
+  max-height: 80vh;
   margin: 0 auto;
-  margin-top: 4rem;
- }
-`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  /* gap: 1.5rem; */
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+  &::-webkit-scrollbar-track {
+    margin-top: 3.25rem;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.gray2};
+    border-radius: 0.5rem;
+    border: 0.25rem solid ${({ theme }) => theme.colors.gray3};
+  }
+  margin-top: 1rem;
+`;

@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
+import { UserContext } from './UserContext';
 import { apiFake } from '../services/api';
 
 export interface iPokemon {
@@ -25,6 +26,12 @@ export interface iInfos {
   abilities: { slot: number; ability: { name: string; url: string } }[];
 }
 
+export interface IPokemonTeam {
+  userId: string, 
+  pokemonTeam: iInfos, 
+  id: number
+}
+
 interface iPokemonContext {
   pokemonList: iPokemon[];
   setPokemonList: React.Dispatch<React.SetStateAction<iPokemon[]>>;
@@ -36,8 +43,8 @@ interface iPokemonContext {
   setPokeId: React.Dispatch<React.SetStateAction<string>>;
   pokeModal: null | iPokemon;
   setPokeModal: React.Dispatch<React.SetStateAction<null | iPokemon>>;
-  pokemonTeam: iInfos[];
-  setPokemonTeam: React.Dispatch<React.SetStateAction<iInfos[]>>;
+  pokemonTeam: IPokemonTeam[];
+  setPokemonTeam: React.Dispatch<React.SetStateAction<IPokemonTeam[]>>;
   removePokemon: (current: number) => void;
 }
 
@@ -56,15 +63,13 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   ]);
   const [pokeId, setPokeId] = useState('1');
   const [pokeModal, setPokeModal] = useState<null | iPokemon>(null);
-  const [pokemonTeam, setPokemonTeam] = useState<iInfos[]>([]);
+  const [pokemonTeam, setPokemonTeam] = useState<IPokemonTeam[]>([]);
 
-  const data = {
-    "id": userId,
-  };
+  
 
   const removePokemon = async (current: number) => {
     try {
-      const response = await apiFake.delete(`teams/${current}`, {
+      await apiFake.delete(`teams/${current}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -72,6 +77,7 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
     } catch (error) {
       console.log(error);
     }
+    
     const newItens = pokemonTeam.filter((item) => item.id !== current);
     setPokemonTeam(newItens);
   };
