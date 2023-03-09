@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-unsafe-optional-chaining */
 import { useContext, useEffect, useState } from 'react';
 import {
@@ -20,37 +21,34 @@ const userId = localStorage.getItem('@userID');
 
 const token = localStorage.getItem('@token');
 
-
 const PokeModal = () => {
   const { setPokeModal, pokeModal, pokemonTeam, setPokemonTeam } =
-  useContext(PokemonContext);
-  
+    useContext(PokemonContext);
+
   const [pokemon, setPokemon] = useState<null | iInfos>(null);
-  
+
   const data = {
     userId,
-    pokemonTeam: pokemon/* ver depois */
+    pokemonTeam: pokemon /* ver depois */,
   };
 
   useEffect(() => {
-    if (userId){
-        const getTeam = async () => {
+    if (userId) {
+      const getTeam = async () => {
         try {
           const response = await apiFake.get('teams', {
             headers: {
-              Authorization: `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           });
-          setPokemonTeam(response.data)
-          
+          setPokemonTeam(response.data);
         } catch (error) {
-          console.log(error)
+          console.log(error);
         }
-      } 
-      getTeam()
+      };
+      getTeam();
     }
-  }, [])
-  
+  }, []);
 
   useEffect(() => {
     const loadSingleData = async () => {
@@ -63,7 +61,7 @@ const PokeModal = () => {
     };
     loadSingleData();
   }, []);
-  
+
   const addTeam = async () => {
     try {
       if (pokemonTeam !== null) {
@@ -77,46 +75,51 @@ const PokeModal = () => {
       console.log(error);
     }
   };
-  
+
+  const formatPokemonId = (id: number) => {
+    if (id < 10) return `#00${id}`;
+    if (id >= 10 && id < 99) return `#0${id}`;
+    return `# ${id}`;
+  };
 
   if (!pokemon) {
     return pokemon;
   }
- 
+
   return (
     <ModalContainer>
-
       <Modal>
         <ModalClose onClick={() => setPokeModal(null)}>X</ModalClose>
         <div>
           <ModalHeader>
             <PokeTypes>
-              <PokemonName>
-                {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
-              </PokemonName>
-
-              <PokemonType>
-                {pokemon.types[0]!.type.name[0].toUpperCase() +
-                  pokemon.types[0].type.name.slice(1)}
-              </PokemonType>
+              <>
+                <PokemonName>
+                  {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
+                </PokemonName>
+                <PokemonType>
+                  {pokemon.types[0]!.type.name[0].toUpperCase() +
+                    pokemon.types[0].type.name.slice(1)}
+                </PokemonType>
+              </>
             </PokeTypes>
 
             <PokemonModalImage
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
               alt={pokemon.name}
-              />
+            />
 
             <AddButton
               onClick={() => {
                 if (pokemonTeam!.length < 6) {
                   addTeam();
-                  toastAlert('success', 'Pokemon adicionado ao time!')
-                  setPokeModal(null)
+                  toastAlert('success', 'Pokemon adicionado ao time!');
+                  setPokeModal(null);
                 } else if (pokemonTeam.length >= 6) {
                   toastAlert('warning', 'Seu poketeam está cheio...');
-                } 
+                }
               }}
-              >
+            >
               Add to team
             </AddButton>
           </ModalHeader>
@@ -126,17 +129,17 @@ const PokeModal = () => {
 
             <section>
               <span>Order:</span>
-              <span>#{pokemon.order}</span>
+              <span>{formatPokemonId(pokemon.order)}</span>
             </section>
 
             <section>
               <span>Height:</span>
-              <span>{Math.round(pokemon.height * 3.2808)}ft</span>
+              <span>{pokemon.height / 10} m</span>
             </section>
 
             <section>
               <span>Weight:</span>
-              <span>{pokemon.weight}kg</span>
+              <span>{(Number(pokemon.weight) / 10).toFixed(2)} kg</span>
             </section>
 
             <section>

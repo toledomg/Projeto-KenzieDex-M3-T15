@@ -1,4 +1,5 @@
-import {useContext} from 'react'
+/* eslint-disable no-shadow */
+import { useContext } from 'react';
 import {
   CardContainer,
   PokemonImage,
@@ -9,7 +10,6 @@ import {
 
 import { iPokemon, PokemonContext } from '../../providers/PokemonContext';
 
-
 interface iSimpleCardProps {
   name: string;
   url: string;
@@ -17,28 +17,38 @@ interface iSimpleCardProps {
   id: string;
 }
 
-const SimpleCard = ({ name, url, pokemon, id}: iSimpleCardProps) => {
+const SimpleCard = ({ name, url, pokemon, id }: iSimpleCardProps) => {
   const pokedexNumber: string = url.slice(34, -1);
 
-  const { setPokeModal } = useContext(PokemonContext)
-  
+  const idPokemon = parseInt(pokedexNumber, 10);
+  const formatPokemonId = (id: number) => {
+    if (id < 10) return `#00${id}`;
+    if (id >= 10 && id < 99) return `#0${id}`;
+    return `# ${id}`;
+  };
+
+  const { setPokeModal } = useContext(PokemonContext);
+
   return (
     <CardContainer>
-      
       <section>
         <PokemonName>{name[0].toUpperCase() + name.slice(1)}</PokemonName>
-        
-        <PokemonId>#{pokedexNumber}</PokemonId>
+
+        <PokemonId>{formatPokemonId(idPokemon)}</PokemonId>
       </section>
 
-      <InfoButton onClick={() => {
-        setPokeModal(pokemon)
-      }}>+infos</InfoButton>
+      <InfoButton
+        onClick={() => {
+          setPokeModal(pokemon);
+        }}
+      >
+        +infos
+      </InfoButton>
 
       <PokemonImage
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokedexNumber}.png`}
         alt={name}
-        />
+      />
     </CardContainer>
   );
 };
