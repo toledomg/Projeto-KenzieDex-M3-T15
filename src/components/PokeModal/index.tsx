@@ -13,16 +13,44 @@ import {
   PokemonModalImage,
 } from './style';
 import { iInfos, PokemonContext } from '../../providers/PokemonContext';
-import { api, apiFake, apiFakeLocal } from '../../services/api';
+import { api, apiFake } from '../../services/api';
+import { toastAlert } from '../../styles/toast';
 
 const userId = localStorage.getItem('@userID');
 
 const token = localStorage.getItem('@token');
 
+
 const PokeModal = () => {
   const { setPokeModal, pokeModal, pokemonTeam, setPokemonTeam } =
-    useContext(PokemonContext);
+  useContext(PokemonContext);
+  
   const [pokemon, setPokemon] = useState<null | iInfos>(null);
+  
+  const data = {
+    userId,
+    pokemonTeam: pokemon/* ver depois */
+  };
+
+  useEffect(() => {
+    if (userId){
+        const getTeam = async () => {
+        try {
+          const response = await apiFake.get('teams', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+          setPokemonTeam(response.data)
+          
+        } catch (error) {
+          console.log(error)
+        }
+      } 
+      getTeam()
+    }
+  }, [])
+  
 
   useEffect(() => {
     const loadSingleData = async () => {
@@ -35,46 +63,26 @@ const PokeModal = () => {
     };
     loadSingleData();
   }, []);
-
-  const data = {
-    userId,
-    pokemonTeam,
-  };
-  console.log(data.pokemonTeam)
-
-  const loadTeam = async () => {
-    console.log(data);
+  
+  const addTeam = async () => {
     try {
       if (pokemonTeam !== null) {
-        const response = await apiFake.post('teams', data, {
+        await apiFake.post('teams', data, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(response.data);
       }
     } catch (error) {
       console.log(error);
     }
   };
-
-  // GET DO POKETEAM
-  useEffect(() => {
-    const renderPokemonTeam = async () => {
-      const response = await apiFake.get('teams', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log(response.data);
-    };
-    renderPokemonTeam();
-  }, []);
+  
 
   if (!pokemon) {
     return pokemon;
   }
-
+ 
   return (
     <ModalContainer>
 
@@ -96,21 +104,19 @@ const PokeModal = () => {
             <PokemonModalImage
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
               alt={pokemon.name}
-            />
+              />
 
             <AddButton
               onClick={() => {
-                if (!pokemonTeam.includes(pokemon) && pokemonTeam.length < 6) {
-                  pokemonTeam.push(pokemon);
-                  setPokemonTeam(pokemonTeam);
-                  loadTeam();
+                if (pokemonTeam!.length < 6) {
+                  addTeam();
+                  toastAlert('success', 'Pokemon adicionado ao time!')
+                  setPokeModal(null)
                 } else if (pokemonTeam.length >= 6) {
-                  console.log('Seu poketeam está cheio...');
-                } else {
-                  console.log('Esse pokemon ja esta no time');
-                }
+                  toastAlert('warning', 'Seu poketeam está cheio...');
+                } 
               }}
-            >
+              >
               Add to team
             </AddButton>
           </ModalHeader>
