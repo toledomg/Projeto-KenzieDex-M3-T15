@@ -20,35 +20,34 @@ const userId = localStorage.getItem('@userID');
 
 const token = localStorage.getItem('@token');
 
-
 const PokeModal = () => {
   const { setPokeModal, pokeModal, pokemonTeam, setPokemonTeam } =
-  useContext(PokemonContext);
-  
+    useContext(PokemonContext);
+
   const [pokemon, setPokemon] = useState<null | iInfos>(null);
-  
+
   const data = {
     userId,
     pokemonTeam,
   };
 
   useEffect(() => {
-    if (userId){
-        const getTeam = async () => {
+    if (userId) {
+      const getTeam = async () => {
         try {
           const response = await apiFake.get('teams', {
             headers: {
-              Authorization: `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           });
-          setPokemonTeam(response.data[response.data.length - 1].pokemonTeam)
+          setPokemonTeam(response.data[response.data.length - 1].pokemonTeam);
         } catch (error) {
-          console.log(error)
+          console.log(error);
         }
-      } 
-      getTeam()
-      }
-  }, [])
+      };
+      getTeam();
+    }
+  }, []);
 
   useEffect(() => {
     const loadSingleData = async () => {
@@ -61,7 +60,7 @@ const PokeModal = () => {
     };
     loadSingleData();
   }, []);
-  
+
   const loadTeam = async () => {
     try {
       if (pokemonTeam !== null) {
@@ -75,17 +74,13 @@ const PokeModal = () => {
       console.log(error);
     }
   };
-  
 
   if (!pokemon) {
     return pokemon;
   }
-  
- 
 
   return (
     <ModalContainer>
-
       <Modal>
         <ModalClose onClick={() => setPokeModal(null)}>X</ModalClose>
         <div>
@@ -104,7 +99,7 @@ const PokeModal = () => {
             <PokemonModalImage
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
               alt={pokemon.name}
-              />
+            />
 
             <AddButton
               onClick={() => {
@@ -112,14 +107,13 @@ const PokeModal = () => {
                   pokemonTeam.push(pokemon);
                   setPokemonTeam(pokemonTeam);
                   loadTeam();
-                  toastAlert('success', 'Pokemon adicionado ao time!')
-                  setPokeModal(null)
-                  localStorage.setItem('@poketeam:', JSON.stringify(pokemonTeam))
+                  toastAlert('success', 'Pokemon adicionado ao time!');
+                  setPokeModal(null);
                 } else if (pokemonTeam.length >= 6) {
                   toastAlert('warning', 'Seu poketeam está cheio...');
-                } 
+                }
               }}
-              >
+            >
               Add to team
             </AddButton>
           </ModalHeader>
