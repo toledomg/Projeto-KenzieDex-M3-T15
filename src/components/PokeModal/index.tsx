@@ -21,11 +21,37 @@ const userId = localStorage.getItem('@userID');
 
 const token = localStorage.getItem('@token');
 
+
 const PokeModal = () => {
   const { setPokeModal, pokeModal, pokemonTeam, setPokemonTeam } =
     useContext(PokemonContext);
 
   const [pokemon, setPokemon] = useState<null | iInfos>(null);
+  
+  const data = {
+    userId,
+    pokemonTeam: pokemon/* ver depois */
+  };
+
+  useEffect(() => {
+    if (userId){
+        const getTeam = async () => {
+        try {
+          const response = await apiFake.get('teams', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+          setPokemonTeam(response.data)
+          
+        } catch (error) {
+          console.log(error)
+        }
+      } 
+      getTeam()
+    }
+  }, [])
+  
 
   const data = {
     userId,
@@ -82,10 +108,11 @@ const PokeModal = () => {
     return `# ${id}`;
   };
 
+
   if (!pokemon) {
     return pokemon;
   }
-
+ 
   return (
     <ModalContainer>
       <Modal>
@@ -107,19 +134,21 @@ const PokeModal = () => {
             <PokemonModalImage
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
               alt={pokemon.name}
-            />
+              />
 
             <AddButton
               onClick={() => {
                 if (pokemonTeam!.length < 6) {
                   addTeam();
-                  toastAlert('success', 'Pokemon adicionado ao time!');
-                  setPokeModal(null);
+
+                  toastAlert('success', 'Pokemon adicionado ao time!')
+                  setPokeModal(null)
                 } else if (pokemonTeam.length >= 6) {
                   toastAlert('warning', 'Seu poketeam está cheio...');
-                }
+                } 
+
               }}
-            >
+              >
               Add to team
             </AddButton>
           </ModalHeader>
