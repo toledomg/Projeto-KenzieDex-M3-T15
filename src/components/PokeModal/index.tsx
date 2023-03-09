@@ -14,6 +14,7 @@ import {
 } from './style';
 import { iInfos, PokemonContext } from '../../providers/PokemonContext';
 import { api, apiFakeLocal } from '../../services/api';
+import { toastAlert } from '../../styles/toast';
 
 const userId = localStorage.getItem('@userID');
 
@@ -23,7 +24,7 @@ const token = localStorage.getItem('@token');
 const PokeModal = () => {
   const { setPokeModal, pokeModal, pokemonTeam, setPokemonTeam } =
   useContext(PokemonContext);
-
+  
   const [pokemon, setPokemon] = useState<null | iInfos>(null);
   
   const data = {
@@ -33,18 +34,20 @@ const PokeModal = () => {
 
   useEffect(() => {
     const getTeam = async () => {
-      try {
-        const response = await apiFakeLocal.get('teams', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-        setPokemonTeam(response.data[response.data.length - 1].pokemonTeam)
-      } catch (error) {
-        console.log(error)
+      if (userId){
+        try {
+          const response = await apiFakeLocal.get('teams', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+          setPokemonTeam(response.data[response.data.length - 1].pokemonTeam)
+        } catch (error) {
+          console.log(error)
+        }
       }
+      getTeam()
     } 
-    getTeam()
   }, [])
   
   useEffect(() => {
@@ -109,12 +112,12 @@ const PokeModal = () => {
                   pokemonTeam.push(pokemon);
                   setPokemonTeam(pokemonTeam);
                   loadTeam();
+                  toastAlert('success', 'Pokemon adicionado ao time!')
+                  setPokeModal(null)
                   localStorage.setItem('@poketeam:', JSON.stringify(pokemonTeam))
                 } else if (pokemonTeam.length >= 6) {
-                  console.log('Seu poketeam está cheio...');
-                } else {
-                  console.log('Esse pokemon ja esta no time');
-                }
+                  toastAlert('warning', 'Seu poketeam está cheio...');
+                } 
               }}
               >
               Add to team
