@@ -82,8 +82,6 @@ const PokeModal = () => {
   if (!pokemon) {
     return pokemon;
   }
-  
-  console.log(pokemonTeam)
  
   return (
     <ModalContainer>
