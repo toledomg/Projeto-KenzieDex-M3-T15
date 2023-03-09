@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const StyledCardTeam = styled.li`
   font-family: 'Inter', sans-serif;
 
@@ -83,7 +84,7 @@ export const StyledPokemonImageTeam = styled.img`
 
   position: absolute;
 
-  bottom: 170px;
+  bottom: 5px;
   right: -6px;
   
   @media(min-width: 1200px){

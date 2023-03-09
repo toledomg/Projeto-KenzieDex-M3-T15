@@ -13,18 +13,16 @@ import {
 import { ITeamCardProps } from '../../../providers/@types';
 import { iInfos, PokemonContext } from '../../../providers/PokemonContext';
 
-function getRandomInt(max: number) {
-  return Math.floor(Math.random() * max);
-}
 
 export const TeamCard = ({ name, id, url, order, height, weight, abilities, types, pokemonId }: ITeamCardProps) => {
   const pokedexNumber: string = url.slice(34, -11);
 
   const { removePokemon } = useContext(PokemonContext)
-  const key = getRandomInt(6)
+  
+  
   
   return (
-    <StyledCardTeam key={key}>
+    <StyledCardTeam id={id}>
 
       <StyledDivTeam>
 
