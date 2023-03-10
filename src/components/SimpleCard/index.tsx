@@ -8,7 +8,11 @@ import {
   InfoButton,
 } from './style';
 
-import { iPokemon, PokemonContext } from '../../providers/PokemonContext';
+import {
+  iPokemon,
+  PokemonContext,
+  formatPokemonId,
+} from '../../providers/PokemonContext';
 
 interface iSimpleCardProps {
   name: string;
@@ -21,11 +25,6 @@ const SimpleCard = ({ name, url, pokemon, id }: iSimpleCardProps) => {
   const pokedexNumber: string = url.slice(34, -1);
 
   const idPokemon = parseInt(pokedexNumber, 10);
-  const formatPokemonId = (id: number) => {
-    if (id < 10) return `#00${id}`;
-    if (id >= 10 && id < 99) return `#0${id}`;
-    return `# ${id}`;
-  };
 
   const { setPokeModal } = useContext(PokemonContext);
 

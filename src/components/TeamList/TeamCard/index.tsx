@@ -11,7 +11,10 @@ import {
   StyledSectionTeam,
 } from './style';
 import { ITeamCardProps } from '../../../providers/@types';
-import { PokemonContext } from '../../../providers/PokemonContext';
+import {
+  formatPokemonId,
+  PokemonContext,
+} from '../../../providers/PokemonContext';
 
 export const TeamCard = ({
   name,
@@ -56,7 +59,7 @@ export const TeamCard = ({
 
         <StyledInformation>
           <span>Order:</span>
-          <span>#{order}</span>
+          <span>{formatPokemonId(order)}</span>
         </StyledInformation>
 
         <StyledInformation>

@@ -2,8 +2,6 @@ import { createContext, useContext, useState } from 'react';
 import { UserContext } from './UserContext';
 import { apiFake } from '../services/api';
 
-
-
 export interface iPokemon {
   name: string;
   url: string;
@@ -29,9 +27,9 @@ export interface iInfos {
 }
 
 export interface IPokemonTeam {
-  userId: string, 
-  pokemonTeam: iInfos, 
-  id: number
+  userId: string;
+  pokemonTeam: iInfos;
+  id: number;
 }
 
 interface iPokemonContext {
@@ -48,6 +46,7 @@ interface iPokemonContext {
   pokemonTeam: IPokemonTeam[];
   setPokemonTeam: React.Dispatch<React.SetStateAction<IPokemonTeam[]>>;
   removePokemon: (current: number) => void;
+  formatPokemonId: (id: number) => string;
 }
 
 interface iPokemonContextProps {
@@ -58,6 +57,12 @@ export const PokemonContext = createContext({} as iPokemonContext);
 const token = localStorage.getItem('@token');
 const userId = localStorage.getItem('@userID');
 
+export const formatPokemonId = (id: number) => {
+  if (id < 10) return `#00${id}`;
+  if (id >= 10 && id < 99) return `#0${id}`;
+  return `# ${id}`;
+};
+
 export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [pokemonList, setPokemonList] = useState<iPokemon[]>([]);
   const [pokemonData, setPokemonData] = useState<iData[] | string | iPokemon>([
@@ -66,8 +71,6 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [pokeId, setPokeId] = useState('1');
   const [pokeModal, setPokeModal] = useState<null | iPokemon>(null);
   const [pokemonTeam, setPokemonTeam] = useState<IPokemonTeam[]>([]);
-
-  
 
   const removePokemon = async (current: number) => {
     try {
@@ -79,7 +82,7 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
     } catch (error) {
       console.log(error);
     }
-    
+
     const newItens = pokemonTeam.filter((item) => item.id !== current);
     setPokemonTeam(newItens);
   };
@@ -98,6 +101,7 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
         pokemonTeam,
         setPokemonTeam,
         removePokemon,
+        formatPokemonId,
       }}
     >
       {children}

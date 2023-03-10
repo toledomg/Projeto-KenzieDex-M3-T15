@@ -12,7 +12,11 @@ import {
   PokeTypes,
   PokemonModalImage,
 } from './style';
-import { iInfos, PokemonContext } from '../../providers/PokemonContext';
+import {
+  formatPokemonId,
+  iInfos,
+  PokemonContext,
+} from '../../providers/PokemonContext';
 import { api, apiFake } from '../../services/api';
 import { toastAlert } from '../../styles/toast';
 
@@ -103,12 +107,6 @@ const PokeModal = () => {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const formatPokemonId = (id: number) => {
-    if (id < 10) return `#00${id}`;
-    if (id >= 10 && id < 99) return `#0${id}`;
-    return `# ${id}`;
   };
 
   if (!pokemon) {
