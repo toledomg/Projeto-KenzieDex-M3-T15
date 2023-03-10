@@ -7,6 +7,8 @@ import { StyledTitle } from '../../styles/typography';
 import { TeamList } from '../../components/TeamList';
 import { apiFake } from '../../services/api';
 import { PokemonContext } from '../../providers/PokemonContext';
+import PokeballImg from '../../components/HeaderLogin/PokeballImg';
+import PokeballImgPages from '../../components/HeaderLogin/PokeballImg/lmagePages/lmagePages';
 
 const TeamPage = () => {
   const token = localStorage.getItem('@token');
@@ -14,23 +16,22 @@ const TeamPage = () => {
   const { setPokemonTeam, pokemonTeam } = useContext(PokemonContext);
 
   useEffect(() => {
-    if (userId){
-        const getTeam = async () => {
+    if (userId) {
+      const getTeam = async () => {
         try {
           const response = await apiFake.get('teams', {
             headers: {
-              Authorization: `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           });
-          setPokemonTeam(response.data)
-          
+          setPokemonTeam(response.data);
         } catch (error) {
-          console.log(error)
+          console.log(error);
         }
-      } 
-      getTeam()
-      }
-  }, [])
+      };
+      getTeam();
+    }
+  }, []);
 
   return (
     <GlobalContainer>
@@ -38,15 +39,16 @@ const TeamPage = () => {
 
       <TeamDivStyled>
         <div>
-        <StyledTitle tag='h2' $fontSize='one'>
-          Your Team
-        </StyledTitle>
-        <Link className='redirect' to='/home'>
+          <StyledTitle tag='h2' $fontSize='one'>
+            Team
+          </StyledTitle>
+          <Link className='redirect' to='/home'>
             Voltar para Home
           </Link>
-          </div>
+        </div>
         <TeamList />
       </TeamDivStyled>
+      <PokeballImgPages />
     </GlobalContainer>
   );
 };

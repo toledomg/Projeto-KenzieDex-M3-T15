@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const StyledPokeballDiv = styled.div`
+export const StyledPokeballPage = styled.div`
   position: fixed;
-  z-index: 1;
+  z-index: -1 !important;
   top: -10vw;
   right: -10vh;
   opacity: 0.2;

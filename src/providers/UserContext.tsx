@@ -55,7 +55,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       localStorage.setItem('@token', response.data.accessToken);
       localStorage.setItem('@userID', response.data.user.id);
       setUser(response.data.user);
-  
+
       navigate('/home');
     } catch (error) {
       console.log(error);
@@ -74,6 +74,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       const response = await apiFake.post('/users', formData);
 
       localStorage.setItem('@token', response.data.accessToken);
+      localStorage.setItem('@userID', response.data.user.id);
 
       navigate('/home');
       toasts('success', 'Cadastro Realizado com Sucesso');

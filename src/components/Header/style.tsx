@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const GlobalContainer = styled.main`
+  z-index: 1;
   width: 100%;
   height: 100vh;
 `;

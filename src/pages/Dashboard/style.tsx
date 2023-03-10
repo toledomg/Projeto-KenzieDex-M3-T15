@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const PokemonContainer = styled.main`
-  max-width: 1200px;
+export const PokemonContainer = styled.div`
+  max-width: 1020px;
   max-height: 80vh;
   margin: 0 auto;
   display: flex;
@@ -15,6 +15,7 @@ export const PokemonContainer = styled.main`
   }
   &::-webkit-scrollbar-track {
     margin-top: 3.25rem;
+    margin-bottom: 3.25rem;
     background: transparent;
   }
   &::-webkit-scrollbar-thumb {
@@ -22,5 +23,6 @@ export const PokemonContainer = styled.main`
     border-radius: 0.5rem;
     border: 0.25rem solid ${({ theme }) => theme.colors.gray3};
   }
+  z-index: 9999;
   margin-top: 1rem;
 `;

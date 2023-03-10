@@ -42,7 +42,7 @@ const SimpleCard = ({ name, url, pokemon, id }: iSimpleCardProps) => {
           setPokeModal(pokemon);
         }}
       >
-        +infos
+        + infos
       </InfoButton>
 
       <PokemonImage

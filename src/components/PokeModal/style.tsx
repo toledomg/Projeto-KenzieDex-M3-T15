@@ -15,11 +15,12 @@ export const ModalContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
 `;
 
 export const Modal = styled.div`
-  width: 280px;
-  min-width: 280px;
+  width: 300px;
+  min-width: 300px;
   height: 240px;
 
   background-color: ${({ theme }) => theme.colors.gray2};
@@ -33,6 +34,10 @@ export const Modal = styled.div`
 export const ModalHeader = styled.div`
   width: 100%;
   height: 78px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
   position: absolute;
 
@@ -139,10 +144,10 @@ export const ModalClose = styled.button`
 `;
 
 export const AddButton = styled.button`
-  width: 71px;
-  height: 18px;
+  width: 74px;
+  height: 20px;
 
-  font-size: 10px;
+  font-size: 12px;
   font-weight: normal;
 
   color: ${({ theme }) => theme.colors.gray0};

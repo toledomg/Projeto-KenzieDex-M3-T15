@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
-
 export const StyledCardTeam = styled.li`
   font-family: 'Inter', sans-serif;
 
-  width: 280px;
+  width: 300px;
   height: auto;
 
   display: flex;
@@ -14,7 +13,7 @@ export const StyledCardTeam = styled.li`
 
   position: relative;
 
-  margin-top: 25px;
+  margin-top: 30px;
 
   border-top-left-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -28,7 +27,6 @@ export const StyledCardTeam = styled.li`
   background-color: ${({ theme }) => theme.colors.gray4};
 
   box-shadow: 8px 8px rgb(0, 0, 0, 0.2);
-
 `;
 
 export const StyledDivTeam = styled.div`
@@ -36,11 +34,11 @@ export const StyledDivTeam = styled.div`
 `;
 
 export const StyledSectionTeam = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
 `;
 
 export const StyledPokemonName = styled.h1`
@@ -60,17 +58,17 @@ export const StyledPokemonId = styled.span`
 `;
 
 export const StyledRemovePokemon = styled.button`
-  width: 94px;
+  width: 100px;
   height: 27px;
 
-  font-size: 10px;
-
-  margin-top: 0.5rem;
+  font-size: 11px;
 
   color: ${({ theme }) => theme.colors.gray0};
   background-color: ${({ theme }) => theme.colors.gray2};
 
   border-radius: 4px;
+
+  margin-top: 0.5rem;
 
   outline: none;
   border: none;
@@ -85,9 +83,9 @@ export const StyledPokemonImageTeam = styled.img`
   position: absolute;
 
   bottom: 5px;
-  right: -6px;
-  
-  @media(min-width: 1200px){
+  right: 20px;
+
+  @media (min-width: 1020px) {
     bottom: 190px;
     transition: 1s ease;
   }
@@ -119,7 +117,7 @@ export const StyledPokemonInformation = styled.div`
     margin-top: 0.2rem;
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1020px) {
     display: flex;
   }
 `;
