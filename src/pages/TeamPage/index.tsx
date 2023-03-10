@@ -7,7 +7,6 @@ import { StyledTitle } from '../../styles/typography';
 import { TeamList } from '../../components/TeamList';
 import { apiFake } from '../../services/api';
 import { PokemonContext } from '../../providers/PokemonContext';
-import PokeballImg from '../../components/HeaderLogin/PokeballImg';
 import PokeballImgPages from '../../components/HeaderLogin/PokeballImg/lmagePages/lmagePages';
 
 const TeamPage = () => {

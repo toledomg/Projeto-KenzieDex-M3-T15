@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { HeaderContainer, Logo, YellowLine } from './style';
 import logo from '../../assets/kenzieDex2.png';
@@ -19,12 +19,9 @@ const Header = () => {
     if (isDisabled === false) {
       navigate('/team');
       setIsDisabled(true);
-      console.log(isDisabled);
-      //
     } else if (isDisabled === true) {
       navigate('/home');
       setIsDisabled(false);
-      console.log(isDisabled);
     }
   };
 

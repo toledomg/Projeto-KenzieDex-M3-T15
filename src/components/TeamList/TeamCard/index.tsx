@@ -11,31 +11,39 @@ import {
   StyledSectionTeam,
 } from './style';
 import { ITeamCardProps } from '../../../providers/@types';
-import { iInfos, PokemonContext } from '../../../providers/PokemonContext';
+import { PokemonContext } from '../../../providers/PokemonContext';
 
-
-export const TeamCard = ({ name, id, url, order, height, weight, abilities, types, pokemonId }: ITeamCardProps) => {
+export const TeamCard = ({
+  name,
+  id,
+  url,
+  order,
+  height,
+  weight,
+  abilities,
+  types,
+  pokemonId,
+}: ITeamCardProps) => {
   const pokedexNumber: string = url.slice(34, -11);
 
-  const { removePokemon } = useContext(PokemonContext)
-  
-  
-  
+  const { removePokemon } = useContext(PokemonContext);
+
   return (
     <StyledCardTeam id={id}>
-
       <StyledDivTeam>
-
         <StyledSectionTeam>
-
           <StyledPokemonName>
             {name[0].toUpperCase() + name.slice(1)}
           </StyledPokemonName>
 
-          <StyledPokemonId>{types[0].type.name[0].toUpperCase() + types[0]!.type.name.slice(1)}</StyledPokemonId>
+          <StyledPokemonId>
+            {types[0].type.name[0].toUpperCase() + types[0]!.type.name.slice(1)}
+          </StyledPokemonId>
         </StyledSectionTeam>
 
-        <StyledRemovePokemon onClick={() => removePokemon(pokemonId)}>Remove from team</StyledRemovePokemon>
+        <StyledRemovePokemon onClick={() => removePokemon(pokemonId)}>
+          Remove from team
+        </StyledRemovePokemon>
 
         <StyledPokemonImageTeam
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokedexNumber}.png`}
@@ -63,7 +71,10 @@ export const TeamCard = ({ name, id, url, order, height, weight, abilities, type
 
         <StyledInformation>
           <span>Main ability:</span>
-          <span>{abilities[0].ability.name[0].toUpperCase() + abilities[0]!.ability.name.slice(1)}</span>
+          <span>
+            {abilities[0].ability.name[0].toUpperCase() +
+              abilities[0]!.ability.name.slice(1)}
+          </span>
         </StyledInformation>
       </StyledPokemonInformation>
     </StyledCardTeam>

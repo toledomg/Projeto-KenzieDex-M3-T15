@@ -19,10 +19,6 @@ export const StyledRegisterPage = styled.main`
 
     padding: 10px;
     gap: 10px;
-
-    /* a {
-      width: 70%;
-    } */
   }
 
   .redirect {

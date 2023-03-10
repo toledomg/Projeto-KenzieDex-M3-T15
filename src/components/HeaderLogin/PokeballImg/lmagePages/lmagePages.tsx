@@ -1,6 +1,5 @@
 /* eslint-disable import/no-useless-path-segments */
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React from 'react';
 import PokeBall from './../../../../assets/pokeball.svg';
 import { StyledPokeballPage } from './styles';
 
