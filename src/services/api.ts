@@ -9,7 +9,7 @@ import axios from 'axios';
 export const apiFake = axios.create({
   baseURL: 'https://kenziedex.onrender.com/',
   responseType: 'json',
-  timeout: 5000,
+  timeout: 10000,
 });
 
 export const api = axios.create({
