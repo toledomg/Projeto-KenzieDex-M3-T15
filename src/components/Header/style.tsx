@@ -16,7 +16,7 @@ export const HeaderContainer = styled.header`
 
   margin: 0 auto;
 
-  padding: 1rem 1rem 0 1rem;
+  padding: 1rem 1rem 0rem 1rem;
 
   section {
     width: 100%;
@@ -26,8 +26,16 @@ export const HeaderContainer = styled.header`
   }
 
   nav {
+    height: 20px;
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 20px;
+  }
+
+  nav > a {
+    font-size: 25px;
+    color: ${({ theme }) => theme.colors.gray1};
+    cursor: pointer;
   }
 
   .cursor {

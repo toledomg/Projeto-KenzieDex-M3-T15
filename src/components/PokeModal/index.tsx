@@ -32,7 +32,7 @@ const PokeModal = () => {
 
   const data = {
     userId,
-    pokemonTeam: pokemon /* ver depois */,
+    pokemonTeam: pokemon,
   };
 
   useEffect(() => {
@@ -48,16 +48,20 @@ const PokeModal = () => {
   }, []);
 
   const addTeam = async () => {
-    try {
-      if (pokemonTeam !== null) {
+    if (pokemonTeam.length < 6) {
+      try {
         await apiFake.post('teams', data, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+        toastAlert('success', 'Pokemon adicionado ao time!');
+        setPokeModal(null);
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+    } else {
+      toastAlert('warning', 'Seu poketeam está cheio...');
     }
   };
 
@@ -88,20 +92,7 @@ const PokeModal = () => {
               alt={pokemon.name}
             />
 
-            <AddButton
-              onClick={() => {
-                if (pokemonTeam!.length < 6) {
-                  addTeam();
-
-                  toastAlert('success', 'Pokemon adicionado ao time!');
-                  setPokeModal(null);
-                } else if (pokemonTeam.length >= 6) {
-                  toastAlert('warning', 'Seu poketeam está cheio...');
-                }
-              }}
-            >
-              Add to team
-            </AddButton>
+            <AddButton onClick={() => addTeam()}>Add to team</AddButton>
           </ModalHeader>
 
           <ModalMain>

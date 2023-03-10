@@ -1,18 +1,22 @@
 /* eslint-disable no-lone-blocks */
-import {useEffect, useContext } from 'react'
+import { useEffect, useContext } from 'react';
 import { PokemonContext } from '../../providers/PokemonContext';
 import { api } from '../../services/api';
 import PokeModal from '../PokeModal';
 import SimpleCard from '../SimpleCard';
 
 const PokemonList = () => {
-  
-  const {setPokemonList, pokemonList, pokeModal } = useContext(PokemonContext)
+  const { setPokemonList, pokemonList, pokeModal } = useContext(PokemonContext);
 
   useEffect(() => {
     const loadPokemons = async () => {
       try {
-        const response = await api.get('/pokemon?limit=20');
+        const response = await api.get('pokemon', {
+          params: {
+            limit: 151,
+            offset: 0,
+          },
+        });
         setPokemonList(response.data.results);
       } catch (error) {
         console.log(error);
@@ -21,18 +25,20 @@ const PokemonList = () => {
     loadPokemons();
   }, []);
 
-
   return (
     <>
-
-    {pokemonList.map((pokemon) =>  (
-      <SimpleCard id={pokemon.name} pokemon={pokemon} key={pokemon.name} url={pokemon.url} name={pokemon.name}/>
-      )
-      )}
-      {pokeModal && <PokeModal/>}
+      {pokemonList.map((pokemon) => (
+        <SimpleCard
+          id={pokemon.name}
+          pokemon={pokemon}
+          key={pokemon.name}
+          url={pokemon.url}
+          name={pokemon.name}
+        />
+      ))}
+      {pokeModal && <PokeModal />}
     </>
-  )
-}
+  );
+};
 
-
-export default PokemonList
+export default PokemonList;

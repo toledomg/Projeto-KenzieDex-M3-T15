@@ -1,8 +1,9 @@
-/* eslint-disable no-use-before-define */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { IoExitOutline } from 'react-icons/io5';
+import { RiTeamFill, RiHome2Line } from 'react-icons/ri';
+import { TbPokeball } from 'react-icons/tb';
 import { HeaderContainer, Logo, YellowLine } from './style';
 import logo from '../../assets/kenzieDex2.png';
 import logout from '../../assets/logout icon.png';
@@ -34,18 +35,15 @@ const Header = () => {
           </Link>
 
           <nav>
-            <img
-              className='cursor'
-              src={profile}
-              alt='profile icon'
-              onClick={() => handleClick()}
-            />
-            <img
-              className='cursor'
-              src={logout}
-              alt='logout icon'
-              onClick={() => userLogout()}
-            />
+            <Link to='/home'>
+              <RiHome2Line />
+            </Link>
+            <Link to='/team'>
+              <TbPokeball />
+            </Link>
+            <Link to='/' onClick={() => userLogout()}>
+              <IoExitOutline />
+            </Link>
           </nav>
         </section>
       </HeaderContainer>

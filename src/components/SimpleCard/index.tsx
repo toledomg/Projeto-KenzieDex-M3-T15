@@ -13,6 +13,7 @@ import {
   PokemonContext,
   formatPokemonId,
 } from '../../providers/PokemonContext';
+import { toastAlert } from '../../styles/toast';
 
 interface iSimpleCardProps {
   name: string;
@@ -24,9 +25,15 @@ interface iSimpleCardProps {
 const SimpleCard = ({ name, url, pokemon, id }: iSimpleCardProps) => {
   const pokedexNumber: string = url.slice(34, -1);
 
+  const { pokemonTeam } = useContext(PokemonContext);
+
   const idPokemon = parseInt(pokedexNumber, 10);
 
   const { setPokeModal } = useContext(PokemonContext);
+
+  const handleClick = () => {
+    setPokeModal(pokemon);
+  };
 
   return (
     <CardContainer>
@@ -36,13 +43,7 @@ const SimpleCard = ({ name, url, pokemon, id }: iSimpleCardProps) => {
         <PokemonId>{formatPokemonId(idPokemon)}</PokemonId>
       </section>
 
-      <InfoButton
-        onClick={() => {
-          setPokeModal(pokemon);
-        }}
-      >
-        + infos
-      </InfoButton>
+      <InfoButton onClick={() => handleClick()}>+ infos</InfoButton>
 
       <PokemonImage
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokedexNumber}.png`}
