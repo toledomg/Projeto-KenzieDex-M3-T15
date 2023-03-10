@@ -21,11 +21,12 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
 
   const navigate = useNavigate();
 
+  const token = localStorage.getItem('@token');
+  const idUser = localStorage.getItem('@userID');
   useEffect(() => {
-    const token = localStorage.getItem('@token');
-    const idUser = localStorage.getItem('@userID');
-
-    if (token) {
+    if (!token) {
+      navigate('/');
+    } else {
       const userAutoLogin = async () => {
         try {
           const response = await apiFake.get(`/users/${idUser}`, {
@@ -33,7 +34,6 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
               Authorization: `Bearer ${token}`,
             },
           });
-
           setUser(response.data.user);
           navigate('/home');
         } catch (error) {
@@ -41,7 +41,6 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
           navigate('/');
         }
       };
-
       userAutoLogin();
     }
   }, []);
