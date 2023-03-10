@@ -20,7 +20,7 @@ import {
 import { api, apiFake } from '../../services/api';
 import { toastAlert } from '../../styles/toast';
 
-const userId = localStorage.getItem('@userID');
+const userId = Number(localStorage.getItem('@userID'));
 
 const token = localStorage.getItem('@token');
 
@@ -34,54 +34,6 @@ const PokeModal = () => {
     userId,
     pokemonTeam: pokemon /* ver depois */,
   };
-
-  useEffect(() => {
-    if (userId) {
-      const getTeam = async () => {
-        try {
-          const response = await apiFake.get('teams', {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          setPokemonTeam(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      getTeam();
-    }
-  }, []);
-
-  useEffect(() => {
-    const loadSingleData = async () => {
-      try {
-        const response = await api.get(pokeModal!.url);
-        setPokemon(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    loadSingleData();
-  }, []);
-
-  useEffect(() => {
-    if (userId) {
-      const getTeam = async () => {
-        try {
-          const response = await apiFake.get('teams', {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          setPokemonTeam(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      getTeam();
-    }
-  }, []);
 
   useEffect(() => {
     const loadSingleData = async () => {
