@@ -25,7 +25,10 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const idUser = localStorage.getItem('@userID');
   useEffect(() => {
     if (!token) {
+      setUser(null);
       navigate('/');
+      localStorage.removeItem('@token');
+      localStorage.removeItem('@useID');
     } else {
       const userAutoLogin = async () => {
         try {
@@ -38,7 +41,10 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
           navigate('/home');
         } catch (error) {
           console.log(error);
+          setUser(null);
           navigate('/');
+          localStorage.removeItem('@token');
+          localStorage.removeItem('@useID');
         }
       };
       userAutoLogin();
