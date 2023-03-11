@@ -35,6 +35,27 @@ const PokeModal = () => {
   };
 
   useEffect(() => {
+    if (userId) {
+      const getTeam = async () => {
+        try {
+          const response = await apiFake.get('teams', {
+            params: {
+              userId,
+            },
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setPokemonTeam(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      getTeam();
+    }
+  }, []);
+
+  useEffect(() => {
     const loadSingleData = async () => {
       try {
         const response = await api.get(pokeModal!.url);

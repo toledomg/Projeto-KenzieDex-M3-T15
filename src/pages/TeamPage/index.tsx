@@ -14,6 +14,7 @@ const TeamPage = () => {
   const userId = localStorage.getItem('@userID');
   const { setPokemonTeam, pokemonTeam } = useContext(PokemonContext);
 
+  
   useEffect(() => {
     if (userId) {
       const getTeam = async () => {
@@ -28,7 +29,7 @@ const TeamPage = () => {
           });
           setPokemonTeam(response.data);
         } catch (error) {
-          // console.log(error);
+          console.log(error);
         }
       };
       getTeam();
