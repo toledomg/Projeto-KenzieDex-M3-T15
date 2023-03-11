@@ -19,13 +19,16 @@ const TeamPage = () => {
       const getTeam = async () => {
         try {
           const response = await apiFake.get('teams', {
+            params: {
+              userId,
+            },
             headers: {
               Authorization: `Bearer ${token}`,
             },
           });
           setPokemonTeam(response.data);
         } catch (error) {
-          console.log(error);
+          // console.log(error);
         }
       };
       getTeam();

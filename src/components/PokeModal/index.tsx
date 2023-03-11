@@ -20,7 +20,7 @@ import {
 import { api, apiFake } from '../../services/api';
 import { toastAlert } from '../../styles/toast';
 
-const userId = localStorage.getItem('@userID');
+const userId = Number(localStorage.getItem('@userID'));
 
 const token = localStorage.getItem('@token');
 
@@ -35,24 +35,6 @@ const PokeModal = () => {
   };
 
   useEffect(() => {
-    if (userId) {
-      const getTeam = async () => {
-        try {
-          const response = await apiFake.get('teams', {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          setPokemonTeam(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      getTeam();
-    }
-  }, []);
-
-  useEffect(() => {
     const loadSingleData = async () => {
       try {
         const response = await api.get(pokeModal!.url);
@@ -65,16 +47,20 @@ const PokeModal = () => {
   }, []);
 
   const addTeam = async () => {
-    try {
-      if (pokemonTeam !== null) {
+    if (pokemonTeam.length < 6) {
+      try {
         await apiFake.post('teams', data, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+        toastAlert('success', 'Pokemon adicionado ao time!');
+        setPokeModal(null);
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+    } else {
+      toastAlert('warning', 'Seu poketeam está cheio...');
     }
   };
 
@@ -105,19 +91,7 @@ const PokeModal = () => {
               alt={pokemon.name}
             />
 
-            <AddButton
-              onClick={() => {
-                if (pokemonTeam!.length < 6) {
-                  addTeam();
-                  toastAlert('success', 'Pokemon adicionado ao time!');
-                  setPokeModal(null);
-                } else if (pokemonTeam.length >= 6) {
-                  toastAlert('warning', 'Seu poketeam está cheio...');
-                }
-              }}
-            >
-              Add to team
-            </AddButton>
+            <AddButton onClick={() => addTeam()}>Add to team</AddButton>
           </ModalHeader>
 
           <ModalMain>

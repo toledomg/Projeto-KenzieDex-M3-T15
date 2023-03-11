@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// export const apiFakeLocal = axios.create({
+// export const apiFake = axios.create({
 //   baseURL: 'http://localhost:3001/',
 //   responseType: 'json',
 //   timeout: 5000,

@@ -18,7 +18,6 @@ import {
 
 export const TeamCard = ({
   name,
-  id,
   url,
   order,
   height,
@@ -32,7 +31,7 @@ export const TeamCard = ({
   const { removePokemon } = useContext(PokemonContext);
 
   return (
-    <StyledCardTeam id={id}>
+    <StyledCardTeam>
       <StyledDivTeam>
         <StyledSectionTeam>
           <StyledPokemonName>

@@ -17,7 +17,7 @@ export const TeamList = () => {
         pokemonTeam.map((teamPokemon) => (
           <TeamCard
             name={teamPokemon.pokemonTeam.name}
-            id={uuidv4()}
+            key={uuidv4()}
             url={teamPokemon.pokemonTeam.location_area_encounters}
             order={teamPokemon.pokemonTeam.order}
             height={teamPokemon.pokemonTeam.height}

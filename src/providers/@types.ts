@@ -58,7 +58,6 @@ export interface IShopProduct {
 export interface ITeamCardProps {
   url: string;
   name: string;
-  id: string ;
   order: number;
   height: number;
   weight: number;
