@@ -32,38 +32,8 @@ const PokeModal = () => {
 
   const data = {
     userId,
-    pokemonTeam: pokemon /* ver depois */,
+    pokemonTeam: pokemon,
   };
-
-  useEffect(() => {
-    if (userId) {
-      const getTeam = async () => {
-        try {
-          const response = await apiFake.get('teams', {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          setPokemonTeam(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      getTeam();
-    }
-  }, []);
-
-  useEffect(() => {
-    const loadSingleData = async () => {
-      try {
-        const response = await api.get(pokeModal!.url);
-        setPokemon(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    loadSingleData();
-  }, []);
 
   useEffect(() => {
     if (userId) {
