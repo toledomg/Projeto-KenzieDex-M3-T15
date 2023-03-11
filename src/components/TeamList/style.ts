@@ -16,7 +16,7 @@ export const StyledTeamUl = styled.ul`
 
   overflow-y: auto;
   &::-webkit-scrollbar {
-    width: 1rem;
+    width: 0.25rem;
   }
   &::-webkit-scrollbar-track {
     margin-top: 3.25rem;
