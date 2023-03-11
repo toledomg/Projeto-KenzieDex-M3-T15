@@ -17,22 +17,16 @@ const Header = () => {
   const { userLogout } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    if (isDisabled === false) {
-      navigate('/team');
-      setIsDisabled(true);
-    } else if (isDisabled === true) {
-      navigate('/home');
-      setIsDisabled(false);
-    }
-  };
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   return (
     <>
       <HeaderContainer>
         <section>
           <Link className='redirect' to='/home'>
-            <Logo src={logo} alt='Logo' />
+            <Logo src={logo} alt='Logo' onClick={refreshPage} />
           </Link>
 
           <nav>
