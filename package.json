@@ -25,6 +25,7 @@
     "react-router-dom": "^6.8.2",
     "styled-components": "^5.3.8",
     "sweetalert2": "^11.7.3",
+    "uuid": "^9.0.0",
     "uuidv4": "^6.2.13",
     "yup": "^1.0.2"
   },

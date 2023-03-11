@@ -29,11 +29,31 @@ const PokeModal = () => {
     useContext(PokemonContext);
 
   const [pokemon, setPokemon] = useState<null | iInfos>(null);
-
   const data = {
     userId,
     pokemonTeam: pokemon,
   };
+
+  useEffect(() => {
+    if (userId) {
+      const getTeam = async () => {
+        try {
+          const response = await apiFake.get('teams', {
+            params: {
+              userId,
+            },
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setPokemonTeam(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      getTeam();
+    }
+  }, []);
 
   useEffect(() => {
     const loadSingleData = async () => {
