@@ -8,10 +8,9 @@ export const PokemonContainer = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  /* gap: 1.5rem; */
   overflow-y: auto;
   &::-webkit-scrollbar {
-    width: 1rem;
+    width: 0.25rem;
   }
   &::-webkit-scrollbar-track {
     margin-top: 3.25rem;

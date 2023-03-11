@@ -29,7 +29,7 @@ export const HeaderContainer = styled.header`
     height: 20px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
   }
 
   nav > a {
