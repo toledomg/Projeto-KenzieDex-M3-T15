@@ -84,6 +84,7 @@ const PokeModal = () => {
         console.log(error);
       }
     } else {
+      setPokeModal(null);
       toastAlert('warning', 'Seu poketeam está cheio...');
       navigate('/team');
     }

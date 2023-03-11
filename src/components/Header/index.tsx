@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoExitOutline } from 'react-icons/io5';
 import { RiTeamFill, RiHome2Line } from 'react-icons/ri';
+import { MdCatchingPokemon } from 'react-icons/md';
 import { TbPokeball } from 'react-icons/tb';
 import { HeaderContainer, Logo, YellowLine } from './style';
 import logo from '../../assets/kenzieDex2.png';
@@ -40,6 +41,9 @@ const Header = () => {
             </Link>
             <Link to='/team'>
               <TbPokeball />
+            </Link>
+            <Link to='/battle'>
+              <MdCatchingPokemon />
             </Link>
             <Link to='/' onClick={() => userLogout()}>
               <IoExitOutline />
