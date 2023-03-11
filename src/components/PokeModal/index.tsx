@@ -1,5 +1,6 @@
 /* eslint-disable no-unsafe-optional-chaining */
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import {
   ModalContainer,
   Modal,
@@ -19,7 +20,6 @@ import {
 } from '../../providers/PokemonContext';
 import { api, apiFake } from '../../services/api';
 import { toastAlert } from '../../styles/toast';
-import { useNavigate } from 'react-router';
 
 const userId = Number(localStorage.getItem('@userID'));
 
