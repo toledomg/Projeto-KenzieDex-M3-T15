@@ -7,7 +7,7 @@ export function toastAlert(title: ToastType, text: string) {
     toast: true,
     position: 'bottom-end',
     showConfirmButton: false,
-    timer: 3000,
+    timer: 1500,
     timerProgressBar: true,
     didOpen: (toast: {
       addEventListener: (arg0: string, arg1: any) => void;

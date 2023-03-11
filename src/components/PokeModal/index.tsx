@@ -19,6 +19,7 @@ import {
 } from '../../providers/PokemonContext';
 import { api, apiFake } from '../../services/api';
 import { toastAlert } from '../../styles/toast';
+import { useNavigate } from 'react-router';
 
 const userId = Number(localStorage.getItem('@userID'));
 
@@ -27,6 +28,8 @@ const token = localStorage.getItem('@token');
 const PokeModal = () => {
   const { setPokeModal, pokeModal, pokemonTeam, setPokemonTeam } =
     useContext(PokemonContext);
+
+  const navigate = useNavigate();
 
   const [pokemon, setPokemon] = useState<null | iInfos>(null);
   const data = {
@@ -82,6 +85,7 @@ const PokeModal = () => {
       }
     } else {
       toastAlert('warning', 'Seu poketeam está cheio...');
+      navigate('/team');
     }
   };
 
