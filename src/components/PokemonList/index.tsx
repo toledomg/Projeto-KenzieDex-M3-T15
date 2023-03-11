@@ -1,20 +1,22 @@
 /* eslint-disable no-lone-blocks */
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useRef, useState } from 'react';
 import { PokemonContext } from '../../providers/PokemonContext';
 import { api } from '../../services/api';
+import InfinityScroll from '../InfinityScroll';
 import PokeModal from '../PokeModal';
 import SimpleCard from '../SimpleCard';
 
 const PokemonList = () => {
   const { setPokemonList, pokemonList, pokeModal } = useContext(PokemonContext);
+  const [pagina, setPagina] = useState(0);
 
   useEffect(() => {
-    const loadPokemons = async () => {
+    const loadPokemons = async (page: number, limit = 100) => {
       try {
         const response = await api.get('pokemon', {
           params: {
-            limit: 151,
-            offset: 0,
+            limit,
+            offset: page * 10,
           },
         });
         setPokemonList(response.data.results);
@@ -22,11 +24,14 @@ const PokemonList = () => {
         console.log(error);
       }
     };
-    loadPokemons();
-  }, []);
+    loadPokemons(pagina);
+  }, [pagina]);
 
   return (
     <>
+      <InfinityScroll
+        callback={() => setPagina((previousPage) => previousPage - 1)}
+      />
       {pokemonList.map((pokemon) => (
         <SimpleCard
           id={pokemon.name}
@@ -36,7 +41,11 @@ const PokemonList = () => {
           name={pokemon.name}
         />
       ))}
+
       {pokeModal && <PokeModal />}
+      <InfinityScroll
+        callback={() => setPagina((previousPage) => previousPage + 1)}
+      />
     </>
   );
 };
