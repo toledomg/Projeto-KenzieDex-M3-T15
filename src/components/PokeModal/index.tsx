@@ -29,7 +29,6 @@ const PokeModal = () => {
     useContext(PokemonContext);
 
   const [pokemon, setPokemon] = useState<null | iInfos>(null);
-
   const data = {
     userId,
     pokemonTeam: pokemon,
@@ -110,7 +109,6 @@ const PokeModal = () => {
               onClick={() => {
                 if (pokemonTeam!.length < 6) {
                   addTeam();
-
                   toastAlert('success', 'Pokemon adicionado ao time!');
                   setPokeModal(null);
                 } else if (pokemonTeam.length >= 6) {
