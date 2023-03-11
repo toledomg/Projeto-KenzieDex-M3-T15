@@ -18,7 +18,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   function refreshPage() {
-    window.location.reload(false);
+    window.location.reload();
   }
 
   return (
