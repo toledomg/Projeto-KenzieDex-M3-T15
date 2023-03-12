@@ -65,9 +65,9 @@ export const formatPokemonId = (id: number) => {
 
 export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [pokemonList, setPokemonList] = useState<iPokemon[]>([]);
-  const [pokemonData, setPokemonData] = useState<iData[] | string | iPokemon>([
-    { name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
-  ]);
+  const [pokemonData, setPokemonData] = useState<
+    iData[] | string | undefined | iPokemon
+  >([{ name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' }]);
   const [pokeId, setPokeId] = useState('1');
   const [pokeModal, setPokeModal] = useState<null | iPokemon>(null);
   const [pokemonTeam, setPokemonTeam] = useState<IPokemonTeam[]>([]);
