@@ -39,26 +39,7 @@ const BattlePage = () => {
     }
   }, []);
 
-  console.log(pokemonTeam);
-
-  const baseStat = () => {
-    pokemonTeam.map((poketeam: { pokemonTeam: { stats: never[] } }) => {
-      // console.log(poketeam.pokemonTeam.stats);
-      const attack = poketeam.pokemonTeam.stats.reduce(
-        (total: any, stat: { base_stat: number }) => {
-          if (stat.base_stat > 0) {
-            setStatValue((total += stat.base_stat));
-            return (total += stat.base_stat);
-          }
-          return total;
-        },
-        0
-      );
-      console.log(attack);
-    });
-  };
-
-  // baseStat();
+  // console.log(pokemonTeam);
 
   return (
     <GlobalContainer>
@@ -72,7 +53,7 @@ const BattlePage = () => {
             Voltar para Team
           </Link>
         </div>
-        {/* <BattleList /> */}
+        <BattleList />
         <BattleSectionStyled>
           <h1>teste</h1>
         </BattleSectionStyled>
