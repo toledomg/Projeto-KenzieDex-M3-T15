@@ -35,9 +35,9 @@ export interface IPokemonTeam {
 interface iPokemonContext {
   pokemonList: iPokemon[];
   setPokemonList: React.Dispatch<React.SetStateAction<iPokemon[]>>;
-  pokemonData: iData[] | string | iPokemon;
+  pokemonData: string | iPokemon | iData[] | undefined;
   setPokemonData: React.Dispatch<
-    React.SetStateAction<iData[] | string | iPokemon>
+    React.SetStateAction<string | iPokemon | iData[] | undefined>
   >;
   pokeId: string;
   setPokeId: React.Dispatch<React.SetStateAction<string>>;
