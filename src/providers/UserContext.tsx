@@ -44,7 +44,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
           setUser(null);
           navigate('/');
           localStorage.removeItem('@token');
-          localStorage.removeItem('@useID');
+          localStorage.removeItem('@userID');
         }
       };
       userAutoLogin();
