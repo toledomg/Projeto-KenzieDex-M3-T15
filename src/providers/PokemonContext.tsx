@@ -15,6 +15,7 @@ export interface iData {
 }
 
 export interface iInfos {
+  stats?: any;
   location_area_encounters: string;
   url: string;
   types: { slot: number; type: { name: string; url: string } }[];
