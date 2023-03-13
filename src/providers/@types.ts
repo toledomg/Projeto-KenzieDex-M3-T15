@@ -56,12 +56,12 @@ export interface IShopProduct {
 }
 
 export interface ITeamCardProps {
-  url: string;
+  url: string | undefined;
   name: string;
   order: number;
   height: number;
   weight: number;
-  abilities:  { slot: number; ability: { name: string; url: string } }[];
+  abilities: { slot: number; ability: { name: string; url: string } }[];
   types: { slot: number; type: { name: string; url: string } }[];
   pokemonId: number;
 }

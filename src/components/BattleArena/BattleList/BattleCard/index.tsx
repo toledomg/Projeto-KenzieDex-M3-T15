@@ -16,9 +16,10 @@ import {
   IPokemonTeam,
   PokemonContext,
 } from '../../../../providers/PokemonContext';
+import ModalBattle from '../../BattleTeam/BattleModal';
 
 export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
-  const { pokemonTeam } = useContext(PokemonContext);
+  const { pokemonTeam, modal, setModal } = useContext(PokemonContext);
   const pokedexNumber: string = url.slice(34, -11);
   const [cardBattle, setCardBattle] = useState<IPokemonTeam[]>([]);
   const [statBase, setStatBase] = useState<any[]>([]);
@@ -28,6 +29,19 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
     setCardBattle(
       pokemonTeam.filter((pokemon) => pokemon.id === currentPokemon)
     );
+  };
+
+  const modalShow = () => {
+    if (modal === false) {
+      setModal(true);
+    } else {
+      setModal(false);
+    }
+  };
+  const handleClick = () => {
+    console.log('cliquei');
+
+    addToCardBattle(pokemonId);
   };
 
   console.log(power);
@@ -45,6 +59,8 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
 
   return (
     <StyledCardCard>
+      {modal && <ModalBattle />}
+
       <StyledDivCard>
         <StyledSectionCard>
           <StyledPokemonName>
@@ -56,7 +72,7 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
           </StyledPokemonId>
         </StyledSectionCard>
 
-        <StyledRemovePokemon onClick={() => addToCardBattle(pokemonId)}>
+        <StyledRemovePokemon onClick={() => modalShow()}>
           Battle from rival
         </StyledRemovePokemon>
 
