@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable no-return-assign */
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BattleSectionStyled } from './styles';
 import Header from '../../components/Header';
@@ -15,8 +15,7 @@ import { BattleList } from '../../components/BattleArena/BattleList';
 const BattlePage = () => {
   const token = localStorage.getItem('@token');
   const userId = localStorage.getItem('@userID');
-  const { setPokemonTeam, pokemonTeam } = useContext(PokemonContext);
-  const [statValue, setStatValue] = useState([]);
+  const { setPokemonTeam } = useContext(PokemonContext);
 
   useEffect(() => {
     if (userId) {

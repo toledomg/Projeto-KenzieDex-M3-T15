@@ -8,9 +8,6 @@ import { PokemonContext } from '../../../providers/PokemonContext';
 const BattleTeam = () => {
   const { power, statBase } = useContext(PokemonContext);
 
-  const [winner, setWinner] = useState();
-  const [looser, setLooser] = useState();
-
   useEffect(() => {
     const theWinner =
       power! > statBase!

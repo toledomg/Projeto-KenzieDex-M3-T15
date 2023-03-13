@@ -12,9 +12,8 @@ import PokeballImgPages from '../../components/HeaderLogin/PokeballImg/lmagePage
 const TeamPage = () => {
   const token = localStorage.getItem('@token');
   const userId = localStorage.getItem('@userID');
-  const { setPokemonTeam, pokemonTeam } = useContext(PokemonContext);
+  const { setPokemonTeam } = useContext(PokemonContext);
 
-  
   useEffect(() => {
     if (userId) {
       const getTeam = async () => {

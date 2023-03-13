@@ -13,7 +13,6 @@ import {
   PokemonContext,
   formatPokemonId,
 } from '../../providers/PokemonContext';
-import { toastAlert } from '../../styles/toast';
 
 interface iSimpleCardProps {
   name: string;
