@@ -36,8 +36,17 @@ export const SearchInputContainer = styled.div`
     width: 100%;
   }
 
-  @media (min-width: 768px) {
-    width: 436px;
-    height: 39px;
+  > button {
+        background-color: transparent;
+
+        color: ${({theme}) => theme.colors.primary.default};
+
+        margin-right: 5px;
+      }
+      
+  @media(min-width: 768px){
+      width: 436px;
+      height: 39px;
+
   }
 `;

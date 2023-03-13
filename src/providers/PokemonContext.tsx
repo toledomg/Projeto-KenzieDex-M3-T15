@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from 'react';
-import { UserContext } from './UserContext';
 import { apiFake } from '../services/api';
 
 export interface iPokemon {
@@ -48,6 +47,8 @@ interface iPokemonContext {
   setPokemonTeam: React.Dispatch<React.SetStateAction<IPokemonTeam[]>>;
   removePokemon: (current: number) => void;
   formatPokemonId: (id: number) => string;
+  searchModal: null | iInfos;
+  setSearchModal: React.Dispatch<React.SetStateAction<null | iInfos>>;
 }
 
 interface iPokemonContextProps {
@@ -72,6 +73,8 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [pokeId, setPokeId] = useState('1');
   const [pokeModal, setPokeModal] = useState<null | iPokemon>(null);
   const [pokemonTeam, setPokemonTeam] = useState<IPokemonTeam[]>([]);
+  const [searchModal, setSearchModal] = useState<null | iInfos>(null);
+
 
   const removePokemon = async (current: number) => {
     try {
@@ -103,6 +106,8 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
         setPokemonTeam,
         removePokemon,
         formatPokemonId,
+        searchModal,
+        setSearchModal
       }}
     >
       {children}
