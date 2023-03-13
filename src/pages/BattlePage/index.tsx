@@ -1,8 +1,10 @@
+/* eslint-disable consistent-return */
+/* eslint-disable react/button-has-type */
 /* eslint-disable array-callback-return */
 /* eslint-disable no-return-assign */
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BattleSectionStyled } from './styles';
+import { BattleContainer, CardContainer, PokemonBattleCard } from './styles';
 import Header from '../../components/Header';
 import { GlobalContainer } from '../../components/Header/style';
 import PokeballImgPages from '../../components/HeaderLogin/PokeballImg/lmagePages/lmagePages';
@@ -11,12 +13,34 @@ import { apiFake } from '../../services/api';
 import { StyledTitle } from '../../styles/typography';
 import { TeamDivStyled } from '../TeamPage/style';
 import { BattleList } from '../../components/BattleArena/BattleList';
+import { toastAlert } from '../../styles/toast';
 
 const BattlePage = () => {
   const token = localStorage.getItem('@token');
   const userId = localStorage.getItem('@userID');
-  const { setPokemonTeam, pokemonTeam } = useContext(PokemonContext);
+  const { power, statBase, setPokemonTeam, yourPokemon, opponent, pokemonTeam, setCardBattle, setStatBase } = useContext(PokemonContext);
+
   const [statValue, setStatValue] = useState([]);
+  
+  function OpponentStats() {
+    const stats = opponent?.stats.reduce(
+      (acc, current) => acc + current.base_stat,
+      0
+    );
+    setStatBase(stats);
+  }
+  const addToCardBattle = (currentPokemon: number) => {
+    setCardBattle(
+      pokemonTeam.filter((pokemon) => pokemon.id === currentPokemon)
+      );
+      OpponentStats();
+      
+      const theWinner =
+      power! > statBase!
+        ? toastAlert('success', `You WIN with ${power} points x ${statBase} points`)
+        : toastAlert('error', `You LOOSE with ${power} points x ${statBase} points`);
+    };
+
 
   useEffect(() => {
     if (userId) {
@@ -52,9 +76,36 @@ const BattlePage = () => {
           </Link>
         </div>
         <BattleList />
-        <BattleSectionStyled>
-          <h1>teste</h1>
-        </BattleSectionStyled>
+        <BattleContainer>
+          <CardContainer>
+            <PokemonBattleCard>
+              {yourPokemon ? <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${yourPokemon?.id}.png`} alt={yourPokemon?.name}/>
+               : <h1>?</h1>
+              }
+               
+              {yourPokemon ? <span>{yourPokemon.name[0].toUpperCase() + yourPokemon.name.slice(1)}</span> : <span/>}
+            </PokemonBattleCard>
+            <span>Your Pokemon</span>
+          </CardContainer>
+          
+          <div>
+            <h1>Vs</h1>
+
+            <button onClick={() => addToCardBattle(yourPokemon!.id)}>Battle!</button>
+          </div>
+
+          <CardContainer>
+          <PokemonBattleCard>
+              {opponent? <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${opponent?.id}.png`} alt={opponent?.name}/>
+               : <h1>?</h1>
+              }
+               
+              {opponent? <span>{opponent.name[0].toUpperCase() + opponent.name.slice(1)}</span> : <span/>}
+            </PokemonBattleCard>
+            <span>Rival</span>
+          </CardContainer>
+        </BattleContainer>
+
       </TeamDivStyled>
       <PokeballImgPages />
     </GlobalContainer>
