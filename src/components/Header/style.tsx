@@ -3,13 +3,12 @@ import styled from 'styled-components';
 export const GlobalContainer = styled.main`
   z-index: 1;
   width: 100vw;
-  width: 320px;
+  min-width: 320px;
   height: 100vh;
 `;
 
 export const HeaderContainer = styled.header`
   max-width: 1000px;
-  width: 320px;
   display: flex;
   align-items: center;
   justify-content: space-between;
