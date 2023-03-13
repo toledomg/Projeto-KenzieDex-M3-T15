@@ -6,7 +6,7 @@
 
 ## 🚀 Sobre o Projeto
 
-- <h4>A KenzieDex foi desenvolvida visando principalmente os amantes dos nossos pequeninos Pokémons, uma aplicação voltada á diversão, onde podemos conhecer vários tipos de Pokémons, podendo escolher um time e eventualmente podermos batalhar com outros Pokémons</h4>.
+- <h4>A KenzieDex foi desenvolvida visando principalmente os amantes dos nossos pequeninos Pokémons, uma aplicação voltada á diversão, onde podemos conhecer vários tipos de Pokémons, podendo escolher um time e eventualmente podermos batalhar com outros Pokémons.</h4>
 
 ## 💻 Features do projeto
 
