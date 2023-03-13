@@ -3,16 +3,9 @@ import { apiFake } from '../services/api';
 
 export interface iPokemon {
   name: string;
-  url: string | undefined;
+  url: string;
   id: number;
   pokemon: iPokemon;
-}
-
-export interface iSimpleCardProps {
-  name: string;
-  url?: string | undefined;
-  pokemon: iPokemon;
-  id: string;
 }
 
 export interface iData {
@@ -51,8 +44,6 @@ interface iPokemonContext {
   setPokeId: React.Dispatch<React.SetStateAction<string>>;
   pokeModal: null | iPokemon;
   setPokeModal: React.Dispatch<React.SetStateAction<null | iPokemon>>;
-  modal: boolean | iPokemon;
-  setModal: React.Dispatch<React.SetStateAction<boolean | iPokemon>>;
   pokemonTeam: IPokemonTeam[];
   setPokemonTeam: React.Dispatch<React.SetStateAction<IPokemonTeam[]>>;
   removePokemon: (current: number) => void;
@@ -82,9 +73,9 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   >([{ name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' }]);
   const [pokeId, setPokeId] = useState('1');
   const [pokeModal, setPokeModal] = useState<null | iPokemon>(null);
-  const [modal, setModal] = useState<boolean | iPokemon>(false);
   const [pokemonTeam, setPokemonTeam] = useState<IPokemonTeam[]>([]);
   const [searchModal, setSearchModal] = useState<null | iInfos>(null);
+
 
   const removePokemon = async (current: number) => {
     try {
@@ -112,14 +103,12 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
         setPokeId,
         pokeModal,
         setPokeModal,
-        modal,
-        setModal,
         pokemonTeam,
         setPokemonTeam,
         removePokemon,
         formatPokemonId,
         searchModal,
-        setSearchModal,
+        setSearchModal
       }}
     >
       {children}
