@@ -31,6 +31,33 @@ export interface IPokemonTeam {
   userId: string;
   pokemonTeam: iInfos;
   id: number;
+  power?: number; 
+}
+
+export interface IStats {
+  base_stat: number;
+  effort: number;
+  stat: {
+    name: string;
+    url: string;
+  };
+}
+
+export interface IRival {
+  stats: IStats[];
+  location_area_encounters: string;
+  url: string;
+  types: { slot: number; type: { name: string; url: string } }[];
+  name: string;
+  id: number;
+  order: number;
+  height: number;
+  weight: number;
+  abilities: { slot: number; ability: { name: string; url: string } }[];
+}
+
+export interface IRivalInfo {
+  stats: IStats[];
 }
 
 interface iPokemonContext {
@@ -50,6 +77,12 @@ interface iPokemonContext {
   formatPokemonId: (id: number) => string;
   searchModal: null | iInfos;
   setSearchModal: React.Dispatch<React.SetStateAction<null | iInfos>>;
+  power: number | IPokemonTeam[] | undefined;
+  setPower: React.Dispatch<React.SetStateAction<number | IPokemonTeam[] | undefined>>;
+  statBase: number | undefined;
+  setStatBase: React.Dispatch<React.SetStateAction<number | undefined>>;
+  cardBattle: IPokemonTeam[];
+  setCardBattle: React.Dispatch<React.SetStateAction<IPokemonTeam[]>>;
 }
 
 interface iPokemonContextProps {
@@ -75,6 +108,9 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [pokeModal, setPokeModal] = useState<null | iPokemon>(null);
   const [pokemonTeam, setPokemonTeam] = useState<IPokemonTeam[]>([]);
   const [searchModal, setSearchModal] = useState<null | iInfos>(null);
+  const [power, setPower] = useState<IPokemonTeam[] | number | undefined>(0);
+  const [statBase, setStatBase] = useState<number | undefined>(0);
+  const [cardBattle, setCardBattle] = useState<IPokemonTeam[]>([]);
 
 
   const removePokemon = async (current: number) => {
@@ -108,7 +144,13 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
         removePokemon,
         formatPokemonId,
         searchModal,
-        setSearchModal
+        setSearchModal,
+        power,
+        setPower,
+        statBase,
+        setStatBase,
+        cardBattle,
+        setCardBattle,
       }}
     >
       {children}
