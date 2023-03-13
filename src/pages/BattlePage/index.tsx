@@ -10,7 +10,7 @@ import { PokemonContext } from '../../providers/PokemonContext';
 import { apiFake } from '../../services/api';
 import { StyledTitle } from '../../styles/typography';
 import { TeamDivStyled } from '../TeamPage/style';
-import { BattleList } from '../../components/BattleList';
+import { BattleList } from '../../components/BattleArena/BattleList';
 
 const BattlePage = () => {
   const token = localStorage.getItem('@token');

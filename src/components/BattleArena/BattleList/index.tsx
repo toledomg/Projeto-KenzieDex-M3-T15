@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { StyledTeamUl } from './style';
 import { BattleCard } from './BattleCard';
-import { PokemonContext } from '../../providers/PokemonContext';
-import { StyledTitle } from '../../styles/typography';
+import { PokemonContext } from '../../../providers/PokemonContext';
+import { StyledTitle } from '../../../styles/typography';
 
 export const BattleList = () => {
   const token = localStorage.getItem('@token');

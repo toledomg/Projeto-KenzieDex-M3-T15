@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-param-reassign */
 import { useContext, useEffect, useState } from 'react';
 import {
@@ -9,42 +10,40 @@ import {
   StyledPokemonName,
   StyledRemovePokemon,
 } from './style';
-import { ITeamCardProps } from '../../../providers/@types';
+import { ITeamCardProps } from '../../../../providers/@types';
 import {
   iInfos,
   IPokemonTeam,
   PokemonContext,
-} from '../../../providers/PokemonContext';
+} from '../../../../providers/PokemonContext';
 
 export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
   const { pokemonTeam } = useContext(PokemonContext);
   const pokedexNumber: string = url.slice(34, -11);
   const [cardBattle, setCardBattle] = useState<IPokemonTeam[]>([]);
   const [statBase, setStatBase] = useState<any[]>([]);
-  const [power, setPower] = useState([]);
+  const [power, setPower] = useState<IPokemonTeam[]>([]);
 
   const addToCardBattle = (currentPokemon: number) => {
-    const pokeBattle = pokemonTeam.filter(
-      (pokemon) => pokemon.id === currentPokemon
+    setCardBattle(
+      pokemonTeam.filter((pokemon) => pokemon.id === currentPokemon)
     );
-    setCardBattle(pokeBattle);
-    return pokeBattle;
+    setPower(cardBattle);
+    console.log(cardBattle);
+    console.log(power);
   };
 
   useEffect(() => {
-    // eslint-disable-next-line arrow-body-style
     cardBattle.map((pokeTeam) => {
       setStatBase(pokeTeam.pokemonTeam.stats);
+      statBase.reduce((total, stat) => {
+        if (stat.base_stat > 0) {
+          setPower((total += stat.base_stat));
+        }
+        return total;
+      }, 0);
     });
-
-    statBase.reduce((total, stat) => {
-      if (stat.base_stat > 0) {
-        setPower((total += stat.base_stat));
-      }
-      return total;
-    }, 0);
-    console.log(power);
-  }, [cardBattle]);
+  }, [power]);
 
   return (
     <StyledCardCard>
