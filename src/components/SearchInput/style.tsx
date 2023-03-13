@@ -36,7 +36,6 @@ export const SearchInputContainer = styled.div`
     width: 100%;
   }
 
-<<<<<<< HEAD
   > button {
         background-color: transparent;
 
@@ -49,11 +48,5 @@ export const SearchInputContainer = styled.div`
       width: 436px;
       height: 39px;
 
-      
-=======
-  @media (min-width: 768px) {
-    width: 436px;
-    height: 39px;
->>>>>>> 2a729c60bb60c37205e33a6e275b5bc84845789c
   }
 `;
