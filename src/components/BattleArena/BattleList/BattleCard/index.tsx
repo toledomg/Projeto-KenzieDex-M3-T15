@@ -75,7 +75,7 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
     OpponentStats();
   };
 
-  function getRandomInt(max) {
+  function getRandomInt(max: any) {
     return Math.floor(Math.random() * max);
   }
 
@@ -95,7 +95,7 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
 
   useEffect(() => {
     cardBattle.map((pokeTeam) => {
-      pokeTeam.pokemonTeam.stats.reduce((total: number, stat: number) => {
+      pokeTeam.pokemonTeam.stats.reduce((total: any , stat: { base_stat: any; }) => {
         if (stat.base_stat) {
           setPower((total += stat.base_stat));
         }
