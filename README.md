@@ -4,21 +4,19 @@
   <img  alt="Pokedex Logo" title="Pokedex" src="src\assets\kenzieDex2.png" />
 </p>
 
-<h1 align="center">
-🚧 Em Construção 🚧
-</h1>
-
 ## 🚀 Sobre o Projeto
 
-- A Pokédex foi desenvolvida usando Vite + ReactJS + TypeScript. Utilizamos styled-components, Axios, SweetAlert2, yup para validar formulários.
+- <h4>A KenzieDex foi desenvolvida visando principalmente os amantes dos nossos pequeninos Pokémons, uma aplicação voltada á diversão, onde podemos conhecer vários tipos de Pokémons, podendo escolher um time e eventualmente podermos batalhar com outros Pokémons</h4>.
 
 ## 💻 Features do projeto
 
-- Opção de pesquisar pokémon
-- Filtrar pokémons pelo tipo
-- Responsividade
+- Opção de pesquisar Pokémons
+- Informações sobre Pokémons
+- Criar Times
+- Batalhar com outros Pokémons
 - Validação de formulário
-- Validação de dados da API
+- Consumo de API
+- Responsividade
 
 ## 🚀 Tecnologias
 
@@ -36,14 +34,13 @@
 ## 🔨 API
 
 - [API: PokéApi](https://pokeapi.co/)
+- [URL Fake API](https://kenziedex.onrender.com)
 
 ## 📌 Links
 
 - [Deploy](https://kenziedex.vercel.app/)
 
 - [URL Repo Fake API](https://github.com/M3-T15-Projeto-Front-2023/KenzieDex-Json-server.git)
-
-- [URL Fake API](#)
 
 - [URL Repo GIT](https://github.com/M3-T15-Projeto-Front-2023/KenzieDex-M3-T15-Front-2023)
 
