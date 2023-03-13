@@ -68,7 +68,7 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
   useEffect(() => {
     const loadRival = async () => {
       try {
-        const response = await api.get(`pokemon/4`);
+        const response = await api.get(`pokemon/${getRandomInt(904)}`);
         setRival(response.data);
         /* console.log(response.data); */
       } catch (error) {
@@ -78,25 +78,22 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
     loadRival();
   }, []);
 
-  console.log(rival.stats[0].base_stat);
-  
+  /* adc */
+  /* adc */
 
   const opponent = rival.stats.reduce((total, stat) => {
       if (stat.base_stat) {
-       
-        
         setRivalPower((total += stat.base_stat));
-       
-      
-      return total; 
+      }
+      return total;
     }, 0);
   
-  
+  console.log(rivalPower);
 
 
   useEffect(() => {
     cardBattle.map((pokeTeam) => {
-      pokeTeam.pokemonTeam.stats.reduce((total , stat ) => {
+      pokeTeam.pokemonTeam.stats.reduce((total : number, stat : number) => {
         if (stat.base_stat) {
           setPower((total += stat.base_stat));
         }
