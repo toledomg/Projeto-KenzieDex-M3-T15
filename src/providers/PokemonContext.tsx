@@ -77,12 +77,12 @@ interface iPokemonContext {
   formatPokemonId: (id: number) => string;
   searchModal: null | iInfos;
   setSearchModal: React.Dispatch<React.SetStateAction<null | iInfos>>;
-  power: IPokemonTeam[];
-  setPower: React.Dispatch<React.SetStateAction<IPokemonTeam[]>>;
-  opponent: IRival | undefined;
-  setOpponent: React.Dispatch<React.SetStateAction<IRival | undefined>>;
+  power: number | IPokemonTeam[] | undefined;
+  setPower: React.Dispatch<React.SetStateAction<number | IPokemonTeam[] | undefined>>;
   statBase: number | undefined;
   setStatBase: React.Dispatch<React.SetStateAction<number | undefined>>;
+  cardBattle: IPokemonTeam[];
+  setCardBattle: React.Dispatch<React.SetStateAction<IPokemonTeam[]>>;
 }
 
 interface iPokemonContextProps {
@@ -108,9 +108,9 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [pokeModal, setPokeModal] = useState<null | iPokemon>(null);
   const [pokemonTeam, setPokemonTeam] = useState<IPokemonTeam[]>([]);
   const [searchModal, setSearchModal] = useState<null | iInfos>(null);
-  const [power, setPower] = useState<IPokemonTeam[]>([]);
-  const [opponent, setOpponent] = useState<IRival | undefined>();
+  const [power, setPower] = useState<IPokemonTeam[] | number | undefined>(0);
   const [statBase, setStatBase] = useState<number | undefined>(0);
+  const [cardBattle, setCardBattle] = useState<IPokemonTeam[]>([]);
 
 
   const removePokemon = async (current: number) => {
@@ -147,10 +147,10 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
         setSearchModal,
         power,
         setPower,
-        opponent,
-        setOpponent,
         statBase,
         setStatBase,
+        cardBattle,
+        setCardBattle,
       }}
     >
       {children}
