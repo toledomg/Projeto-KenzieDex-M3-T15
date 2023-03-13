@@ -1,15 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const SearchInputContainer = styled.div`
   width: 280px;
   height: 25px;
 
-  background-color: ${({theme}) => theme.colors.gray2};
-  
-  border: 1px solid ${({theme}) => theme.colors.secondary.default};
+  background-color: ${({ theme }) => theme.colors.gray2};
+
+  border: 1px solid ${({ theme }) => theme.colors.secondary.default};
   border-radius: 4px;
 
-  color: ${({theme}) => theme.colors.gray0};
+  color: ${({ theme }) => theme.colors.gray0};
 
   margin: 0 auto;
 
@@ -25,17 +25,18 @@ export const SearchInputContainer = styled.div`
 
   padding: 0 5px;
 
-  >input {
+  > input {
     background-color: transparent;
 
     border: none;
     outline: none;
 
-    color: ${({theme}) => theme.colors.gray0};
+    color: ${({ theme }) => theme.colors.gray0};
 
     width: 100%;
   }
 
+<<<<<<< HEAD
   > button {
         background-color: transparent;
 
@@ -49,5 +50,10 @@ export const SearchInputContainer = styled.div`
       height: 39px;
 
       
+=======
+  @media (min-width: 768px) {
+    width: 436px;
+    height: 39px;
+>>>>>>> 2a729c60bb60c37205e33a6e275b5bc84845789c
   }
-`
+`;

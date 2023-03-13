@@ -14,6 +14,7 @@ export interface iData {
 }
 
 export interface iInfos {
+  stats?: any;
   location_area_encounters: string;
   url: string;
   types: { slot: number; type: { name: string; url: string } }[];
@@ -34,9 +35,9 @@ export interface IPokemonTeam {
 interface iPokemonContext {
   pokemonList: iPokemon[];
   setPokemonList: React.Dispatch<React.SetStateAction<iPokemon[]>>;
-  pokemonData: iData[] | string | iPokemon;
+  pokemonData: string | iPokemon | iData[] | undefined;
   setPokemonData: React.Dispatch<
-    React.SetStateAction<iData[] | string | iPokemon>
+    React.SetStateAction<string | iPokemon | iData[] | undefined>
   >;
   pokeId: string;
   setPokeId: React.Dispatch<React.SetStateAction<string>>;
@@ -66,9 +67,9 @@ export const formatPokemonId = (id: number) => {
 
 export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [pokemonList, setPokemonList] = useState<iPokemon[]>([]);
-  const [pokemonData, setPokemonData] = useState<iData[] | string | iPokemon>([
-    { name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
-  ]);
+  const [pokemonData, setPokemonData] = useState<
+    iData[] | string | undefined | iPokemon
+  >([{ name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' }]);
   const [pokeId, setPokeId] = useState('1');
   const [pokeModal, setPokeModal] = useState<null | iPokemon>(null);
   const [pokemonTeam, setPokemonTeam] = useState<IPokemonTeam[]>([]);

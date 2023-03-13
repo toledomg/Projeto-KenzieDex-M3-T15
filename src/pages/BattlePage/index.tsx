@@ -1,19 +1,22 @@
-import React, { useContext, useEffect } from 'react';
+/* eslint-disable array-callback-return */
+/* eslint-disable no-return-assign */
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { BattleSectionStyled } from './styles';
 import Header from '../../components/Header';
 import { GlobalContainer } from '../../components/Header/style';
-import PokeballImg from '../../components/HeaderLogin/PokeballImg';
 import PokeballImgPages from '../../components/HeaderLogin/PokeballImg/lmagePages/lmagePages';
-import { TeamList } from '../../components/TeamList';
 import { PokemonContext } from '../../providers/PokemonContext';
 import { apiFake } from '../../services/api';
 import { StyledTitle } from '../../styles/typography';
 import { TeamDivStyled } from '../TeamPage/style';
+import { BattleList } from '../../components/BattleArena/BattleList';
 
 const BattlePage = () => {
   const token = localStorage.getItem('@token');
   const userId = localStorage.getItem('@userID');
   const { setPokemonTeam, pokemonTeam } = useContext(PokemonContext);
+  const [statValue, setStatValue] = useState([]);
 
   useEffect(() => {
     if (userId) {
@@ -36,6 +39,8 @@ const BattlePage = () => {
     }
   }, []);
 
+  // console.log(pokemonTeam);
+
   return (
     <GlobalContainer>
       <Header />
@@ -48,6 +53,10 @@ const BattlePage = () => {
             Voltar para Team
           </Link>
         </div>
+        <BattleList />
+        <BattleSectionStyled>
+          <h1>teste</h1>
+        </BattleSectionStyled>
       </TeamDivStyled>
       <PokeballImgPages />
     </GlobalContainer>
