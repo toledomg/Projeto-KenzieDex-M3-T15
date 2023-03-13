@@ -39,8 +39,6 @@ const BattlePage = () => {
     }
   }, []);
 
-  // console.log(pokemonTeam);
-
   return (
     <GlobalContainer>
       <Header />

@@ -13,7 +13,6 @@ const InfinityScroll = ({ callback }: IInfinityScrollProps) => {
 
       if (ratio > 0) {
         callback();
-        // console.log(ratio);
       }
     });
 

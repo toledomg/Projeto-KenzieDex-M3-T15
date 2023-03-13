@@ -42,32 +42,34 @@ interface IRivalInfo {
   stats: IStats[];
 }
 export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
-  const { pokemonTeam, power, setPower, statBase, setStatBase, cardBattle, setCardBattle } = useContext(PokemonContext);
+  const {
+    pokemonTeam,
+    power,
+    setPower,
+    statBase,
+    setStatBase,
+    cardBattle,
+    setCardBattle,
+  } = useContext(PokemonContext);
   const pokedexNumber: string = url.slice(34, -11);
-  
+
   const [opponent, setOpponent] = useState<IRival | undefined>();
   const [opponentPower, setOpponentPower] = useState<IRivalInfo[]>([]);
   function OpponentStats() {
     const stats = opponent?.stats.reduce(
-      (acc, current) =>
-        /* console.log(current.base_stat); */
-        acc + current.base_stat,
+      (acc, current) => acc + current.base_stat,
       0
     );
     setStatBase(stats);
   }
- /*  console.log(`Oponente ${statBase}`);
-  console.log(`Meu pokemon ${power}`); */
-  
-  
-  
+
   const addToCardBattle = (currentPokemon: number) => {
     setCardBattle(
       pokemonTeam.filter((pokemon) => pokemon.id === currentPokemon)
     );
     OpponentStats();
   };
-  
+
   function getRandomInt(max: any) {
     return Math.floor(Math.random() * max);
   }
@@ -84,15 +86,16 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
   }, [statBase]);
 
   useEffect(() => {
-    
     cardBattle.map((pokeTeam) => {
-      pokeTeam.pokemonTeam.stats.reduce((total: any , stat: { base_stat: any; }) => {
-        if (stat.base_stat) {
-          setPower((total += stat.base_stat));
-          
-        }
-        return total;
-      }, 0);
+      pokeTeam.pokemonTeam.stats.reduce(
+        (total: any, stat: { base_stat: any }) => {
+          if (stat.base_stat) {
+            setPower((total += stat.base_stat));
+          }
+          return total;
+        },
+        0
+      );
     });
   }, [cardBattle]);
   return (
@@ -114,7 +117,7 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
           alt={name}
         />
       </StyledDivCard>
-      <BattleTeam/>
+      <BattleTeam />
     </StyledCardCard>
   );
 };
