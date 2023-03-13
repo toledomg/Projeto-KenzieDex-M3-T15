@@ -41,25 +41,39 @@ export interface IRival {
 }
 
 interface IRivalInfo {
-  stats: IStats[]
+  stats: IStats[];
 }
 
 export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
   const { pokemonTeam } = useContext(PokemonContext);
   const pokedexNumber: string = url.slice(34, -11);
   const [cardBattle, setCardBattle] = useState<IPokemonTeam[]>([]);
-  const [statBase, setStatBase] = useState<any[]>([]);
+  const [statBase, setStatBase] = useState<number | undefined>(0);
   const [power, setPower] = useState<IPokemonTeam[]>([]);
-  const [rival, setRival] = useState<IRival>([]);
-  const [rivalPower, setRivalPower] = useState<IRivalInfo[]>([]);
+  const [opponent, setOpponent] = useState<IRival | undefined>();
+  const [opponentPower, setOpponentPower] = useState<IRivalInfo[]>([]);
 
+  function OpponentStats() {
+    const stats = opponent?.stats.reduce(
+      (acc, current) =>
+        /* console.log(current.base_stat); */
+
+        acc + current.base_stat,
+      0
+    );
+    setStatBase(stats);
+  }
+  console.log(`Oponente ${statBase}`);
+  console.log(`Meu pokemon ${power}`);
+  
+  
+  
   const addToCardBattle = (currentPokemon: number) => {
     setCardBattle(
       pokemonTeam.filter((pokemon) => pokemon.id === currentPokemon)
     );
+    OpponentStats();
   };
-  console.log(cardBattle);
-  
 
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -69,31 +83,19 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
     const loadRival = async () => {
       try {
         const response = await api.get(`pokemon/${getRandomInt(904)}`);
-        setRival(response.data);
-        /* console.log(response.data); */
+        setOpponent(response.data);
+
       } catch (error) {
         console.log(error);
       }
     };
     loadRival();
-  }, []);
-
-  /* adc */
-  /* adc */
-
-  const opponent = rival.stats.reduce((total, stat) => {
-      if (stat.base_stat) {
-        setRivalPower((total += stat.base_stat));
-      }
-      return total;
-    }, 0);
-  
-  console.log(rivalPower);
+  }, [statBase]);
 
 
   useEffect(() => {
     cardBattle.map((pokeTeam) => {
-      pokeTeam.pokemonTeam.stats.reduce((total : number, stat : number) => {
+      pokeTeam.pokemonTeam.stats.reduce((total: number, stat: number) => {
         if (stat.base_stat) {
           setPower((total += stat.base_stat));
         }
@@ -101,7 +103,6 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
       }, 0);
     });
   }, [cardBattle]);
-  
 
   return (
     <StyledCardCard>
