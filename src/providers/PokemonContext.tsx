@@ -31,6 +31,33 @@ export interface IPokemonTeam {
   userId: string;
   pokemonTeam: iInfos;
   id: number;
+  power?: number; 
+}
+
+export interface IStats {
+  base_stat: number;
+  effort: number;
+  stat: {
+    name: string;
+    url: string;
+  };
+}
+
+export interface IRival {
+  stats: IStats[];
+  location_area_encounters: string;
+  url: string;
+  types: { slot: number; type: { name: string; url: string } }[];
+  name: string;
+  id: number;
+  order: number;
+  height: number;
+  weight: number;
+  abilities: { slot: number; ability: { name: string; url: string } }[];
+}
+
+export interface IRivalInfo {
+  stats: IStats[];
 }
 
 interface iPokemonContext {
@@ -50,6 +77,12 @@ interface iPokemonContext {
   formatPokemonId: (id: number) => string;
   searchModal: null | iInfos;
   setSearchModal: React.Dispatch<React.SetStateAction<null | iInfos>>;
+  power: IPokemonTeam[];
+  setPower: React.Dispatch<React.SetStateAction<IPokemonTeam[]>>;
+  opponent: IRival | undefined;
+  setOpponent: React.Dispatch<React.SetStateAction<IRival | undefined>>;
+  statBase: number | undefined;
+  setStatBase: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 
 interface iPokemonContextProps {
@@ -75,6 +108,9 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [pokeModal, setPokeModal] = useState<null | iPokemon>(null);
   const [pokemonTeam, setPokemonTeam] = useState<IPokemonTeam[]>([]);
   const [searchModal, setSearchModal] = useState<null | iInfos>(null);
+  const [power, setPower] = useState<IPokemonTeam[]>([]);
+  const [opponent, setOpponent] = useState<IRival | undefined>();
+  const [statBase, setStatBase] = useState<number | undefined>(0);
 
 
   const removePokemon = async (current: number) => {
@@ -108,7 +144,13 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
         removePokemon,
         formatPokemonId,
         searchModal,
-        setSearchModal
+        setSearchModal,
+        power,
+        setPower,
+        opponent,
+        setOpponent,
+        statBase,
+        setStatBase,
       }}
     >
       {children}

@@ -14,43 +14,19 @@ import { ITeamCardProps } from '../../../../providers/@types';
 import {
   iInfos,
   IPokemonTeam,
+  IRival,
+  IRivalInfo,
   PokemonContext,
 } from '../../../../providers/PokemonContext';
 import { api } from '../../../../services/api';
+import BattleTeam from '../../BattleTeam';
 
-interface IStats {
-  base_stat: number;
-  effort: number;
-  stat: {
-    name: string;
-    url: string;
-  };
-}
 
-export interface IRival {
-  stats: IStats[];
-  location_area_encounters: string;
-  url: string;
-  types: { slot: number; type: { name: string; url: string } }[];
-  name: string;
-  id: number;
-  order: number;
-  height: number;
-  weight: number;
-  abilities: { slot: number; ability: { name: string; url: string } }[];
-}
-
-interface IRivalInfo {
-  stats: IStats[];
-}
 
 export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
-  const { pokemonTeam } = useContext(PokemonContext);
+  const { pokemonTeam, power, setPower, opponent, setOpponent, setStatBase, statBase } = useContext(PokemonContext);
   const pokedexNumber: string = url.slice(34, -11);
   const [cardBattle, setCardBattle] = useState<IPokemonTeam[]>([]);
-  const [statBase, setStatBase] = useState<number | undefined>(0);
-  const [power, setPower] = useState<IPokemonTeam[]>([]);
-  const [opponent, setOpponent] = useState<IRival | undefined>();
   const [opponentPower, setOpponentPower] = useState<IRivalInfo[]>([]);
 
   function OpponentStats() {
@@ -63,7 +39,7 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
     );
     setStatBase(stats);
   }
-  console.log(`Oponente ${statBase}`);
+  /* console.log(`Oponente ${statBase}`); */
   console.log(`Meu pokemon ${power}`);
   
   
@@ -94,6 +70,7 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
 
 
   useEffect(() => {
+    // eslint-disable-next-line array-callback-return
     cardBattle.map((pokeTeam) => {
       pokeTeam.pokemonTeam.stats.reduce((total: any , stat: { base_stat: any; }) => {
         if (stat.base_stat) {
@@ -126,33 +103,8 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
           alt={name}
         />
       </StyledDivCard>
-
-      {/* <StyledPokemonInformation>
-        <h1>Pokedex Data</h1>
-
-        <StyledInformation>
-          <span>Order:</span>
-          <span>{formatPokemonId(order)}</span>
-        </StyledInformation>
-
-        <StyledInformation>
-          <span>Height:</span>
-          <span>{height / 10}m</span>
-        </StyledInformation>
-
-        <StyledInformation>
-          <span>Weight:</span>
-          <span>{weight / 10}kg</span>
-        </StyledInformation>
-
-        <StyledInformation>
-          <span>Main ability:</span>
-          <span>
-            {abilities[0].ability.name[0].toUpperCase() +
-              abilities[0]!.ability.name.slice(1)}
-          </span>
-        </StyledInformation>
-      </StyledPokemonInformation> */}
+      <BattleTeam/>
+      
     </StyledCardCard>
   );
 };
