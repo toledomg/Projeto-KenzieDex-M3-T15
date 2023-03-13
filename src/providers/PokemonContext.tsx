@@ -26,6 +26,7 @@ export interface iInfos {
   abilities: { slot: number; ability: { name: string; url: string } }[];
 }
 
+
 export interface IPokemonTeam {
   userId: string;
   pokemonTeam: iInfos;
