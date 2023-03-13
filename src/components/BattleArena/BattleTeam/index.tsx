@@ -1,20 +1,25 @@
+/* eslint-disable jsx-a11y/heading-has-content */
 import { useContext, useEffect, useState } from 'react';
-import { IPokemonTeam, PokemonContext } from '../../../providers/PokemonContext';
+import { PokemonContext } from '../../../providers/PokemonContext';
 
 const BattleTeam = () => {
-     const {power, statBase} = useContext(PokemonContext)
+  const { power, statBase } = useContext(PokemonContext);
 
-     useEffect(() => {
-       const theWinner = power > statBase ? power : statBase;
+  const [winner, setWinner] = useState();
+  const [looser, setLooser] = useState();
 
-       console.log(theWinner);
-      }, [])
+  useEffect(() => {
+    const theWinner =
+      power! > statBase!
+        ? console.log(`You WIN with ${power} points x ${statBase} points`)
+        : console.log(`You LOOSE with ${power} points x ${statBase} points`);
+  }, []);
 
-     
-     /* console.log(`Oponente ${statBase}`);
-  console.log(`Meu pokemon ${power}`); */
-     
-     return <div>Battle</div>;
+  return (
+    <div>
+      <h1 />
+    </div>
+  );
 };
 
 export default BattleTeam;

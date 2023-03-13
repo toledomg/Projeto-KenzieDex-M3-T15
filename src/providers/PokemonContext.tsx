@@ -26,12 +26,11 @@ export interface iInfos {
   abilities: { slot: number; ability: { name: string; url: string } }[];
 }
 
-
 export interface IPokemonTeam {
   userId: string;
   pokemonTeam: iInfos;
   id: number;
-  power?: number; 
+  power?: number;
 }
 
 export interface IStats {
@@ -78,7 +77,9 @@ interface iPokemonContext {
   searchModal: null | iInfos;
   setSearchModal: React.Dispatch<React.SetStateAction<null | iInfos>>;
   power: number | IPokemonTeam[] | undefined;
-  setPower: React.Dispatch<React.SetStateAction<number | IPokemonTeam[] | undefined>>;
+  setPower: React.Dispatch<
+    React.SetStateAction<number | IPokemonTeam[] | undefined>
+  >;
   statBase: number | undefined;
   setStatBase: React.Dispatch<React.SetStateAction<number | undefined>>;
   cardBattle: IPokemonTeam[];
@@ -111,7 +112,6 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [power, setPower] = useState<IPokemonTeam[] | number | undefined>(0);
   const [statBase, setStatBase] = useState<number | undefined>(0);
   const [cardBattle, setCardBattle] = useState<IPokemonTeam[]>([]);
-
 
   const removePokemon = async (current: number) => {
     try {
