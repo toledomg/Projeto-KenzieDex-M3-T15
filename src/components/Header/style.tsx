@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const GlobalContainer = styled.main`
   z-index: 1;
-  width: 100%;
+  width: 100vw;
+  min-width: 350px;
   height: 100vh;
 `;
 
