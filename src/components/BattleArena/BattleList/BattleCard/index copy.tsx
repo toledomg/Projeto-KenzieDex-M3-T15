@@ -28,10 +28,11 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
     setCardBattle(
       pokemonTeam.filter((pokemon) => pokemon.id === currentPokemon)
     );
+    // setPower(cardBattle);
+    // console.log(cardBattle.pokemonTeam.stats);
   };
 
   console.log(power);
-
   useEffect(() => {
     cardBattle.map((pokeTeam) => {
       pokeTeam.pokemonTeam.stats.reduce((total, stat) => {
