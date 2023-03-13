@@ -2,14 +2,13 @@ import styled from 'styled-components';
 
 export const GlobalContainer = styled.main`
   z-index: 1;
-  width: 100%;
+  width: 100vw;
+  min-width: 320px;
   height: 100vh;
 `;
 
 export const HeaderContainer = styled.header`
   max-width: 1000px;
-  min-width: 320px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,10 +29,14 @@ export const HeaderContainer = styled.header`
     display: flex;
     align-items: center;
     gap: 10px;
+
+    font-size: 40px;
+
+    color: ${({theme}) => theme.colors.gray0}
   }
 
   nav > a {
-    font-size: 25px;
+    font-size: 20px;
     color: ${({ theme }) => theme.colors.gray1};
     cursor: pointer;
   }
@@ -44,7 +47,7 @@ export const HeaderContainer = styled.header`
 `;
 
 export const Logo = styled.img`
-  width: 200px;
+  width: 150px;
   height: auto;
 `;
 

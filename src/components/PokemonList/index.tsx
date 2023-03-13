@@ -4,10 +4,11 @@ import { PokemonContext } from '../../providers/PokemonContext';
 import { api } from '../../services/api';
 import InfinityScroll from '../InfinityScroll';
 import PokeModal from '../PokeModal';
+import SearchModal from '../SearchModal';
 import SimpleCard from '../SimpleCard';
 
 const PokemonList = () => {
-  const { setPokemonList, pokemonList, pokeModal } = useContext(PokemonContext);
+  const { setPokemonList, pokemonList, pokeModal, searchModal } = useContext(PokemonContext);
   const [pagina, setPagina] = useState(0);
 
   useEffect(() => {
@@ -43,6 +44,7 @@ const PokemonList = () => {
       ))}
 
       {pokeModal && <PokeModal />}
+      {searchModal && <SearchModal />}
       <InfinityScroll
         callback={() => setPagina((previousPage) => previousPage + 1)}
       />

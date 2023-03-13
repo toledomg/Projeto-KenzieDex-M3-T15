@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const PokemonContainer = styled.div`
   max-width: 1020px;
+  min-width: 320px;
   max-height: 80vh;
   margin: 0 auto;
   display: flex;

@@ -1,6 +1,6 @@
 /* eslint-disable no-unsafe-optional-chaining */
 import { useNavigate } from 'react-router';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import {
   ModalContainer,
   Modal,
@@ -15,60 +15,25 @@ import {
 } from './style';
 import {
   formatPokemonId,
-  iInfos,
   PokemonContext,
 } from '../../providers/PokemonContext';
-import { api, apiFake } from '../../services/api';
+import { apiFake } from '../../services/api';
 import { toastAlert } from '../../styles/toast';
 
 const userId = Number(localStorage.getItem('@userID'));
 
 const token = localStorage.getItem('@token');
 
-const PokeModal = () => {
-  const { setPokeModal, pokeModal, pokemonTeam, setPokemonTeam } =
-    useContext(PokemonContext);
 
+const SearchModal = () => {
+  const {searchModal, setSearchModal, pokemonTeam} = useContext(PokemonContext)
+  
   const navigate = useNavigate();
 
-  const [pokemon, setPokemon] = useState<null | iInfos>(null);
   const data = {
     userId,
-    pokemonTeam: pokemon,
+    pokemonTeam: searchModal,
   };
-
-  useEffect(() => {
-    if (userId) {
-      const getTeam = async () => {
-        try {
-          const response = await apiFake.get('teams', {
-            params: {
-              userId,
-            },
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          setPokemonTeam(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      getTeam();
-    }
-  }, []);
-
-  useEffect(() => {
-    const loadSingleData = async () => {
-      try {
-        const response = await api.get(pokeModal!.url);
-        setPokemon(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    loadSingleData();
-  }, []);
 
   const addTeam = async () => {
     if (pokemonTeam.length < 6) {
@@ -79,42 +44,38 @@ const PokeModal = () => {
           },
         });
         toastAlert('success', 'Pokemon adicionado ao time!');
-        setPokeModal(null);
+        setSearchModal(null);
       } catch (error) {
         console.log(error);
       }
     } else {
-      setPokeModal(null);
+      setSearchModal(null);
       toastAlert('warning', 'Seu poketeam está cheio...');
       navigate('/team');
     }
   };
 
-  if (!pokemon) {
-    return pokemon;
-  }
-
   return (
     <ModalContainer>
       <Modal>
-        <ModalClose onClick={() => setPokeModal(null)}>X</ModalClose>
+        <ModalClose onClick={() => setSearchModal(null)}>X</ModalClose>
         <div>
           <ModalHeader>
             <PokeTypes>
               <>
                 <PokemonName>
-                  {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
+                  {searchModal!.name[0].toUpperCase() + searchModal!.name.slice(1)}
                 </PokemonName>
                 <PokemonType>
-                  {pokemon.types[0]!.type.name[0].toUpperCase() +
-                    pokemon.types[0].type.name.slice(1)}
+                  {searchModal!.types[0].type.name[0].toUpperCase() +
+                    searchModal!.types[0].type.name.slice(1)}
                 </PokemonType>
               </>
             </PokeTypes>
 
             <PokemonModalImage
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
-              alt={pokemon.name}
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${searchModal!.id}.png`}
+              alt={searchModal!.name}
             />
 
             <AddButton onClick={() => addTeam()}>Add to team</AddButton>
@@ -125,24 +86,24 @@ const PokeModal = () => {
 
             <section>
               <span>Order:</span>
-              <span>{formatPokemonId(pokemon.order)}</span>
+              <span>{formatPokemonId(searchModal!.order)}</span>
             </section>
 
             <section>
               <span>Height:</span>
-              <span>{pokemon.height / 10} m</span>
+              <span>{searchModal!.height / 10} m</span>
             </section>
 
             <section>
               <span>Weight:</span>
-              <span>{(Number(pokemon.weight) / 10).toFixed(2)} kg</span>
+              <span>{(Number(searchModal!.weight) / 10).toFixed(2)} kg</span>
             </section>
 
             <section>
               <span>Main ability:</span>
               <span>
-                {pokemon.abilities[0]?.ability.name[0].toUpperCase() +
-                  pokemon.abilities[0]?.ability.name.slice(1)}
+                {searchModal!.abilities[0].ability.name[0].toUpperCase() +
+                  searchModal!.abilities[0].ability.name.slice(1)}
               </span>
             </section>
           </ModalMain>
@@ -152,4 +113,4 @@ const PokeModal = () => {
   );
 };
 
-export default PokeModal;
+export default SearchModal;

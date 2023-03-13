@@ -7,11 +7,11 @@ export const TeamDivStyled = styled.div`
   margin: 0 auto;
   margin-top: 1.5rem;
 
-  @media(min-width: 375px) {
+  @media (min-width: 375px) {
     width: 90%;
   }
 
-  @media(min-width: 1440px) {
+  @media (min-width: 1440px) {
     width: 100%;
   }
 
@@ -22,7 +22,11 @@ export const TeamDivStyled = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    a{color: ${({ theme }) => theme.colors.primary.default}}
-    h2{margin-bottom:0px}
+    a {
+      color: ${({ theme }) => theme.colors.primary.default};
+    }
+    h2 {
+      margin-bottom: 0px;
+    }
   }
 `;
