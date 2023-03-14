@@ -61,3 +61,9 @@ Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+## ✒️ Autores
+
+- **Alexsandro Toledo** - [Github](https://github.com/orgs/M3-T15-Projeto-Front-2023/people/toledomg)
+- **Lucas Soares** - [Github](https://github.com/orgs/M3-T15-Projeto-Front-2023/people/lucaslamas-13)
+- **Michel Mendes** - [Github](https://github.com/orgs/M3-T15-Projeto-Front-2023/people/michelmnds)
