@@ -21,21 +21,21 @@ const Header = () => {
     <>
       <HeaderContainer>
         <section>
-          <Link className='redirect' to='/home'>
+          <Link className='redirect' to='/home' title='KenzieDex'>
             <Logo src={logo} alt='Logo' onClick={refreshPage} />
           </Link>
 
           <nav>
-            <Link to='/home'>
+            <Link to='/home' title='Go to page Home page'>
               <RiHome2Line />
             </Link>
-            <Link to='/team'>
+            <Link to='/team' title='Go to page Team page'>
               <TbPokeball />
             </Link>
-            <Link to='/battle'>
+            <Link to='/battle' title='Go to page Battle page'>
               <MdCatchingPokemon />
             </Link>
-            <Link to='/' onClick={() => userLogout()}>
+            <Link to='/' onClick={() => userLogout()} title='Log out'>
               <IoExitOutline />
             </Link>
           </nav>
