@@ -4,21 +4,19 @@
   <img  alt="Pokedex Logo" title="Pokedex" src="src\assets\kenzieDex2.png" />
 </p>
 
-<h1 align="center">
-🚧 Em Construção 🚧
-</h1>
-
 ## 🚀 Sobre o Projeto
 
-- A Pokédex foi desenvolvida usando Vite + ReactJS + TypeScript. Utilizamos styled-components, Axios, SweetAlert2, yup para validar formulários.
+- <p style="text-align: justify;">A KenzieDex foi desenvolvida visando principalmente os amantes dos nossos pequeninos Pok&eacute;mons, uma aplica&ccedil;&atilde;o voltada &aacute; divers&atilde;o, onde podemos conhecer v&aacute;rios tipos de Pok&eacute;mons, podendo escolher um time e eventualmente podermos batalhar com outros Pok&eacute;mons</p>
 
 ## 💻 Features do projeto
 
-- Opção de pesquisar pokémon
-- Filtrar pokémons pelo tipo
-- Responsividade
+- Opção de pesquisar Pokémons
+- Informações sobre Pokémons
+- Criar Times
+- Batalhar com outros Pokémons
 - Validação de formulário
-- Validação de dados da API
+- Consumo de API
+- Responsividade
 
 ## 🚀 Tecnologias
 
@@ -36,18 +34,17 @@
 ## 🔨 API
 
 - [API: PokéApi](https://pokeapi.co/)
+- [URL Fake API](https://kenziedex.onrender.com)
 
 ## 📌 Links
 
-- [URL VERCEL](https://m3-t15-front-2023.vercel.app/)
+- [Deploy](https://kenziedex.vercel.app/)
 
 - [URL Repo Fake API](https://github.com/M3-T15-Projeto-Front-2023/KenzieDex-Json-server.git)
 
-- [URL Fake API](#)
-
 - [URL Repo GIT](https://github.com/M3-T15-Projeto-Front-2023/KenzieDex-M3-T15-Front-2023)
 
-- [URL FIGMA](URL)
+- [URL FIGMA](https://www.figma.com/file/ZzPF6iwsmz8AS0YloZbqyq/KenzieDex)
 
 ## 🍼 Como rodar este projeto
 
@@ -64,3 +61,9 @@ Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+## ✒️ Autores
+
+- **Alexsandro Toledo** - [Github](https://github.com/orgs/M3-T15-Projeto-Front-2023/people/toledomg)
+- **Lucas Soares** - [Github](https://github.com/orgs/M3-T15-Projeto-Front-2023/people/lucaslamas-13)
+- **Michel Mendes** - [Github](https://github.com/orgs/M3-T15-Projeto-Front-2023/people/michelmnds)
