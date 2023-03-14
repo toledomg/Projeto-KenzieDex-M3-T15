@@ -17,6 +17,7 @@ import { StyledTitle } from '../../styles/typography';
 import { TeamDivStyled } from '../TeamPage/style';
 import { BattleList } from '../../components/BattleArena/BattleList';
 import { toastAlert, toasts } from '../../styles/toast';
+import BatalhaPokemon from '../../components/BattleArena/teste';
 
 const BattlePage = () => {
   const token = localStorage.getItem('@token');

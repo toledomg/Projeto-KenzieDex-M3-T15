@@ -12,12 +12,8 @@ import {
   StyledRemovePokemon,
 } from './style';
 import { ITeamCardProps } from '../../../../providers/@types';
-import {
-  PokemonContext,
-} from '../../../../providers/PokemonContext';
+import { PokemonContext } from '../../../../providers/PokemonContext';
 import { api } from '../../../../services/api';
-import BattleTeam from '../../BattleTeam';
-import { PokemonBattleCard } from '../../../../pages/BattlePage/styles';
 
 export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
   const {
@@ -31,21 +27,21 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
   } = useContext(PokemonContext);
   const pokedexNumber: string = url.slice(34, -11);
 
-  const { yourPokemon, setYourPokemon, opponent, setOpponent } = useContext(PokemonContext)
-  
+  const { yourPokemon, setYourPokemon, opponent, setOpponent } =
+    useContext(PokemonContext);
+
   useEffect(() => {
-   if (opponent !== undefined){
-     setStatBase(opponent!.stats.reduce(
-       (total: any, stat: { base_stat: any }) => {
-         if (stat.base_stat) {
-           setPower((total += stat.base_stat));
-         }
-         return total;
-       },
-       0
-     ))
+    if (opponent !== undefined) {
+      setStatBase(
+        opponent!.stats.reduce((total: any, stat: { base_stat: any }) => {
+          if (stat.base_stat) {
+            setPower((total += stat.base_stat));
+          }
+          return total;
+        }, 0)
+      );
     }
-  }, [opponent])
+  }, [opponent]);
 
   function getRandomInt(max: any) {
     return Math.floor(Math.random() * max);
@@ -54,34 +50,29 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
     try {
       const response = await api.get(`pokemon/${getRandomInt(904)}`);
       setOpponent(response.data);
- 
-      
     } catch (error) {
       console.log(error);
     }
   };
-  
+
   const selectPokemon = (currentPokemon: number) => {
     pokemonTeam.filter((pokemon) => {
-      if (pokemon.id === currentPokemon){
-        setYourPokemon(pokemon.pokemonTeam)
+      if (pokemon.id === currentPokemon) {
+        setYourPokemon(pokemon.pokemonTeam);
       }
-    })
-    loadRival()
-  }
+    });
+    loadRival();
+  };
 
   useEffect(() => {
-      if (yourPokemon !== null){
-      yourPokemon.stats.reduce(
-        (total: any, stat: { base_stat: any }) => {
-          if (stat.base_stat) {
-            setPower((total += stat.base_stat));
-          }
-          return total;
-        },
-        0
-      )};
-    ;
+    if (yourPokemon !== null) {
+      yourPokemon.stats.reduce((total: any, stat: { base_stat: any }) => {
+        if (stat.base_stat) {
+          setPower((total += stat.base_stat));
+        }
+        return total;
+      }, 0);
+    }
   }, [cardBattle]);
 
   return (
@@ -103,7 +94,6 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
           alt={name}
         />
       </StyledDivCard>
-      <BattleTeam />
     </StyledCardCard>
   );
 };

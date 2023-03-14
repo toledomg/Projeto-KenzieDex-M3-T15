@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { TeamDivStyled } from './style';
 import Header from '../../components/Header';
 import { GlobalContainer } from '../../components/Header/style';
@@ -8,7 +9,7 @@ import { TeamList } from '../../components/TeamList';
 import { apiFake } from '../../services/api';
 import { PokemonContext } from '../../providers/PokemonContext';
 import PokeballImgPages from '../../components/HeaderLogin/PokeballImg/lmagePages/lmagePages';
-import { motion } from 'framer-motion';
+import { toastAlert } from '../../styles/toast';
 
 const TeamPage = () => {
   const token = localStorage.getItem('@token');
