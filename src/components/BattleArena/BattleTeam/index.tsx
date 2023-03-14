@@ -4,16 +4,10 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 import { useContext, useEffect, useState } from 'react';
 import { PokemonContext } from '../../../providers/PokemonContext';
+import { toastAlert } from '../../../styles/toast';
 
 const BattleTeam = () => {
-  const { power, statBase } = useContext(PokemonContext);
-
-  useEffect(() => {
-    const theWinner =
-      power! > statBase!
-        ? console.log(`You WIN with ${power} points x ${statBase} points`)
-        : console.log(`You LOOSE with ${power} points x ${statBase} points`);
-  }, []);
+  const { power, statBase} = useContext(PokemonContext);
 
   return (
     <div>

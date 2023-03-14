@@ -84,6 +84,10 @@ interface iPokemonContext {
   setStatBase: React.Dispatch<React.SetStateAction<number | undefined>>;
   cardBattle: IPokemonTeam[];
   setCardBattle: React.Dispatch<React.SetStateAction<IPokemonTeam[]>>;
+  yourPokemon: iInfos | null;
+  setYourPokemon: React.Dispatch<React.SetStateAction<iInfos | null>>;
+  opponent: IRival | undefined;
+  setOpponent: React.Dispatch<React.SetStateAction<IRival | undefined>>;
 }
 
 interface iPokemonContextProps {
@@ -112,6 +116,10 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
   const [power, setPower] = useState<IPokemonTeam[] | number | undefined>(0);
   const [statBase, setStatBase] = useState<number | undefined>(0);
   const [cardBattle, setCardBattle] = useState<IPokemonTeam[]>([]);
+  const [yourPokemon, setYourPokemon ] = useState<iInfos | null>(null)
+  const [opponent, setOpponent] = useState<IRival | undefined>();
+  
+
 
   const removePokemon = async (current: number) => {
     try {
@@ -151,6 +159,10 @@ export const PokemonProvider = ({ children }: iPokemonContextProps) => {
         setStatBase,
         cardBattle,
         setCardBattle,
+        yourPokemon,
+        setYourPokemon,
+        opponent,
+        setOpponent
       }}
     >
       {children}
