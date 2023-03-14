@@ -34,7 +34,7 @@ const BattlePage = () => {
       pokemonTeam.filter((pokemon) => pokemon.id === currentPokemon)
       );
       OpponentStats();
-      
+
       const theWinner =
       power! > statBase!
         ? toastAlert('success', `You WIN with ${power} points x ${statBase} points`)

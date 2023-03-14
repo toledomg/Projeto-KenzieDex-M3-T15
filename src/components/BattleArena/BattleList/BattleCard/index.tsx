@@ -56,23 +56,36 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
   } = useContext(PokemonContext);
   const pokedexNumber: string = url.slice(34, -11);
 
-  const [opponentPower, setOpponentPower] = useState<IRivalInfo[]>([]);
   const { yourPokemon, setYourPokemon, opponent, setOpponent } = useContext(PokemonContext)
   
+  useEffect(() => {
+   if (opponent !== undefined){
+     setStatBase(opponent!.stats.reduce(
+       (total: any, stat: { base_stat: any }) => {
+         if (stat.base_stat) {
+           setPower((total += stat.base_stat));
+         }
+         return total;
+       },
+       0
+     ))
+    }
+  }, [opponent])
+
   function getRandomInt(max: any) {
     return Math.floor(Math.random() * max);
   }
-
   const loadRival = async () => {
     try {
       const response = await api.get(`pokemon/${getRandomInt(904)}`);
       setOpponent(response.data);
+ 
+      
     } catch (error) {
       console.log(error);
     }
-    };
-
-
+  };
+  
   const selectPokemon = (currentPokemon: number) => {
     pokemonTeam.filter((pokemon) => {
       if (pokemon.id === currentPokemon){
@@ -95,6 +108,7 @@ export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
       )};
     ;
   }, [cardBattle]);
+
   return (
     <StyledCardCard>
       <StyledDivCard>
