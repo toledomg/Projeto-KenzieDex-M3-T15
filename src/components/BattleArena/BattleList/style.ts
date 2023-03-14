@@ -4,7 +4,7 @@ export const StyledTeamUl = styled.ul`
   width: 100%;
   max-width: 1200px;
   min-width: 320px;
-  height: 50vh;
+  height: 43vh;
 
   display: flex;
   align-items: center;
