@@ -54,6 +54,7 @@ export const BattleContainer = styled.div`
     border-radius: 4px;
 
     outline: none;
+    /*  */
   }
 `;
 

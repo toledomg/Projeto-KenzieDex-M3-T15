@@ -21,10 +21,19 @@ const BattlePage = () => {
   const token = localStorage.getItem('@token');
   const userId = localStorage.getItem('@userID');
 
-  const { power, statBase, setPokemonTeam, yourPokemon, opponent, pokemonTeam, setCardBattle, setStatBase } = useContext(PokemonContext);
+  const {
+    power,
+    statBase,
+    setPokemonTeam,
+    yourPokemon,
+    opponent,
+    pokemonTeam,
+    setCardBattle,
+    setStatBase,
+  } = useContext(PokemonContext);
 
   const [statValue, setStatValue] = useState([]);
-  
+
   function OpponentStats() {
     const stats = opponent?.stats.reduce(
       (acc, current) => acc + current.base_stat,
@@ -35,14 +44,20 @@ const BattlePage = () => {
   const addToCardBattle = (currentPokemon: number) => {
     setCardBattle(
       pokemonTeam.filter((pokemon) => pokemon.id === currentPokemon)
-      );
-      OpponentStats();
+    );
+    OpponentStats();
 
-      const theWinner =
+    const theWinner =
       power! > statBase!
-        ? toastAlert('success', `You WIN with ${power} points x ${statBase} points`)
-        : toastAlert('error', `You LOOSE with ${power} points x ${statBase} points`);
-    };
+        ? toastAlert(
+            'success',
+            `You WIN with ${power} points x ${statBase} points`
+          )
+        : toastAlert(
+            'error',
+            `You LOOSE with ${power} points x ${statBase} points`
+          );
+  };
 
   useEffect(() => {
     if (userId) {
@@ -81,33 +96,57 @@ const BattlePage = () => {
         <BattleContainer>
           <CardContainer>
             <PokemonBattleCard>
-              {yourPokemon ? <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${yourPokemon?.id}.png`} alt={yourPokemon?.name}/>
-               : <h1>?</h1>
-              }
-               
-              {yourPokemon ? <span>{yourPokemon.name[0].toUpperCase() + yourPokemon.name.slice(1)}</span> : <span/>}
+              {yourPokemon ? (
+                <img
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${yourPokemon?.id}.png`}
+                  alt={yourPokemon?.name}
+                />
+              ) : (
+                <h1>?</h1>
+              )}
+
+              {yourPokemon ? (
+                <span>
+                  {yourPokemon.name[0].toUpperCase() +
+                    yourPokemon.name.slice(1)}
+                </span>
+              ) : (
+                <span />
+              )}
             </PokemonBattleCard>
             <span>Your Pokemon</span>
           </CardContainer>
-          
+
           <div>
             <h1>Vs</h1>
 
-            <button onClick={() => addToCardBattle(yourPokemon!.id)}>Battle!</button>
+            <button onClick={() => addToCardBattle(yourPokemon!.id)}>
+              Battle!
+            </button>
           </div>
 
           <CardContainer>
-          <PokemonBattleCard>
-              {opponent? <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${opponent?.id}.png`} alt={opponent?.name}/>
-               : <h1>?</h1>
-              }
-               
-              {opponent? <span>{opponent.name[0].toUpperCase() + opponent.name.slice(1)}</span> : <span/>}
+            <PokemonBattleCard>
+              {opponent ? (
+                <img
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${opponent?.id}.png`}
+                  alt={opponent?.name}
+                />
+              ) : (
+                <h1>?</h1>
+              )}
+
+              {opponent ? (
+                <span>
+                  {opponent.name[0].toUpperCase() + opponent.name.slice(1)}
+                </span>
+              ) : (
+                <span />
+              )}
             </PokemonBattleCard>
             <span>Rival</span>
           </CardContainer>
         </BattleContainer>
-
       </TeamDivStyled>
       <PokeballImgPages />
     </GlobalContainer>
