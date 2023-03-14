@@ -31,6 +31,7 @@ const PokeModal = () => {
     useContext(PokemonContext);
 
   const navigate = useNavigate();
+  const ESCAPE_KEYCODE = 27;
 
   const [pokemon, setPokemon] = useState<null | iInfos>(null);
   const data = {
@@ -42,7 +43,7 @@ const PokeModal = () => {
     if (!window) return;
 
     const keyUpListener = (e: { keyCode: any }) => {
-      if (e.keyCode === 27) setPokeModal(null);
+      if (e.keyCode === ESCAPE_KEYCODE) setPokeModal(null);
     };
 
     window.addEventListener('keyup', keyUpListener);
