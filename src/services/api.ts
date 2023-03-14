@@ -1,21 +1,15 @@
 import axios from 'axios';
 
-export const apiFake = axios.create({
-  baseURL: 'http://localhost:3001/',
-  responseType: 'json',
-  timeout: 5000,
-});
-
 // export const apiFake = axios.create({
-//   baseURL: 'https://kenziedex.onrender.com/',
+//   baseURL: 'http://localhost:3001/',
 //   responseType: 'json',
-//   timeout: 10000,
+//   timeout: 5000,
 // });
 
-export const api = axios.create({
-  baseURL: 'https://pokeapi.co/api/v2',
+export const apiFake = axios.create({
+  baseURL: 'https://kenziedex.onrender.com/',
   responseType: 'json',
-  timeout: 5000,
+  timeout: 10000,
 });
 
 export const api = axios.create({
