@@ -54,7 +54,7 @@ export function toasts(title: ToastType, text: string) {
   Swal.fire({
     icon: title,
     html: text,
-    timer: 4000,
+    timer: 5000,
     timerProgressBar: true,
     willClose: () => {
       clearInterval(timerInterval);
