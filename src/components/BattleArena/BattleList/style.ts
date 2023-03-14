@@ -44,7 +44,7 @@ export const StyledTeamUl = styled.ul`
       font-size: 2rem;
     }
   }
-
+  /*  */
   @media (min-width: 700px) {
     display: flex;
     flex-direction: row;

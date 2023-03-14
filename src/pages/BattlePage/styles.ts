@@ -72,6 +72,7 @@ export const CardContainer = styled.div`
   gap: 0.5rem;
 
   margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 export const PokemonBattleCard = styled.div`
