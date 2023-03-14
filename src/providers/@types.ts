@@ -55,6 +55,7 @@ export interface IShopProduct {
   product: IProductCart;
 }
 
+<<<<<<< HEAD
 export interface IUserContext {
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -68,6 +69,30 @@ export interface IUserContext {
   setProductsList: React.Dispatch<React.SetStateAction<IProduct[]>>;
   filteredProducts: IProduct[];
   setFilteredProducts: React.Dispatch<React.SetStateAction<IProduct[]>>;
+=======
+export interface ITeamCardProps {
+  url: string;
+  name: string;
+  order: number;
+  height: number;
+  weight: number;
+  abilities:  { slot: number; ability: { name: string; url: string } }[];
+  types: { slot: number; type: { name: string; url: string } }[];
+  pokemonId: number;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface IUserContext {
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  isHidden: boolean;
+  setIsHidden: React.Dispatch<React.SetStateAction<boolean>>;
+  user: IUser | null;
+  userLogin: (formData: ILoginFormValues) => Promise<void>;
+  userRegister: (formData: IRegisterFormValues) => Promise<void>;
+  userLogout: () => void;
+  navigate: (to: string) => void;
+>>>>>>> 93372ea9064e112fdf47a1ae7347caf880d9a135
 }
 
 export interface ICartContext {

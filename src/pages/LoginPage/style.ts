@@ -9,6 +9,23 @@ export const StyledLoginPage = styled.main`
 
   background-color: ${({ theme }) => theme.colors.gray3};
 
+<<<<<<< HEAD
+=======
+  position: relative;
+
+  .loginEyePosition {
+    position: relative;
+    .eye {
+      position: absolute;
+      top: 15px;
+      right: 10px;
+
+      font-size: 20px;
+      color: #f8f9fa50;
+    }
+  }
+
+>>>>>>> 93372ea9064e112fdf47a1ae7347caf880d9a135
   .flexGrid {
     display: flex;
     align-items: center;

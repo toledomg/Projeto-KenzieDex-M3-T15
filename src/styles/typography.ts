@@ -13,7 +13,11 @@ interface IStyledParagraphProps {
 }
 
 export const StyledTitle = styled(BaseTitle)<IStyledTitleProps>`
+<<<<<<< HEAD
   width: 100%;
+=======
+  /* width: 100%; */
+>>>>>>> 93372ea9064e112fdf47a1ae7347caf880d9a135
   color: ${({ theme }) => theme.colors.primary.default};
 
   font-family: ${({ theme }) => theme.fonts.primary};
@@ -63,7 +67,11 @@ export const StyledParagraph = styled.p<IStyledParagraphProps>`
     switch (fontColor) {
       case 'white':
         return css`
+<<<<<<< HEAD
           color: ${theme.colors.gray0};
+=======
+          color: ${theme.colors.gray1};
+>>>>>>> 93372ea9064e112fdf47a1ae7347caf880d9a135
         `;
       case 'red':
         return css`
