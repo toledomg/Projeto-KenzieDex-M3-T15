@@ -20,18 +20,6 @@ export const BattleContainer = styled.div`
 
     align-items: center;
     justify-content: center;
-
-    margin-top: 30px;
-
-    /* @media screen and (min-width: 600px) and (max-width: 760px) {
-      margin-top: 0px;
-    }
-    @media screen and (min-width: 768px) and (max-width: 1040px) {
-      margin-top: 0px;
-    }
-    @media screen and (min-width: 1050px) and (max-width: 2500px) {
-      margin-top: 0px;
-    } */
   }
 
   > div > h1 {
