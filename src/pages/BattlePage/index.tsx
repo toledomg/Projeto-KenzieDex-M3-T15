@@ -16,8 +16,7 @@ import { apiFake } from '../../services/api';
 import { StyledTitle } from '../../styles/typography';
 import { TeamDivStyled } from '../TeamPage/style';
 import { BattleList } from '../../components/BattleArena/BattleList';
-import { toastAlert, toasts } from '../../styles/toast';
-import BatalhaPokemon from '../../components/BattleArena/teste';
+import { toasts } from '../../styles/toast';
 
 const BattlePage = () => {
   const token = localStorage.getItem('@token');
