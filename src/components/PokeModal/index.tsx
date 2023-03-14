@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-unsafe-optional-chaining */
 import { useNavigate } from 'react-router';
 import { useContext, useEffect, useState } from 'react';
@@ -36,6 +37,20 @@ const PokeModal = () => {
     userId,
     pokemonTeam: pokemon,
   };
+
+  useEffect(() => {
+    if (!window) return;
+
+    const keyUpListener = (e: { keyCode: any }) => {
+      if (e.keyCode === 27) setPokeModal(null);
+    };
+
+    window.addEventListener('keyup', keyUpListener);
+
+    return () => {
+      window.removeEventListener('keyup', keyUpListener);
+    };
+  }, []);
 
   useEffect(() => {
     if (userId) {
