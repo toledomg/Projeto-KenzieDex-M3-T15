@@ -9,8 +9,8 @@ import {
   IUserContext,
 } from './@types';
 
-import { toasts, toastError, toastWarning, toastAlert } from '../styles/toast';
-import { api, apiFake } from '../services/api';
+import { toasts } from '../styles/toast';
+import { apiFake } from '../services/api';
 
 export const UserContext = createContext({} as IUserContext);
 
@@ -64,9 +64,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       navigate('/home');
     } catch (error) {
       console.log(error);
-
-      toastError();
-      toastWarning();
+      toasts('error', 'Algo deu errado');
     } finally {
       setLoading(false);
     }

@@ -13,37 +13,12 @@ import {
 } from './style';
 import { ITeamCardProps } from '../../../../providers/@types';
 import {
-  iInfos,
-  IPokemonTeam,
   PokemonContext,
 } from '../../../../providers/PokemonContext';
 import { api } from '../../../../services/api';
 import BattleTeam from '../../BattleTeam';
 import { PokemonBattleCard } from '../../../../pages/BattlePage/styles';
 
-interface IStats {
-  base_stat: number;
-  effort: number;
-  stat: {
-    name: string;
-    url: string;
-  };
-}
-export interface IRival {
-  stats: IStats[];
-  location_area_encounters: string;
-  url: string;
-  types: { slot: number; type: { name: string; url: string } }[];
-  name: string;
-  id: number;
-  order: number;
-  height: number;
-  weight: number;
-  abilities: { slot: number; ability: { name: string; url: string } }[];
-}
-interface IRivalInfo {
-  stats: IStats[];
-}
 export const BattleCard = ({ name, url, types, pokemonId }: ITeamCardProps) => {
   const {
     pokemonTeam,

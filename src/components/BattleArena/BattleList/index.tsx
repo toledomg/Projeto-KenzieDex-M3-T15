@@ -6,9 +6,7 @@ import { PokemonContext } from '../../../providers/PokemonContext';
 import { StyledTitle } from '../../../styles/typography';
 
 export const BattleList = () => {
-  const token = localStorage.getItem('@token');
-
-  const { pokemonTeam, setPokemonTeam } = useContext(PokemonContext);
+  const { pokemonTeam } = useContext(PokemonContext);
 
   return (
     <StyledTeamUl>

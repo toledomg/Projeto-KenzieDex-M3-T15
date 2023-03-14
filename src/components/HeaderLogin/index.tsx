@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React from 'react';
 import { StyledHeader } from './style';
 import { StyledContainer } from '../../styles/grid';
 

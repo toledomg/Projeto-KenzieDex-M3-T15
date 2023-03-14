@@ -2,14 +2,11 @@ import { useContext, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { StyledTeamUl } from './style';
 import { TeamCard } from './TeamCard';
-import { apiFake } from '../../services/api';
-import { iInfos, PokemonContext } from '../../providers/PokemonContext';
+import { PokemonContext } from '../../providers/PokemonContext';
 import { StyledTitle } from '../../styles/typography';
 
 export const TeamList = () => {
-  const token = localStorage.getItem('@token');
-
-  const { pokemonTeam, setPokemonTeam } = useContext(PokemonContext);
+  const { pokemonTeam } = useContext(PokemonContext);
 
   return (
     <StyledTeamUl>

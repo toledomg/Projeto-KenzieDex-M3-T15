@@ -9,9 +9,6 @@ import { toastAlert } from '../../../styles/toast';
 const BattleTeam = () => {
   const { power, statBase} = useContext(PokemonContext);
 
-  const [winner, setWinner] = useState();
-  const [looser, setLooser] = useState();
-
   return (
     <div>
       <h1 />
