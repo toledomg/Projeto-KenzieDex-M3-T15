@@ -15,7 +15,7 @@ import { apiFake } from '../../services/api';
 import { StyledTitle } from '../../styles/typography';
 import { TeamDivStyled } from '../TeamPage/style';
 import { BattleList } from '../../components/BattleArena/BattleList';
-import { toastAlert } from '../../styles/toast';
+import { toastAlert, toasts } from '../../styles/toast';
 
 const BattlePage = () => {
   const token = localStorage.getItem('@token');
@@ -49,11 +49,8 @@ const BattlePage = () => {
 
     const theWinner =
       power! > statBase!
-        ? toastAlert(
-            'success',
-            `You WIN with ${power} points x ${statBase} points`
-          )
-        : toastAlert(
+        ? toasts('success', `You WIN with ${power} points x ${statBase} points`)
+        : toasts(
             'error',
             `You LOOSE with ${power} points x ${statBase} points`
           );
