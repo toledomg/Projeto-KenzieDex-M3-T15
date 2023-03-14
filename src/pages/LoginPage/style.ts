@@ -9,8 +9,6 @@ export const StyledLoginPage = styled.main`
 
   background-color: ${({ theme }) => theme.colors.gray3};
 
-<<<<<<< HEAD
-=======
   position: relative;
 
   .loginEyePosition {
@@ -25,7 +23,6 @@ export const StyledLoginPage = styled.main`
     }
   }
 
->>>>>>> 93372ea9064e112fdf47a1ae7347caf880d9a135
   .flexGrid {
     display: flex;
     align-items: center;

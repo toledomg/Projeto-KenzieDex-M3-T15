@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import { StyledHeader } from './style';
-import LogoKenzieDex from '../../assets/LogoKenzieDex.png';
-import { StyledContainer } from '../../styles/grid';
-
-const Header = () => (
-  <StyledHeader>
-    <StyledContainer containerWidth={1200}>
-      <div className='flexGrid'>
-        <img src={LogoKenzieDex} alt='logo-kenziedex' className='logo' />
-        <nav className='nav' role='navigation'>
-          {console.log('aqui')}
-        </nav>
-      </div>
-    </StyledContainer>
-  </StyledHeader>
-);
-
-export default Header;
-=======
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -71,4 +50,3 @@ export default Header;
 function setAttribute(arg0: string) {
   throw new Error('Function not implemented.');
 }
->>>>>>> 93372ea9064e112fdf47a1ae7347caf880d9a135

@@ -18,11 +18,7 @@ export const mainTheme = {
     gray5: '#828282',
     gray4: '#121214',
     gray3: '#212529',
-<<<<<<< HEAD
-    gray2: '#343b41',
-=======
     gray2: '#343B41',
->>>>>>> 93372ea9064e112fdf47a1ae7347caf880d9a135
     gray1: '#868e96',
     gray0: '#F8f9fa',
     white: '#FFFFFF',

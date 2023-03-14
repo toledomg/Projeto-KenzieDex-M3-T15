@@ -6,8 +6,6 @@ declare module 'styled-components' {
       primary: string;
     };
     colors: {
-<<<<<<< HEAD
-=======
       gray2: Interpolation<
         ThemedStyledProps<
           Omit<
@@ -23,20 +21,15 @@ declare module 'styled-components' {
           DefaultTheme
         >
       >;
->>>>>>> 93372ea9064e112fdf47a1ae7347caf880d9a135
       primary: {
         default: string;
         focus: string;
         negative: string;
       };
-<<<<<<< HEAD
-      secondary: string;
-=======
       secondary: {
         default: string;
         hover: string;
       };
->>>>>>> 93372ea9064e112fdf47a1ae7347caf880d9a135
       gray6: string;
       gray5: string;
       gray4: string;
@@ -52,8 +45,6 @@ declare module 'styled-components' {
         information: string;
       };
     };
-<<<<<<< HEAD
-=======
     backgroundColors: {
       backgroundTypeBug: string;
       backgroundTypeDark: string;
@@ -74,6 +65,5 @@ declare module 'styled-components' {
       backgroundTypeSteel: string;
       backgroundTypeWater: string;
     };
->>>>>>> 93372ea9064e112fdf47a1ae7347caf880d9a135
   }
 }
