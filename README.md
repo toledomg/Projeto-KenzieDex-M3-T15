@@ -8,7 +8,7 @@
 
 Olá Pessoal, sejam todos bem vindos.
 
-Nosso foco com essa aplicação e para quem está procurando uma maneira divertida e emocionante de escapar do estresse do dia a dia.
+O foco com essa aplicação e para quem está procurando uma maneira divertida e emocionante de escapar do estresse do dia a dia.
 
 A ideia foi criar uma plataforma de jogos onde os usuários possam desafiar outros pokémons em batalhas, sem precisar sair de casa.
 
