@@ -95,62 +95,56 @@ const BattlePage = () => {
         </div>
         <BattleList />
         <BattleContainer>
-          {yourPokemon !== null ? (
-            <>
-              <CardContainer>
-                <PokemonBattleCard>
-                  {yourPokemon ? (
-                    <img
-                      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${yourPokemon?.id}.png`}
-                      alt={yourPokemon?.name}
-                    />
-                  ) : (
-                    <h1>?</h1>
-                  )}
+          <CardContainer>
+            <PokemonBattleCard>
+              {yourPokemon ? (
+                <img
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${yourPokemon?.id}.png`}
+                  alt={yourPokemon?.name}
+                />
+              ) : (
+                <h1>?</h1>
+              )}
 
-                  {yourPokemon ? (
-                    <span>
-                      {yourPokemon.name[0].toUpperCase() +
-                        yourPokemon.name.slice(1)}
-                    </span>
-                  ) : (
-                    <span />
-                  )}
-                </PokemonBattleCard>
-                <span>Your Pokémon</span>
-              </CardContainer>
-              <div>
-                <h1>Vs</h1>
+              {yourPokemon ? (
+                <span>
+                  {yourPokemon.name[0].toUpperCase() +
+                    yourPokemon.name.slice(1)}
+                </span>
+              ) : (
+                <span />
+              )}
+            </PokemonBattleCard>
+            <span>Your Pokémon</span>
+          </CardContainer>
+          <div>
+            <h1>Vs</h1>
 
-                <button onClick={() => addToCardBattle(yourPokemon!.id)}>
-                  Battle!
-                </button>
-              </div>
-              <CardContainer>
-                <PokemonBattleCard>
-                  {opponent ? (
-                    <img
-                      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${opponent?.id}.png`}
-                      alt={opponent?.name}
-                    />
-                  ) : (
-                    <h1>?</h1>
-                  )}
+            <button onClick={() => addToCardBattle(yourPokemon!.id)}>
+              Battle!
+            </button>
+          </div>
+          <CardContainer>
+            <PokemonBattleCard>
+              {opponent ? (
+                <img
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${opponent?.id}.png`}
+                  alt={opponent?.name}
+                />
+              ) : (
+                <h1>?</h1>
+              )}
 
-                  {opponent ? (
-                    <span>
-                      {opponent.name[0].toUpperCase() + opponent.name.slice(1)}
-                    </span>
-                  ) : (
-                    <span />
-                  )}
-                </PokemonBattleCard>
-                <span>Rival</span>
-              </CardContainer>
-            </>
-          ) : (
-            <div />
-          )}
+              {opponent ? (
+                <span>
+                  {opponent.name[0].toUpperCase() + opponent.name.slice(1)}
+                </span>
+              ) : (
+                <span />
+              )}
+            </PokemonBattleCard>
+            <span>Rival</span>
+          </CardContainer>
         </BattleContainer>
       </TeamDivStyled>
       <PokeballImgPages />

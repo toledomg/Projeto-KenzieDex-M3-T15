@@ -6,7 +6,19 @@
 
 ## 🚀 Sobre o Projeto
 
-- <p style="text-align: justify;">A KenzieDex foi desenvolvida visando principalmente os amantes dos nossos pequeninos Pok&eacute;mons, uma aplica&ccedil;&atilde;o voltada &aacute; divers&atilde;o, onde podemos conhecer v&aacute;rios tipos de Pok&eacute;mons, podendo escolher um time e eventualmente podermos batalhar com outros Pok&eacute;mons</p>
+Olá Pessoal, sejam todos bem vindos.
+
+Nosso foco com essa aplicação e para quem está procurando uma maneira divertida e emocionante de escapar do estresse do dia a dia.
+
+A ideia foi criar uma plataforma de jogos onde os usuários possam desafiar outros pokémons em batalhas, sem precisar sair de casa.
+
+Através da aplicação, é possível criar um perfil, escolher seu Pokemon favorito e começar a lutar contra outros pokémons online.
+
+Uma das principais vantagens do projeto é que ele permite aos usuários se divertirem sem sair de casa, o que é especialmente importante para pessoas que têm um dia a dia agitado e pouco tempo livre.
+
+Além disso, a jogabilidade é fácil de entender e aprender, tornando o jogo acessível para jogadores de todas as idades.
+
+Para ajudar a reduzir o estresse, a aplicação conta com imagens coloridas e vibrantes.
 
 ## 💻 Features do projeto
 
