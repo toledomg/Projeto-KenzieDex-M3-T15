@@ -1,19 +1,27 @@
 import axios from 'axios';
 
-// export const apiFake = axios.create({
-//   baseURL: 'http://localhost:3001/',
-//   responseType: 'json',
-//   timeout: 5000,
-// });
+const localUrl = import.meta.env.VITE_API_LOCAL_URL;
+const deployUrl = import.meta.env.VITE_API_DEPLOY_URL;
+
+// Use a variável VITE_ENV para controlar o ambiente ou `NODE_ENV` para produção
+const baseURL =
+  import.meta.env.VITE_ENV === 'development' ||
+  import.meta.env.NODE_ENV === 'development'
+    ? localUrl
+    : deployUrl;
 
 export const apiFake = axios.create({
-  baseURL: 'http://51.81.9.89:6002/',
+  baseURL: baseURL,
   responseType: 'json',
-  timeout: 10000,
+  timeout: 5000,
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': 'true',
+  },
 });
 
 export const api = axios.create({
-  baseURL: 'https://pokeapi.co/api/v2',
+  baseURL: import.meta.env.VITE_API_POKEMON_URL,
   responseType: 'json',
   timeout: 5000,
 });
